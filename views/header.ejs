@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gaming Backlog</title>
+  <link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <nav id="navbar" class="navbar">
+    <figure class="navbar-left">
+      <a class="navbar-logo navbar-item" id="logo-link" href="#"><img src="/images/logo.png"
+          alt="Game Controller logo and link">
+      </a>
+    </figure>
+    <ul class="navbar-right">
+      <% let link="/games" %>
+      <% if (loggedIn && path !== link) { %>
+      <li class="navbar-item">
+        <a class="navbar-link is-arrowless" id="games-nav-link" href="<%= link %>">Games</a>
+      </li>
+      <% } %>
+      <li tabindex="0" class="navbar-item">
+        <a class="navbar-link dropdown">User</a>
+        <ul class="dropdown-content">
+          <% link="/" %>
+          <% if (!registered && path !== link) { %>
+          <li tabindex="1"><a href="<%= link %>">Log in</a></li>
+          <% } %>
+          <% link="/new" %>
+          <% if (!registered && path !== link) { %>
+          <li tabindex="2"><a href="<%= link %>">Register</a></li>
+          <% } %>
+          <% link="/details" %>
+          <% if (registered && path !== link) { %>
+          <li tabindex="3"><a href="<%= link %>">Profile</a></li>
+          <% } %>
+          <% if (loggedIn) { %>
+          <li tabindex="4"><a href="#" id="log_out_link">Log Out</a></li>
+          <% } %>
+        </ul>
+      </li>
+    </ul>
+  </nav>

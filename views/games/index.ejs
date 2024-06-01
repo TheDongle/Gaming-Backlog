@@ -1,0 +1,19 @@
+<%- include("../header"); -%>
+<main id="main" data-state="">
+  <hgroup>
+    <h1 class="xl">Your Gaming Backlog</h1>
+    <p class="l">Current Backlog</p>
+  </hgroup>
+
+  <%- include("components/search"); -%>
+
+  <%- include("components/table") %>
+
+  <%- include("components/estimate") %>
+
+  <%- include("components/preferences") %>
+
+</main>
+
+<script type="module" src="/javascripts/games.mjs"></script>
+<%- include("../footer"); -%>

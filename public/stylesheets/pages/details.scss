@@ -1,0 +1,13 @@
+@use "../components/default" as df;
+@forward "../components/forms";
+@forward "../components/title";
+
+.grid {
+  grid: 30% / auto-flow dense;
+}
+.one {
+  grid-column: 1;
+}
+.two {
+  grid-column: 2;
+}

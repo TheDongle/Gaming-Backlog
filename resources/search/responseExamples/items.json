@@ -1,0 +1,488 @@
+{
+  "kind": "customsearch#search",
+  "url": {
+    "type": "application/json",
+    "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+  },
+  "queries": {
+    "request": [
+      {
+        "title": "Google Custom Search - dark souls",
+        "totalResults": "460",
+        "searchTerms": "dark souls",
+        "count": 10,
+        "startIndex": 1,
+        "inputEncoding": "utf8",
+        "outputEncoding": "utf8",
+        "safe": "off",
+        "cx": "16ab74b64b0284c98",
+        "exactTerms": "how long is"
+      }
+    ],
+    "nextPage": [
+      {
+        "title": "Google Custom Search - dark souls",
+        "totalResults": "460",
+        "searchTerms": "dark souls",
+        "count": 10,
+        "startIndex": 11,
+        "inputEncoding": "utf8",
+        "outputEncoding": "utf8",
+        "safe": "off",
+        "cx": "16ab74b64b0284c98",
+        "exactTerms": "how long is"
+      }
+    ]
+  },
+  "context": { "title": "GameSearch" },
+  "searchInformation": {
+    "searchTime": 0.143244,
+    "formattedSearchTime": "0.14",
+    "totalResults": "460",
+    "formattedTotalResults": "460"
+  },
+  "items": [
+    {
+      "kind": "customsearch#result",
+      "title": "How long is Dark Souls? | HowLongToBeat",
+      "htmlTitle": "<b>How long is Dark Souls</b>? | HowLongToBeat",
+      "link": "https://howlongtobeat.com/game/2224",
+      "displayLink": "howlongtobeat.com",
+      "snippet": "How long is Dark Souls? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "htmlSnippet": "<b>How long is Dark Souls</b>? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "formattedUrl": "https://howlongtobeat.com/game/2224",
+      "htmlFormattedUrl": "https://howlongtobeat.com/game/2224",
+      "pagemap": {
+        "cse_thumbnail": [
+          {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtL_WA8Hc8-nwaOb_5kt_Qjzym8C_jFK85TA7mN7EKxY86DcMUmYL6JGqP&s",
+            "width": "202",
+            "height": "250"
+          }
+        ],
+        "thumbnail": [{ "src": "https://howlongtobeat.com/games/Dark_Souls_Cover_Art.jpg" }],
+        "metatags": [
+          {
+            "og:image": "https://howlongtobeat.com/games/Dark_Souls_Cover_Art.jpg",
+            "theme-color": "#000000",
+            "thumbnail": "https://howlongtobeat.com/games/Dark_Souls_Cover_Art.jpg",
+            "og:type": "website",
+            "twitter:card": "summary",
+            "twitter:domain": "howlongtobeat.com",
+            "twitter:url": "https://howlongtobeat.com/game/2224",
+            "og:title": "How long is Dark Souls? | HowLongToBeat",
+            "og:description": "How long is Dark Souls? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "twitter:image": "https://howlongtobeat.com/games/Dark_Souls_Cover_Art.jpg",
+            "next-head-count": "19",
+            "twitter:site": "@HowLongToBeat",
+            "viewport": "width=device-width",
+            "twitter:description": "How long is Dark Souls? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "og:url": "https://howlongtobeat.com/game/2224"
+          }
+        ],
+        "cse_image": [{ "src": "https://howlongtobeat.com/games/Dark_Souls_Cover_Art.jpg" }]
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "How long is Dark Souls: Remastered? | HowLongToBeat",
+      "htmlTitle": "<b>How long is Dark Souls</b>: Remastered? | HowLongToBeat",
+      "link": "https://howlongtobeat.com/game/56677",
+      "displayLink": "howlongtobeat.com",
+      "snippet": "How long is Dark Souls: Remastered? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "htmlSnippet": "<b>How long is Dark Souls</b>: Remastered? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "formattedUrl": "https://howlongtobeat.com/game/56677",
+      "htmlFormattedUrl": "https://howlongtobeat.com/game/56677",
+      "pagemap": {
+        "cse_thumbnail": [
+          {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTun5E9WB4OFaMuGFGxgD6UlUwfuJ5Az58n1sNe20yGXdf3vZC7LCUPvts&s",
+            "width": "183",
+            "height": "275"
+          }
+        ],
+        "thumbnail": [{ "src": "https://howlongtobeat.com/games/56677_Dark_Souls_Remastered.jpg" }],
+        "metatags": [
+          {
+            "og:image": "https://howlongtobeat.com/games/56677_Dark_Souls_Remastered.jpg",
+            "theme-color": "#000000",
+            "thumbnail": "https://howlongtobeat.com/games/56677_Dark_Souls_Remastered.jpg",
+            "og:type": "website",
+            "twitter:card": "summary",
+            "twitter:domain": "howlongtobeat.com",
+            "twitter:url": "https://howlongtobeat.com/game/56677",
+            "og:title": "How long is Dark Souls: Remastered? | HowLongToBeat",
+            "og:description": "How long is Dark Souls: Remastered? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "twitter:image": "https://howlongtobeat.com/games/56677_Dark_Souls_Remastered.jpg",
+            "next-head-count": "19",
+            "twitter:site": "@HowLongToBeat",
+            "viewport": "width=device-width",
+            "twitter:description": "How long is Dark Souls: Remastered? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "og:url": "https://howlongtobeat.com/game/56677"
+          }
+        ],
+        "cse_image": [{ "src": "https://howlongtobeat.com/games/56677_Dark_Souls_Remastered.jpg" }]
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "How long is Dark Souls III: The Fire Fades Edition? | HowLongToBeat",
+      "htmlTitle": "<b>How long is Dark Souls</b> III: The Fire Fades Edition? | HowLongToBeat",
+      "link": "https://howlongtobeat.com/game/46295",
+      "displayLink": "howlongtobeat.com",
+      "snippet": "How long is Dark Souls III: The Fire Fades Edition? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "htmlSnippet": "<b>How long is Dark Souls</b> III: The Fire Fades Edition? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "formattedUrl": "https://howlongtobeat.com/game/46295",
+      "htmlFormattedUrl": "https://howlongtobeat.com/game/46295",
+      "pagemap": {
+        "cse_thumbnail": [
+          {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSU70DVlkqD_dI3oP1Z6-elfHjMYkDbC_4u98ZNNPxID-O550F6VOwwF8&s",
+            "width": "201",
+            "height": "251"
+          }
+        ],
+        "thumbnail": [
+          {
+            "src": "https://howlongtobeat.com/games/46295_Dark_Souls_III_The_Fire_Fades_Edition.jpg"
+          }
+        ],
+        "metatags": [
+          {
+            "og:image": "https://howlongtobeat.com/games/46295_Dark_Souls_III_The_Fire_Fades_Edition.jpg",
+            "theme-color": "#000000",
+            "thumbnail": "https://howlongtobeat.com/games/46295_Dark_Souls_III_The_Fire_Fades_Edition.jpg",
+            "og:type": "website",
+            "twitter:card": "summary",
+            "twitter:domain": "howlongtobeat.com",
+            "twitter:url": "https://howlongtobeat.com/game/46295",
+            "og:title": "How long is Dark Souls III: The Fire Fades Edition? | HowLongToBeat",
+            "og:description": "How long is Dark Souls III: The Fire Fades Edition? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "twitter:image": "https://howlongtobeat.com/games/46295_Dark_Souls_III_The_Fire_Fades_Edition.jpg",
+            "next-head-count": "19",
+            "twitter:site": "@HowLongToBeat",
+            "viewport": "width=device-width",
+            "twitter:description": "How long is Dark Souls III: The Fire Fades Edition? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "og:url": "https://howlongtobeat.com/game/46295"
+          }
+        ],
+        "cse_image": [
+          {
+            "src": "https://howlongtobeat.com/games/46295_Dark_Souls_III_The_Fire_Fades_Edition.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "How long is Dark Souls: Artorias of the Abyss? | HowLongToBeat",
+      "htmlTitle": "<b>How long is Dark Souls</b>: Artorias of the Abyss? | HowLongToBeat",
+      "link": "https://howlongtobeat.com/game/20578",
+      "displayLink": "howlongtobeat.com",
+      "snippet": "How long is Dark Souls: Artorias of the Abyss? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "htmlSnippet": "<b>How long is Dark Souls</b>: Artorias of the Abyss? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "formattedUrl": "https://howlongtobeat.com/game/20578",
+      "htmlFormattedUrl": "https://howlongtobeat.com/game/20578",
+      "pagemap": {
+        "cse_thumbnail": [
+          {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtL_WA8Hc8-nwaOb_5kt_Qjzym8C_jFK85TA7mN7EKxY86DcMUmYL6JGqP&s",
+            "width": "202",
+            "height": "250"
+          }
+        ],
+        "thumbnail": [{ "src": "https://howlongtobeat.com/games/Dark_Souls_Cover_Art.jpg" }],
+        "metatags": [
+          {
+            "og:image": "https://howlongtobeat.com/games/Dark_Souls_Cover_Art.jpg",
+            "theme-color": "#000000",
+            "thumbnail": "https://howlongtobeat.com/games/Dark_Souls_Cover_Art.jpg",
+            "og:type": "website",
+            "twitter:card": "summary",
+            "twitter:domain": "howlongtobeat.com",
+            "twitter:url": "https://howlongtobeat.com/game/20578",
+            "og:title": "How long is Dark Souls: Artorias of the Abyss? | HowLongToBeat",
+            "og:description": "How long is Dark Souls: Artorias of the Abyss? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "twitter:image": "https://howlongtobeat.com/games/Dark_Souls_Cover_Art.jpg",
+            "next-head-count": "19",
+            "twitter:site": "@HowLongToBeat",
+            "viewport": "width=device-width",
+            "twitter:description": "How long is Dark Souls: Artorias of the Abyss? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "og:url": "https://howlongtobeat.com/game/20578"
+          }
+        ],
+        "cse_image": [{ "src": "https://howlongtobeat.com/games/Dark_Souls_Cover_Art.jpg" }]
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "How long is Dark Souls II: Scholar of the First Sin? | HowLongToBeat",
+      "htmlTitle": "<b>How long is Dark Souls</b> II: Scholar of the First Sin? | HowLongToBeat",
+      "link": "https://howlongtobeat.com/game/25311",
+      "displayLink": "howlongtobeat.com",
+      "snippet": "How long is Dark Souls II: Scholar of the First Sin? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "htmlSnippet": "<b>How long is Dark Souls</b> II: Scholar of the First Sin? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "formattedUrl": "https://howlongtobeat.com/game/25311",
+      "htmlFormattedUrl": "https://howlongtobeat.com/game/25311",
+      "pagemap": {
+        "cse_thumbnail": [
+          {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXbqGM1kozwyrV6ZnNflRY2ovVMQlPxOsJ-5sPm1ijF1mfanHYGO4vfNJR&s",
+            "width": "183",
+            "height": "275"
+          }
+        ],
+        "thumbnail": [
+          { "src": "https://howlongtobeat.com/games/Dark_Souls_II_Scholar_of_the_First_Sin.jpg" }
+        ],
+        "metatags": [
+          {
+            "og:image": "https://howlongtobeat.com/games/Dark_Souls_II_Scholar_of_the_First_Sin.jpg",
+            "theme-color": "#000000",
+            "thumbnail": "https://howlongtobeat.com/games/Dark_Souls_II_Scholar_of_the_First_Sin.jpg",
+            "og:type": "website",
+            "twitter:card": "summary",
+            "twitter:domain": "howlongtobeat.com",
+            "twitter:url": "https://howlongtobeat.com/game/25311",
+            "og:title": "How long is Dark Souls II: Scholar of the First Sin? | HowLongToBeat",
+            "og:description": "How long is Dark Souls II: Scholar of the First Sin? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "twitter:image": "https://howlongtobeat.com/games/Dark_Souls_II_Scholar_of_the_First_Sin.jpg",
+            "next-head-count": "19",
+            "twitter:site": "@HowLongToBeat",
+            "viewport": "width=device-width",
+            "twitter:description": "How long is Dark Souls II: Scholar of the First Sin? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "og:url": "https://howlongtobeat.com/game/25311"
+          }
+        ],
+        "cse_image": [
+          { "src": "https://howlongtobeat.com/games/Dark_Souls_II_Scholar_of_the_First_Sin.jpg" }
+        ]
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "How long is Dark Souls III: Ashes of Ariandel? | HowLongToBeat",
+      "htmlTitle": "<b>How long is Dark Souls</b> III: Ashes of Ariandel? | HowLongToBeat",
+      "link": "https://howlongtobeat.com/game/40747",
+      "displayLink": "howlongtobeat.com",
+      "snippet": "How long is Dark Souls III: Ashes of Ariandel? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "htmlSnippet": "<b>How long is Dark Souls</b> III: Ashes of Ariandel? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "formattedUrl": "https://howlongtobeat.com/game/40747",
+      "htmlFormattedUrl": "https://howlongtobeat.com/game/40747",
+      "pagemap": {
+        "cse_thumbnail": [
+          {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBBaORE0JfdPKAYrHJ7CHCzqG06H_0dtzXZjFaEXWYmieAbLCrBcVYnqM&s",
+            "width": "189",
+            "height": "267"
+          }
+        ],
+        "thumbnail": [
+          {
+            "src": "https://howlongtobeat.com/games/40747_Dark_Souls_III_Ashes_of_Ariandel_DLC.jpg"
+          }
+        ],
+        "metatags": [
+          {
+            "og:image": "https://howlongtobeat.com/games/40747_Dark_Souls_III_Ashes_of_Ariandel_DLC.jpg",
+            "theme-color": "#000000",
+            "thumbnail": "https://howlongtobeat.com/games/40747_Dark_Souls_III_Ashes_of_Ariandel_DLC.jpg",
+            "og:type": "website",
+            "twitter:card": "summary",
+            "twitter:domain": "howlongtobeat.com",
+            "twitter:url": "https://howlongtobeat.com/game/40747",
+            "og:title": "How long is Dark Souls III: Ashes of Ariandel? | HowLongToBeat",
+            "og:description": "How long is Dark Souls III: Ashes of Ariandel? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "twitter:image": "https://howlongtobeat.com/games/40747_Dark_Souls_III_Ashes_of_Ariandel_DLC.jpg",
+            "next-head-count": "19",
+            "twitter:site": "@HowLongToBeat",
+            "viewport": "width=device-width",
+            "twitter:description": "How long is Dark Souls III: Ashes of Ariandel? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "og:url": "https://howlongtobeat.com/game/40747"
+          }
+        ],
+        "cse_image": [
+          {
+            "src": "https://howlongtobeat.com/games/40747_Dark_Souls_III_Ashes_of_Ariandel_DLC.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "How long is Dark Souls III? | HowLongToBeat",
+      "htmlTitle": "<b>How long is Dark Souls</b> III? | HowLongToBeat",
+      "link": "https://howlongtobeat.com/game/26803",
+      "displayLink": "howlongtobeat.com",
+      "snippet": "How long is Dark Souls III? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "htmlSnippet": "<b>How long is Dark Souls</b> III? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "formattedUrl": "https://howlongtobeat.com/game/26803",
+      "htmlFormattedUrl": "https://howlongtobeat.com/game/26803",
+      "pagemap": {
+        "cse_thumbnail": [
+          {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR94Btk2mN_h_tZz5ImK8eusjXMnVh420BytTWX2to-2rzn5juPgJQ_TLQ&s",
+            "width": "183",
+            "height": "275"
+          }
+        ],
+        "thumbnail": [{ "src": "https://howlongtobeat.com/games/Dark_souls_3_cover_art.jpg" }],
+        "metatags": [
+          {
+            "og:image": "https://howlongtobeat.com/games/Dark_souls_3_cover_art.jpg",
+            "theme-color": "#000000",
+            "thumbnail": "https://howlongtobeat.com/games/Dark_souls_3_cover_art.jpg",
+            "og:type": "website",
+            "twitter:card": "summary",
+            "twitter:domain": "howlongtobeat.com",
+            "twitter:url": "https://howlongtobeat.com/game/26803",
+            "og:title": "How long is Dark Souls III? | HowLongToBeat",
+            "og:description": "How long is Dark Souls III? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "twitter:image": "https://howlongtobeat.com/games/Dark_souls_3_cover_art.jpg",
+            "next-head-count": "19",
+            "twitter:site": "@HowLongToBeat",
+            "viewport": "width=device-width",
+            "twitter:description": "How long is Dark Souls III? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "og:url": "https://howlongtobeat.com/game/26803"
+          }
+        ],
+        "cse_image": [{ "src": "https://howlongtobeat.com/games/Dark_souls_3_cover_art.jpg" }]
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "How long is Dark Souls III: Cinders? | HowLongToBeat",
+      "htmlTitle": "<b>How long is Dark Souls</b> III: Cinders? | HowLongToBeat",
+      "link": "https://howlongtobeat.com/game/75808",
+      "displayLink": "howlongtobeat.com",
+      "snippet": "How long is Dark Souls III: Cinders? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "htmlSnippet": "<b>How long is Dark Souls</b> III: Cinders? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "formattedUrl": "https://howlongtobeat.com/game/75808",
+      "htmlFormattedUrl": "https://howlongtobeat.com/game/75808",
+      "pagemap": {
+        "cse_thumbnail": [
+          {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6n_qJMHC9OROoIyuJuszXvZ9QdM5FRPujubAlrjgy4OJMO5_9wUNzsJpQ&s",
+            "width": "300",
+            "height": "168"
+          }
+        ],
+        "thumbnail": [
+          { "src": "https://howlongtobeat.com/games/75808_Dark_Souls_III_Cinders.png" }
+        ],
+        "metatags": [
+          {
+            "og:image": "https://howlongtobeat.com/games/75808_Dark_Souls_III_Cinders.png",
+            "theme-color": "#000000",
+            "thumbnail": "https://howlongtobeat.com/games/75808_Dark_Souls_III_Cinders.png",
+            "og:type": "website",
+            "twitter:card": "summary",
+            "twitter:domain": "howlongtobeat.com",
+            "twitter:url": "https://howlongtobeat.com/game/75808",
+            "og:title": "How long is Dark Souls III: Cinders? | HowLongToBeat",
+            "og:description": "How long is Dark Souls III: Cinders? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "twitter:image": "https://howlongtobeat.com/games/75808_Dark_Souls_III_Cinders.png",
+            "next-head-count": "19",
+            "twitter:site": "@HowLongToBeat",
+            "viewport": "width=device-width",
+            "twitter:description": "How long is Dark Souls III: Cinders? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "og:url": "https://howlongtobeat.com/game/75808"
+          }
+        ],
+        "cse_image": [{ "src": "https://howlongtobeat.com/games/75808_Dark_Souls_III_Cinders.png" }]
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "How long is Dark Souls: Prepare to Die Edition? | HowLongToBeat",
+      "htmlTitle": "<b>How long is Dark Souls</b>: Prepare to Die Edition? | HowLongToBeat",
+      "link": "https://howlongtobeat.com/game/2227",
+      "displayLink": "howlongtobeat.com",
+      "snippet": "How long is Dark Souls: Prepare to Die Edition? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "htmlSnippet": "<b>How long is Dark Souls</b>: Prepare to Die Edition? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "formattedUrl": "https://howlongtobeat.com/game/2227",
+      "htmlFormattedUrl": "https://howlongtobeat.com/game/2227",
+      "pagemap": {
+        "cse_thumbnail": [
+          {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpwgv9kWPaEv-8PMji7c5V9pOdlLVXlNT8k1zU3TMVs4nt8efhWVXPSZqp&s",
+            "width": "183",
+            "height": "275"
+          }
+        ],
+        "thumbnail": [
+          { "src": "https://howlongtobeat.com/games/DarkSoulsPreparetoDieEdition.jpg" }
+        ],
+        "metatags": [
+          {
+            "og:image": "https://howlongtobeat.com/games/DarkSoulsPreparetoDieEdition.jpg",
+            "theme-color": "#000000",
+            "thumbnail": "https://howlongtobeat.com/games/DarkSoulsPreparetoDieEdition.jpg",
+            "og:type": "website",
+            "twitter:card": "summary",
+            "twitter:domain": "howlongtobeat.com",
+            "twitter:url": "https://howlongtobeat.com/game/2227",
+            "og:title": "How long is Dark Souls: Prepare to Die Edition? | HowLongToBeat",
+            "og:description": "How long is Dark Souls: Prepare to Die Edition? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "twitter:image": "https://howlongtobeat.com/games/DarkSoulsPreparetoDieEdition.jpg",
+            "next-head-count": "19",
+            "twitter:site": "@HowLongToBeat",
+            "viewport": "width=device-width",
+            "twitter:description": "How long is Dark Souls: Prepare to Die Edition? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "og:url": "https://howlongtobeat.com/game/2227"
+          }
+        ],
+        "cse_image": [{ "src": "https://howlongtobeat.com/games/DarkSoulsPreparetoDieEdition.jpg" }]
+      }
+    },
+    {
+      "kind": "customsearch#result",
+      "title": "How long is Dark Souls II: Crown of the Old Iron King ...",
+      "htmlTitle": "<b>How long is Dark Souls</b> II: Crown of the Old Iron King ...",
+      "link": "https://howlongtobeat.com/game/20857",
+      "displayLink": "howlongtobeat.com",
+      "snippet": "How long is Dark Souls II: Crown of the Old Iron King? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "htmlSnippet": "<b>How long is Dark Souls</b> II: Crown of the Old Iron King? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+      "formattedUrl": "https://howlongtobeat.com/game/20857",
+      "htmlFormattedUrl": "https://howlongtobeat.com/game/20857",
+      "pagemap": {
+        "cse_thumbnail": [
+          {
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpLusdgZNXcZ56o8De1pIsW2aoY3Nh8ZAQDQdbSvjiuqndWVDQTAg6_1U&s",
+            "width": "189",
+            "height": "267"
+          }
+        ],
+        "thumbnail": [
+          {
+            "src": "https://howlongtobeat.com/games/20857_Dark_Souls_II_Crown_of_the_Old_Iron_King.jpg"
+          }
+        ],
+        "metatags": [
+          {
+            "og:image": "https://howlongtobeat.com/games/20857_Dark_Souls_II_Crown_of_the_Old_Iron_King.jpg",
+            "theme-color": "#000000",
+            "thumbnail": "https://howlongtobeat.com/games/20857_Dark_Souls_II_Crown_of_the_Old_Iron_King.jpg",
+            "og:type": "website",
+            "twitter:card": "summary",
+            "twitter:domain": "howlongtobeat.com",
+            "twitter:url": "https://howlongtobeat.com/game/20857",
+            "og:title": "How long is Dark Souls II: Crown of the Old Iron King? | HowLongToBeat",
+            "og:description": "How long is Dark Souls II: Crown of the Old Iron King? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "twitter:image": "https://howlongtobeat.com/games/20857_Dark_Souls_II_Crown_of_the_Old_Iron_King.jpg",
+            "next-head-count": "19",
+            "twitter:site": "@HowLongToBeat",
+            "viewport": "width=device-width",
+            "twitter:description": "How long is Dark Souls II: Crown of the Old Iron King? HowLongToBeat has the answer. Create a backlog, submit your game times and compete with your friends!",
+            "og:url": "https://howlongtobeat.com/game/20857"
+          }
+        ],
+        "cse_image": [
+          {
+            "src": "https://howlongtobeat.com/games/20857_Dark_Souls_II_Crown_of_the_Old_Iron_King.jpg"
+          }
+        ]
+      }
+    }
+  ]
+}

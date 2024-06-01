@@ -1,0 +1,38 @@
+<%- include("../header"); -%>
+
+<main class="center">
+  <h1 class="title-is-3">Register</h1>
+  <form class="columns-2" action="/new" method="post">
+    <div class="column form-is-centered form-is-block">
+      <h2 class="title-is-4 form-field">Enter your details</h2>
+      <label class="form-field" for="username">Create a Username<br>
+        <%= usernameValidation.message %></label>
+      <div class="form-field">
+        <input title="<%= usernameValidation.message %>" pattern="<%- usernameValidation.pattern %>" type="text"
+          id="username" name="username" />
+      </div>
+      <label class="form-field" for="password">Create a Password<br>
+        <%= passwordValidation.message %></label>
+      <div class="form-field">
+        <input title="<%= passwordValidation.message %>" pattern="<%- passwordValidation.pattern %>" type="password" id="password" name="password" />
+      </div>
+    </div>
+    <div class="column form-is-centered form-is-block">
+      <h2 class="title-is-4 form-field">Lifestyle information</h2>
+      <fieldset class="form-fieldset">
+        <legend class="form-legend">When gaming, do you:</legend>
+        <div class="form-field">
+          <input type="radio" id="completionist" name="playStyle" value="completionist" checked />
+          <label for="completionist">Complete games 100%, with all achievements</label>
+        </div>
+        <div class="form-field">
+          <input type="radio" id="casual" name="playStyle" value="casual" />
+          <label for="casual">Play games until standard completion</label>
+        </div>
+      </fieldset>
+      <button class="form-button">Submit</button>
+    </div>
+  </form>
+</main>
+<script type="module" src="/javascripts/login.mjs"></script>
+<%- include("../footer"); -%>

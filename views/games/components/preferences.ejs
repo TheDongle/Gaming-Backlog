@@ -1,0 +1,16 @@
+<aside id="preferences_area">
+  <hgroup class="is-3">
+    <h2 class="title">Preferences</h2>
+  </hgroup>
+  <p>The "Days to complete" is based on some wild assumptions about your lifestyle.</p>
+  <% if(username=="guest" ) { %>
+  <p>Registered users can record more details about their lifestyle, and get a *less* wild estimate.</p>
+  <form action="../new" method="get">
+    <legend>Click here to register</legend>
+    <button class="button">Register</button>
+  </form>
+  <% } else { %>
+  <p>You can edit your preferences to get a *less* wild estimate.</p>
+  <button class="button"><a href="../details"> Click here</a></button>
+  <% } %>
+</aside>

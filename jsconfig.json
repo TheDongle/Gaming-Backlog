@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext"
+  },
+  "typeAcquisition": {"include": ["jest"]},
+  "exclude": ["node_modules"]
+}

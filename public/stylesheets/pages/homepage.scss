@@ -1,0 +1,10 @@
+@use "../components/breakpoints" as bp;
+@forward "../components/default";
+@forward "../components/columns";
+@forward "../components/forms";
+@forward "../components/title";
+
+#hero {
+  @include bp.sizes(margin, (0.5em, 2em, 5em));
+}
+

@@ -1,0 +1,87 @@
+@use "../components/default" as df;
+
+@mixin ErasePadMarg {
+  padding: 0;
+  margin: 0;
+}
+
+$button-width: 4rem;
+$navbar-height: 3.2rem;
+
+// navbar main
+.navbar {
+  list-style: none;
+  width: 100%;
+  height: $navbar-height;
+  // border: solid;
+  border-bottom: df.$border;
+  display: flex;
+  text-align: center;
+  &-left,
+  &-right {
+    @include ErasePadMarg();
+    display: inline-flex;
+    // border: solid red;
+  }
+  &-left {
+    justify-content: flex-start;
+    flex-grow: 1;
+  }
+  &-right {
+    justify-content: flex-end;
+  }
+  &-item {
+    // border: solid orange;
+    display: flex;
+  }
+  &-link,
+  &-logo {
+    @include ErasePadMarg();
+    // border: solid pink;
+  }
+  &-link {
+    min-width: calc($button-width * 1.5);
+    line-height: calc($navbar-height);
+  }
+  &-logo {
+    width: fit-content;
+    @include df.onHover();
+  }
+}
+
+//Drop down menu
+.navbar-item:focus > .dropdown-content,
+.navbar-item:focus-within > .dropdown-content {
+  display: block;
+}
+.dropdown {
+  position: relative;
+  &:hover + .dropdown-content {
+    display: block;
+  }
+  &-content {
+    padding-left: 0;
+    display: none;
+    &:hover {
+      display: block;
+    }
+    position: absolute;
+    top: calc($navbar-height * 1.15);
+    min-width: calc($button-width * 1.5);
+    // border: solid pink;
+    z-index: 1;
+    > li {
+      background-color: white;
+      list-style: none;
+    }
+    > li > a {
+      display: flex;
+      align-items: center;
+      // border: solid orange;
+      width: 100%;
+      justify-content: center;
+      height: $navbar-height;
+      @include ErasePadMarg();
+    }
+  }
+}

@@ -1,0 +1,77 @@
+@use "breakpoints" as bp;
+$grey: rgba(0, 0, 0, 0.2);
+$purple: rgba(128, 0, 128, 0.558);
+$border: 0.2em inset rgb(228, 224, 224);
+
+@mixin onHover {
+  background-color: $purple;
+  cursor: pointer;
+}
+
+//default
+body {
+  font-family: Inter, SF Pro, Segoe UI, Roboto, Oxygen, Ubuntu, Helvetica Neue,
+    Helvetica, Arial, sans-serif;
+  @include bp.sizes(font-size, (medium, medium, larger));
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  padding: 0.6em 1em;
+  margin: 1em;
+  color: black;
+  text-decoration: none;
+}
+
+$buttonWidth: 5rem;
+$buttonHeight: 3rem;
+.button {
+  font: inherit;
+  display: inline-block;
+  font-weight: 500;
+  background-color: peachpuff;
+  margin: 0.6rem;
+  padding: 0 1rem;
+  min-height: $buttonHeight;
+  min-width: 5rem;
+  &:hover {
+    @include onHover();
+  }
+  &-is-small {
+    @extend .button;
+    min-height: calc($buttonHeight * 0.7);
+    min-width: calc($buttonWidth * 0.5);
+    padding: 0 0.5rem;
+    margin: 0.3rem;
+    > * {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+li > a:hover {
+  @include onHover();
+}
+
+.center {
+  text-align: center;
+}
+
+.block {
+  display: block;
+}

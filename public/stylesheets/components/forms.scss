@@ -1,0 +1,48 @@
+@use "default" as df;
+
+$form-margin: 0.6rem !default;
+
+//base form
+.form {
+  > :first-child {
+    margin-top: $form-margin;
+  }
+  &-fieldset {
+    border: none;
+    padding-left: 0;
+  }
+  &-field {
+    margin-bottom: $form-margin;
+  }
+  &-legend {
+    font-size: larger;
+  }
+  &-button {
+    @extend .button;
+  }
+}
+
+//variations
+.form {
+  &-is-block {
+    @extend .form;
+    > * {
+      display: block;
+    }
+  }
+  &-is-inline {
+    @extend .form;
+    > * {
+      display: inline-block;
+    }
+  }
+  &-is-centered {
+    @extend .form;
+    .form-legend,
+    .form-button {
+      @extend .form-field;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

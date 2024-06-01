@@ -1,0 +1,50 @@
+@use "sass:list";
+
+$mobile: 768px;
+@mixin mobile {
+  @media only screen and (max-width: $mobile) {
+    @content;
+  }
+}
+$tablet: 769px;
+@mixin tablet {
+  @media only screen and (min-width: $tablet) {
+    @content;
+  }
+}
+$desktop: 1024px;
+@mixin desktop {
+  @media only screen and (min-width: $desktop) {
+    @content;
+  }
+}
+$widescreen: 1216px;
+@mixin widescreen {
+  @media only screen and (min-width: $widescreen) {
+    @content;
+  }
+}
+$fullhd: 1408px;
+@mixin fullhd {
+  @media only screen and (min-width: $fullhd) {
+    @content;
+  }
+}
+@mixin sizes($property, $values) {
+  @if (list.length($values) == 1) {
+    @include mobile {
+      #{$property}: list.nth($values, 1);
+    }
+  }
+  @if (list.length($values) >= 2) {
+    #{$property}: list.nth($values, 1);
+    @include desktop {
+      #{$property}: list.nth($values, 2);
+    }
+  }
+  @if (list.length($values) == 3) {
+    @include fullhd {
+      #{$property}: list.nth($values, 3);
+    }
+  }
+}

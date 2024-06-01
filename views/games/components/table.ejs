@@ -1,0 +1,46 @@
+<% let totalHours = 0 %>
+<% let rowIndex = 0 %>
+
+<article class="table-container" id="table-container">
+  <% if (Object.entries(loggedGames).length === 0) { %>
+  <h3>No games entered yet.</h3>
+  <% } else { %>
+  <table class="table" id="games_table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Length</th>
+        <th aria-hidden="true"> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let game of loggedGames){ %>
+      <tr id="row-<%=rowIndex%>">
+        <th scope="row"><%= game.title %></th>
+        <td id="hours-<%=rowIndex%>">
+          <% if (playStyle === "casual" ) { %> <%= game.standardLength %> <%
+        totalHours += game.standardLength %> <% } else { %> <%=
+        game.completionist %> <% totalHours += game.completionist %> <% } %>
+        </td>
+        <td>
+          <form data-index="<%=rowIndex%>" id="delete-form-<%=rowIndex%>" enctype="multipart/form-data"
+            class="delete-form" method="DELETE" action="/games/<%-encodeURIComponent( game.title )%>">
+            <input class="hidden" type="text" name="title" value="<%= game.title %>">
+            <button type="submit" class="button is-small is-danger">Delete entry</button>
+          </form>
+        </td>
+      </tr>
+      <% rowIndex += 1 %>
+      <% } %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th scope="row">Total Hours</th>
+        <td id="total-hours"><%=totalHours%></td>
+        <th aria-hidden="true"> </th>
+      </tr>
+    </tfoot>
+  </table>
+  <% } %>
+  <div class="loader hidden"></div>
+</article>

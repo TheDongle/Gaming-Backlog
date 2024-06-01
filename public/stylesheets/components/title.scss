@@ -1,0 +1,34 @@
+@use "breakpoints" as bp;
+@use "default" as df;
+
+.title {
+  &-is-1 {
+    @include bp.sizes(font-size, (3.5em, 4em, 4.5em));
+    @include bp.sizes(font-weight, (600, 650, 700));
+  }
+  &-is-2 {
+    @include bp.sizes(font-size, (3em, 3.5em, 4em));
+    @include bp.sizes(font-weight, (550, 600, 650));
+  }
+  &-is-3 {
+    @include bp.sizes(font-size, (2.5em, 3em, 3.5em));
+    @include bp.sizes(font-weight, (500, 550, 600));
+  }
+  &-is-4 {
+    text-wrap: stable;
+    @include bp.sizes(font-size, (1.5em, 1.75em, 2em));
+    font-weight: 500;
+  }
+  &-group {
+    @include bp.sizes(margin-bottom, (0.2em, 0.75em, 2em));
+    :nth-child(n) {
+      margin: 0;
+    }
+    :nth-child(2) {
+      font-size: larger;
+      @include bp.mobile {
+        display: none;
+      }
+    }
+  }
+}

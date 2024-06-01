@@ -1,0 +1,31 @@
+<article id="search-area">
+
+  <h3 id="search-title">Increase the backlog</h3>
+
+  <form data-cansubmit="true" class="form-is-centered" data-submissions="0" action="/games/new" method="GET"
+    id="search-form">
+    <label class="form-field" for="search-input">Search for a game (1-32 characters): </label>
+    <div class="form-field">
+      <input class="centre-me" maxlength="32" title="between 1 and 32 character" type="text" id="search-input"
+        name="title" required />
+    </div>
+    <label class="form-field" for="quantity-label"> (optional) select max no. of results </label>
+    <div class="centre-me form-field">
+      <select class="form-field" id="quantity-select" name="quantity">
+        <% for(let i=1; i <=10; i++) { %>
+        <option value="<%=i%>" <% if(i===5){ %> selected <% } %>><%=i%>
+        </option>
+        <% } %>
+      </select>
+    </div>
+    <div class="form-field" id="search-buttons">
+      <div class="loader hidden"></div>
+      <button class="button is-primary" id="submit-search" type="submit">Search</button>
+      <button class="button is-warning" id="cancel-search" type="reset">Cancel</button>
+    </div>
+  </form>
+
+  <p id="loading-sentence" class="hidden">Submitted games should appear on the table in a couple
+    seconds. Feel free to keep adding more games while they load-up</p>
+
+</article>
