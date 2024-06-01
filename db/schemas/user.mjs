@@ -37,7 +37,6 @@ userSchema.pre("save", async function () {
   const user = this;
   if (user.isModified("password")) {
     user.password = bcrypt.hashSync(user.password, 10);
-    user.$markValid("password");
   }
 });
 

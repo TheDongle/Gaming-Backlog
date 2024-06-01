@@ -1,8 +1,10 @@
 import createError from "http-errors";
 
 async function updateDb(UserId, newDetails, model) {
+  //TO Do - what about more than one update?
   const user = await model.findOneAndUpdate({ _id: UserId }, newDetails, {
     new: true,
+    runValidators: !("password" in newDetails),
   });
   if (!user) {
     throw createError(500, "Could not find user's details");
