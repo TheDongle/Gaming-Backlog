@@ -1,51 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1716726821238" clover="3.2.0">
-  <project timestamp="1716726821239" name="All files">
-    <metrics statements="42" coveredstatements="32" conditionals="23" coveredconditionals="13" methods="10" coveredmethods="6" elements="75" coveredelements="51" complexity="0" loc="42" ncloc="42" packages="1" files="1" classes="1"/>
-    <file name="searchApi.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\resources\search\searchApi.mjs">
-      <metrics statements="42" coveredstatements="32" conditionals="23" coveredconditionals="13" methods="10" coveredmethods="6"/>
-      <line num="3" count="1" type="stmt"/>
-      <line num="4" count="1" type="stmt"/>
-      <line num="5" count="1" type="stmt"/>
-      <line num="6" count="1" type="stmt"/>
-      <line num="7" count="7" type="cond" truecount="2" falsecount="0"/>
-      <line num="8" count="1" type="stmt"/>
-      <line num="10" count="7" type="cond" truecount="2" falsecount="0"/>
-      <line num="11" count="1" type="stmt"/>
-      <line num="18" count="1" type="stmt"/>
-      <line num="20" count="1" type="stmt"/>
-      <line num="21" count="1" type="stmt"/>
-      <line num="22" count="1" type="stmt"/>
-      <line num="24" count="1" type="stmt"/>
-      <line num="30" count="13" type="cond" truecount="2" falsecount="0"/>
-      <line num="31" count="9" type="stmt"/>
-      <line num="35" count="16" type="stmt"/>
-      <line num="38" count="1" type="cond" truecount="3" falsecount="1"/>
-      <line num="39" count="0" type="stmt"/>
-      <line num="41" count="1" type="stmt"/>
-      <line num="42" count="1" type="stmt"/>
-      <line num="43" count="1" type="stmt"/>
-      <line num="46" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="47" count="0" type="stmt"/>
-      <line num="48" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="50" count="0" type="stmt"/>
-      <line num="53" count="1" type="stmt"/>
-      <line num="54" count="1" type="stmt"/>
-      <line num="55" count="1" type="cond" truecount="1" falsecount="1"/>
-      <line num="56" count="1" type="stmt"/>
-      <line num="57" count="1" type="stmt"/>
-      <line num="58" count="1" type="cond" truecount="2" falsecount="0"/>
-      <line num="59" count="5" type="stmt"/>
-      <line num="60" count="5" type="cond" truecount="1" falsecount="1"/>
-      <line num="61" count="5" type="stmt"/>
-      <line num="62" count="5" type="stmt"/>
-      <line num="65" count="1" type="stmt"/>
-      <line num="68" count="0" type="stmt"/>
-      <line num="71" count="0" type="stmt"/>
-      <line num="72" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="73" count="0" type="stmt"/>
-      <line num="76" count="0" type="stmt"/>
-      <line num="80" count="1" type="stmt"/>
-    </file>
+<coverage generated="1717263352704" clover="3.2.0">
+  <project timestamp="1717263352705" name="All files">
+    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
   </project>
 </coverage>

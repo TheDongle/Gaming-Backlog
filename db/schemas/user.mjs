@@ -21,14 +21,6 @@ userSchema.add({
   },
   password: {
     type: String,
-    // required: true,
-    // validate: {
-    //   validator: function (value) {
-    //     return RegExp(passwordValidation.pattern).test(value);
-    //   },
-      
-    //   message: passwordValidation.message,
-    // },
     required: true,
   },
 });
