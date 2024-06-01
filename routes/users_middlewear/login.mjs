@@ -47,6 +47,4 @@ async function userLogin(req, res, next) {
 // Express Middlewear Function
 export { userLogin };
 // Express Unaware Function
-export {verifyPasswordAndReturnUser}
-
-
+export { verifyPasswordAndReturnUser };

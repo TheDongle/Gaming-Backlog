@@ -43,35 +43,20 @@ describe("Update User", () => {
   });
   test(`Invalid Username should not be accepted`, async () => {
     const newName = "Invalid";
-    try {
-      await updateDb(createdUser._id, { username: newName }, TestUser);
-    } catch (err) {
-      expect(err).toBeInstanceOf(Error);
-    } finally {
-      let foundUser = await TestUser.findById(createdUser._id);
-      expect(foundUser.username).not.toBe(newName);
-    }
+    await expect(
+      async () => await updateDb(createdUser._id, { username: newName }, TestUser),
+    ).rejects.toThrow();
   });
   test(`Invalid playStyle should not be accepted`, async () => {
     const newStyle = "Invalid";
-    try {
-      await updateDb(createdUser._id, { playStyle: newStyle }, TestUser);
-    } catch (err) {
-      expect(err).toBeInstanceOf(Error);
-    } finally {
-      let foundUser = await TestUser.findById(createdUser._id);
-      expect(foundUser.playStyle).not.toBe(newStyle);
-    }
+    await expect(
+      async () => await updateDb(createdUser._id, { playStyle: newStyle }, TestUser),
+    ).rejects.toThrow();
   });
   test(`Invalid Password should not be accepted`, async () => {
     const newPass = "Invalid";
-    try {
-      await updateDb(createdUser._id, { password: newPass }, TestUser);
-    } catch (err) {
-    } finally {
-      let foundUser = await TestUser.findById(createdUser._id);
-      expect(foundUser.comparePassword(newPass)).resolves.toBe(false);
-    }
+    await expect(
+      async () => await updateDb(createdUser._id, { password: newPass }, TestUser),
+    ).rejects.toThrow();
   });
 });
-

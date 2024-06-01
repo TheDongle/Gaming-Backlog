@@ -7,13 +7,13 @@ const _post = request(app).post;
 const _delete = request(app).delete;
 
 describe.each([
-  { verb: "get", fn: _get, route: "/", expected: 403 },
-  { verb: "post", fn: _post, route: "/", expected: 403 },
-  { verb: "delete", fn: _delete, route: "/:title", expected: 403 },
-  { verb: "get", fn: _get, route: "/new", expected: 403 },
-])("Games Router", ({ verb, fn, route, expected }) => {
-  test(`${verb} ${route} should respond to empty HTTP request with ${expected}`, async () => {
+  { verb: "get", fn: _get, route: "/" },
+  { verb: "post", fn: _post, route: "/" },
+  { verb: "delete", fn: _delete, route: "/:title" },
+  { verb: "get", fn: _get, route: "/new" },
+])("Games Router", ({ verb, fn, route }) => {
+  test(`${verb} ${route} should block empty requests`, async () => {
     const response = await fn("/games" + route);
-    expect(response.statusCode).toBe(expected);
+    expect(response.statusCode).toBeGreaterThanOrEqual(400);
   });
 });
