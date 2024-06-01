@@ -6,17 +6,15 @@ import { expect, jest, test } from "@jest/globals";
 import { passwordValidation } from "../../db/validation.mjs";
 
 describe("Create User", () => {
-  let conn, TestUser, params, createdUser;
-  beforeEach(async () => {
+  let conn, TestUser, createdUser;
+  const params = { username: "crabbyFace10", password: "passy1234", playStyle: "casual" };
+  beforeAll(async () => {
     conn = await connectionFactory();
     TestUser = conn.models.TestUser;
-    params = { username: "crabbyFace10", password: "passy1234", playStyle: "casual" };
     createdUser = await AddNewUserToDB(TestUser, params);
   });
-  afterEach(async () => {
-    if (createdUser !== undefined) {
-      await TestUser.deleteOne({ _id: createdUser._id });
-    }
+  afterAll(async () => {
+    if (createdUser !== undefined) await TestUser.deleteOne({ _id: createdUser._id });
     await conn.close();
   });
   test(`New User should be created`, async () => {
@@ -41,14 +39,14 @@ describe("Create User Validation", () => {
     conn = await connectionFactory();
     TestUser = conn.models.TestUser;
   });
-  afterAll(async () => {
-    await conn.close();
-  });
   afterEach(async () => {
     const testID = await TestUser.exists({});
     if (testID !== null) {
       await TestUser.deleteOne({ _id: testID });
     }
+  });
+  afterAll(async () => {
+    await conn.close();
   });
   test.each(["", "123", "abc", "seven12", "123456789012345678901234567890123"])(
     "Invalid password shouldn't be accepted",
