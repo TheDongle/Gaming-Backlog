@@ -12,13 +12,11 @@ async function getGuestGames(GuestModel, GuestID) {
   return games;
 }
 
-async function createDbEntry(model, params) {
-  if (params !== undefined) {
-    if (!RegExp(passwordValidation.pattern).test(params.password)) {
-      throw new Error(passwordValidation.message);
-    }
-    params.password = bcrypt.hashSync(params.password, 10);
+async function AddNewUserToDB(model, params) {
+  if (!RegExp(passwordValidation.pattern).test(params.password)) {
+    throw new Error(passwordValidation.message);
   }
+  params.password = bcrypt.hashSync(params.password, 10);
   const user = await model.create(params);
   if (!user) {
     throw createError(500, "New user could not be saved to database");
@@ -26,10 +24,18 @@ async function createDbEntry(model, params) {
   return user;
 }
 
+async function AddNewGuestToDB(model) {
+  const guest = await model.create({});
+  if (!guest) {
+    throw createError(500, "New guest could not be saved to database");
+  }
+  return guest;
+}
+
 async function createGuest(req, res, next) {
   try {
     if (req.body.username === "guest") {
-      const guest = await createDbEntry(req.app.locals.models.Guest);
+      const guest = await AddNewGuestToDB(req.app.locals.models.Guest);
 
       req.session.regenerate(() => {
         req.session.user = guest._id;
@@ -54,7 +60,7 @@ async function createUser(req, res, next) {
     if (req.session.isGuest) {
       params.games = await getGuestGames(req.app.locals.models.Guest, req.session.user);
     }
-    const user = await createDbEntry(req.app.locals.models.User, params);
+    const user = await AddNewUserToDB(req.app.locals.models.User, params);
 
     req.session.regenerate(() => {
       req.session.user = user._id;
@@ -72,4 +78,4 @@ async function createUser(req, res, next) {
 //Express Middleware
 export { createGuest, createUser };
 //Express-unaware functions
-export { createDbEntry, getGuestGames };
+export { AddNewGuestToDB, AddNewUserToDB, getGuestGames };

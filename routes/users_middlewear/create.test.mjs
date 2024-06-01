@@ -1,5 +1,5 @@
 import { connectionFactory } from "../../db/index.mjs";
-import { createDbEntry, getGuestGames } from "./create.mjs";
+import { AddNewGuestToDB, AddNewUserToDB, getGuestGames } from "./create.mjs";
 import { app } from "../../app.mjs";
 import request from "supertest";
 import { expect, jest, test } from "@jest/globals";
@@ -10,11 +10,11 @@ test("Usernames should be Unique (for real Users)", async () => {
   const { User } = conn.models;
   const params = { username: "crabbyFace13", password: "passy1234", playStyle: "casual" };
   const id = await User.exists({ username: "crabbyFace13" });
-  const uniqueUser = id !== null ? await User.findById(id) : await createDbEntry(User, params);
+  const uniqueUser = id !== null ? await User.findById(id) : await AddNewUserToDB(User, params);
   let duplicateUser;
   try {
     params.username = uniqueUser.username;
-    duplicateUser = await createDbEntry(User, params);
+    duplicateUser = await AddNewUserToDB(User, params);
   } catch (err) {
   } finally {
     expect(duplicateUser).toBe(undefined);
@@ -31,7 +31,7 @@ describe("Create User", () => {
     conn = await connectionFactory();
     TestUser = conn.models.TestUser;
     params = { username: "crabbyFace10", password: "passy1234", playStyle: "casual" };
-    createdUser = await createDbEntry(TestUser, params);
+    createdUser = await AddNewUserToDB(TestUser, params);
   });
   afterEach(async () => {
     if (createdUser !== undefined) {
@@ -74,28 +74,28 @@ describe("Valid New User", () => {
     "Invalid password shouldn't be accepted",
     async (sample) => {
       params.password = sample;
-      await expect(async () => await createDbEntry(TestUser, params)).rejects.toThrow();
+      await expect(async () => await AddNewUserToDB(TestUser, params)).rejects.toThrow();
     },
   );
 });
 
 describe("Create Guest", () => {
   let conn, createdGuest, Guest;
-  beforeEach(async () => {
+  beforeAll(async () => {
     conn = await connectionFactory();
     Guest = conn.models.Guest;
-    createdGuest = await createDbEntry(Guest);
+    createdGuest = await AddNewGuestToDB(Guest);
   });
-  afterEach(async () => {
+  afterAll(async () => {
     if (createdGuest !== undefined) {
       await createdGuest.deleteOne({ _id: createdGuest._id });
     }
     await conn.close();
   });
-  test(`New Guest should be created`, async () => {
+  test(`New Guest should exist`, async () => {
     expect(createdGuest).toBeTruthy();
   });
-  test(`New Guest should have default parameters`, async () => {
+  test(`New Guest should have default username 'Guest' and playstyle'casual'`, async () => {
     expect(createdGuest.username).toEqual("guest");
     expect(createdGuest.playStyle).toEqual("casual");
   });

@@ -1,22 +1,26 @@
 import { connectionFactory } from "../../db/index.mjs";
 import { updateDb } from "./update.mjs";
 import { app } from "../../app.mjs";
-import { createDbEntry } from "./create.mjs";
+import { AddNewUserToDB, AddNewGuestToDB } from "./create.mjs";
 import { expect, jest, test } from "@jest/globals";
 import request from "supertest";
 
 describe("Update User", () => {
   let conn, TestUser, params, createdUser;
-  beforeEach(async () => {
+  beforeAll(async () => {
     conn = await connectionFactory();
     TestUser = conn.models.TestUser;
+  });
+  beforeEach(async () => {
     params = { username: "crabbyFace10", password: "passy1234", playStyle: "casual" };
-    createdUser = await createDbEntry(TestUser, params);
+    createdUser = await AddNewUserToDB(TestUser, params);
   });
   afterEach(async () => {
     if (createdUser !== undefined) {
       await TestUser.deleteOne({ _id: createdUser._id });
     }
+  });
+  afterAll(async () => {
     await conn.close();
   });
   test(`Username should be updated`, async () => {
@@ -71,4 +75,3 @@ describe("Update User", () => {
   });
 });
 
-// TO DO - Unique validator for Username
