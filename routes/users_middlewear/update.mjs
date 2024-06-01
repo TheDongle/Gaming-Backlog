@@ -1,6 +1,6 @@
 import createError from "http-errors";
 import { passwordValidation } from "../../db/validation.mjs";
-import brcypt, { hashSync } from "bcrypt";
+import bcrypt, { hashSync } from "bcrypt";
 
 async function updateDb(UserId, newDetails, model) {
   //TO Do - what about more than one update?
@@ -8,7 +8,7 @@ async function updateDb(UserId, newDetails, model) {
     if (!RegExp(passwordValidation.pattern).test(newDetails.password)) {
       throw new Error(passwordValidation.message);
     }
-    newDetails.password = brcypt.hashSync(newDetails.password, 10);
+    newDetails.password = bcrypt.hashSync(newDetails.password, 10);
   }
 
   const user = await model.findOneAndUpdate({ _id: UserId }, newDetails, {

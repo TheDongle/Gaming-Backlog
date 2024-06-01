@@ -3,6 +3,7 @@ import { createDbEntry, getGuestGames } from "./create.mjs";
 import { app } from "../../app.mjs";
 import request from "supertest";
 import { expect, jest, test } from "@jest/globals";
+import { passwordValidation } from "../../db/validation.mjs";
 
 test("Usernames should be Unique (for real Users)", async () => {
   const conn = await connectionFactory();
@@ -51,6 +52,31 @@ describe("Create User", () => {
   test(`comparePassword should confirm password is correct`, async () => {
     expect(createdUser.comparePassword(params.password)).resolves.toBe(true);
   });
+});
+
+describe("Valid New User", () => {
+  let conn, TestUser;
+  const params = { username: "crabbyFace10", password: "passy1234", playStyle: "casual" };
+  beforeAll(async() => {
+    conn = await connectionFactory();
+    TestUser = conn.models.TestUser;
+  })
+  afterAll(async() => {
+    await conn.close()
+  })
+  afterEach(async () => {
+    const testID = await TestUser.exists({});
+    if (testID !== null) {
+      await TestUser.deleteOne({ _id: testID });
+    }
+  });
+  test.each(["", "123", "abc", "seven12", "123456789012345678901234567890123"])(
+    "Invalid password shouldn't be accepted",
+    async (sample) => {
+      params.password = sample;
+      await expect(async () => await createDbEntry(TestUser, params)).rejects.toThrow();
+    },
+  );
 });
 
 describe("Create Guest", () => {

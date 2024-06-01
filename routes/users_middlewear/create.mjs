@@ -1,4 +1,6 @@
 import createError from "http-errors";
+import { passwordValidation } from "../../db/validation.mjs";
+import bcrypt, { hashSync } from "bcrypt";
 
 async function getGuestGames(GuestModel, GuestID) {
   const guest = await GuestModel.findById(GuestID);
@@ -11,6 +13,12 @@ async function getGuestGames(GuestModel, GuestID) {
 }
 
 async function createDbEntry(model, params) {
+  if (params !== undefined) {
+    if (!RegExp(passwordValidation.pattern).test(params.password)) {
+      throw new Error(passwordValidation.message);
+    }
+    params.password = bcrypt.hashSync(params.password, 10);
+  }
   const user = await model.create(params);
   if (!user) {
     throw createError(500, "New user could not be saved to database");
@@ -22,7 +30,7 @@ async function createGuest(req, res, next) {
   try {
     if (req.body.username === "guest") {
       const guest = await createDbEntry(req.app.locals.models.Guest);
-      
+
       req.session.regenerate(() => {
         req.session.user = guest._id;
         req.session.isGuest = true;
