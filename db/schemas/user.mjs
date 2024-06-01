@@ -1,9 +1,9 @@
 import { Schema } from "mongoose";
-import bcrypt, { hashSync } from "bcrypt";
 import mongooseUniqueValidator from "mongoose-unique-validator";
 const uniqueValidator = mongooseUniqueValidator;
 import { baseSchema } from "./baseUser.mjs";
 import { passwordValidation, usernameValidation, playStyleValidation } from "../validation.mjs";
+import bcrypt, { hashSync } from "bcrypt";
 
 const userSchema = new Schema();
 userSchema.add(baseSchema);
@@ -21,13 +21,15 @@ userSchema.add({
   },
   password: {
     type: String,
+    // required: true,
+    // validate: {
+    //   validator: function (value) {
+    //     return RegExp(passwordValidation.pattern).test(value);
+    //   },
+      
+    //   message: passwordValidation.message,
+    // },
     required: true,
-    validate: {
-      validator: function (value) {
-        return RegExp(passwordValidation.pattern).test(value);
-      },
-      message: passwordValidation.message,
-    },
   },
 });
 
@@ -37,30 +39,6 @@ userSchema.pre("save", async function () {
   const user = this;
   if (user.isModified("password")) {
     user.password = bcrypt.hashSync(user.password, 10);
-  }
-});
-
-userSchema.pre("findOneAndUpdate", async function () {
-  const query = this;
-  const update = { ...query.getUpdate() };
-  const updateHas = (prop) => prop in update;
-  switch (true) {
-    case updateHas("password"):
-      if (!RegExp(passwordValidation.pattern).test(update.password)) {
-        throw new Error(passwordValidation.message);
-      }
-      update.password = bcrypt.hashSync(update.password, 10);
-      query.setUpdate(update);
-      break;
-    case updateHas("username"):
-      if (!RegExp(usernameValidation.pattern).test(update.username)) {
-        throw new Error(usernameValidation.message);
-      }
-      break;
-    case updateHas("playStyle"):
-      if (!RegExp(playStyleValidation.pattern).test(update.playStyle)) {
-        throw new Error(playStyleValidation.message);
-      }
   }
 });
 

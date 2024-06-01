@@ -1,11 +1,21 @@
 import createError from "http-errors";
+import { passwordValidation } from "../../db/validation.mjs";
+import brcypt, { hashSync } from "bcrypt";
 
 async function updateDb(UserId, newDetails, model) {
   //TO Do - what about more than one update?
+  if ("password" in newDetails) {
+    if (!RegExp(passwordValidation.pattern).test(newDetails.password)) {
+      throw new Error(passwordValidation.message);
+    }
+    newDetails.password = brcypt.hashSync(newDetails.password, 10);
+  }
+
   const user = await model.findOneAndUpdate({ _id: UserId }, newDetails, {
     new: true,
-    runValidators: !("password" in newDetails),
+    runValidators: true,
   });
+
   if (!user) {
     throw createError(500, "Could not find user's details");
   }
