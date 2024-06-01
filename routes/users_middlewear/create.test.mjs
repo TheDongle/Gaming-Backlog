@@ -5,26 +5,6 @@ import request from "supertest";
 import { expect, jest, test } from "@jest/globals";
 import { passwordValidation } from "../../db/validation.mjs";
 
-test("Usernames should be Unique (for real Users)", async () => {
-  const conn = await connectionFactory();
-  const { User } = conn.models;
-  const params = { username: "crabbyFace13", password: "passy1234", playStyle: "casual" };
-  const id = await User.exists({ username: "crabbyFace13" });
-  const uniqueUser = id !== null ? await User.findById(id) : await AddNewUserToDB(User, params);
-  let duplicateUser;
-  try {
-    params.username = uniqueUser.username;
-    duplicateUser = await AddNewUserToDB(User, params);
-  } catch (err) {
-  } finally {
-    expect(duplicateUser).toBe(undefined);
-  }
-  if (duplicateUser !== undefined) {
-    await User.deleteOne({ _id: duplicateUser._id });
-  }
-  await conn.close();
-});
-
 describe("Create User", () => {
   let conn, TestUser, params, createdUser;
   beforeEach(async () => {
@@ -54,16 +34,16 @@ describe("Create User", () => {
   });
 });
 
-describe("Valid New User", () => {
+describe("Create User Validation", () => {
   let conn, TestUser;
   const params = { username: "crabbyFace10", password: "passy1234", playStyle: "casual" };
-  beforeAll(async() => {
+  beforeAll(async () => {
     conn = await connectionFactory();
     TestUser = conn.models.TestUser;
-  })
-  afterAll(async() => {
-    await conn.close()
-  })
+  });
+  afterAll(async () => {
+    await conn.close();
+  });
   afterEach(async () => {
     const testID = await TestUser.exists({});
     if (testID !== null) {
@@ -77,6 +57,28 @@ describe("Valid New User", () => {
       await expect(async () => await AddNewUserToDB(TestUser, params)).rejects.toThrow();
     },
   );
+  test.each(["", "badName", "123456789012345678901234567890123", "Space Man"])(
+    "Invalid Username shouldn't be accepted",
+    async (sample) => {
+      params.username = sample;
+      await expect(async () => await AddNewUserToDB(TestUser, params)).rejects.toThrow();
+    },
+  );
+  test("Invalid playStyle shouldn't be accepted", async () => {
+    params.playStyle = "Bad";
+    await expect(async () => await AddNewUserToDB(TestUser, params)).rejects.toThrow();
+  });
+});
+
+test("Usernames should be Unique (for real Users)", async () => {
+  const conn = await connectionFactory();
+  const { User } = conn.models;
+  const params = { username: "crabbyFace13", password: "passy1234", playStyle: "casual" };
+  const id = await User.exists({ username: "crabbyFace13" });
+  const uniqueUser = id !== null ? await User.findById(id) : await AddNewUserToDB(User, params);
+  params.username = uniqueUser.username;
+  await expect(async () => await await AddNewUserToDB(User, params)).rejects.toThrow();
+  await conn.close();
 });
 
 describe("Create Guest", () => {
