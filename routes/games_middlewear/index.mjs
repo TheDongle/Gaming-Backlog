@@ -9,15 +9,6 @@ const setPageView = async function (req, res, next) {
   }
 };
 
-async function setTableView(req, res, next) {
-  try {
-    req.session.gamesView = "games/components/table";
-    next();
-  } catch (err) {
-    next(err);
-  }
-}
-
 const showGames = async function (req, res, next) {
   try {
     let view = req.session.gamesView;
@@ -44,4 +35,4 @@ const showGames = async function (req, res, next) {
   }
 };
 
-export { setPageView, setTableView, showGames };
+export { setPageView, showGames };
