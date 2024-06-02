@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1717322518503" clover="3.2.0">
-  <project timestamp="1717322518503" name="All files">
+<coverage generated="1717326111861" clover="3.2.0">
+  <project timestamp="1717326111862" name="All files">
     <metrics statements="355" coveredstatements="198" conditionals="117" coveredconditionals="35" methods="69" coveredmethods="36" elements="541" coveredelements="269" complexity="0" loc="355" ncloc="355" packages="9" files="28" classes="28"/>
     <package name="Gaming Backlog v2">
       <metrics statements="37" coveredstatements="36" conditionals="6" coveredconditionals="4" methods="7" coveredmethods="6"/>
@@ -210,10 +210,10 @@
       <file name="games.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\routes\games.mjs">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="2" count="5" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
         <line num="6" count="5" type="stmt"/>
         <line num="7" count="5" type="stmt"/>
         <line num="8" count="5" type="stmt"/>
-        <line num="9" count="5" type="stmt"/>
       </file>
       <file name="users.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\routes\users.mjs">
         <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>

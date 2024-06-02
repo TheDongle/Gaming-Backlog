@@ -52,4 +52,4 @@ function mapping(props) {
 
 const RouteMap = mapping(routeProperties);
 
-export { RouteMap };
+export { RouteMap, routeProperties, mapping };

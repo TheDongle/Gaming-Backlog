@@ -1,6 +1,5 @@
 import express from "express";
 const router = express.Router();
-
 import { RouteMap } from "./games_middlewear/route_map.mjs";
 
 router.get("/", RouteMap.get("ShowPage"));
