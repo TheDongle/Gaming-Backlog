@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for Gaming Backlog v2/routes/games_middlewear/_new.mjs</title>
+    <title>Code coverage report for Gaming Backlog v2/routes/users_middlewear/mapping.mjs</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">Gaming Backlog v2/routes/games_middlewear</a> _new.mjs</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">Gaming Backlog v2/routes/users_middlewear</a> mapping.mjs</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">31.25% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/16</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/8</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/15</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -92,56 +92,56 @@
 <a name='L27'></a><a href='#L27'>27</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import createError from "http-errors";
-import { searchEngine } from "../../resources/search/searchApi.mjs";
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">35x</span></td><td class="text"><pre class="prettyprint lang-js">import { destroySession } from "./logout.mjs";
+import { update } from "./update.mjs";
+import { getDetails } from "./show.mjs";
+import { skipLogin, loginPage } from "./index.mjs";
+import { userLogin } from "./login.mjs";
+import { getForm } from "./_new.mjs";
+import { createGuest, createUser } from "./create.mjs";
+import { ifReqNotEmpty } from "../../resources/session/borderControl.mjs";
+import { RouteMap } from "../../resources/route-map.mjs";
 &nbsp;
-const searchforGame = async function (req, res, next) {
-  try {
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (!Object.hasOwn(req.headers, "title")) {
-      throw createError(403, "Query must include the game's title");
-    }
-    const { title, quantity } = <span class="cstat-no" title="statement not covered" >req.headers;</span>
-    let { titles, links } = <span class="cstat-no" title="statement not covered" >await searchEngine.search(title, parseInt(quantity));</span>
-<span class="cstat-no" title="statement not covered" >    if (titles.length === 0 || links.length === 0) {</span>
-<span class="cstat-no" title="statement not covered" >      throw createError(400, "No results found for ");</span>
-    }
-<span class="cstat-no" title="statement not covered" >    res.locals.titles = titles;</span>
-<span class="cstat-no" title="statement not covered" >    req.session.links = links;</span>
-<span class="cstat-no" title="statement not covered" >    req.session.titles = titles;</span>
-<span class="cstat-no" title="statement not covered" >    res.render("games/components/results", <span class="fstat-no" title="function not covered" >as</span>ync (err, html) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >next(err);</span></span>
-<span class="cstat-no" title="statement not covered" >      res.send(html);</span>
-    });
-  } catch (err) {
-    next(err);
-  }
+const usersMap = new RouteMap();
+&nbsp;
+usersMap.secureRoutes = {
+  Logout: [destroySession],
+  UpdateDetails: [update],
+  ShowDetails: [getDetails],
 };
+usersMap.insecureRoutes = {
+  Index: [skipLogin, loginPage],
+  Login: [userLogin],
+  ShowRegisterForm: [getForm],
+  Register: [createGuest, createUser],
+};
+usersMap.addCommonPrefix(["Login", "Register"], [ifReqNotEmpty]);
 &nbsp;
-export { searchforGame };
-&nbsp;</pre></td></tr></table></pre>
+&nbsp;
+export const serve = (key) =&gt; usersMap.get(key);</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
