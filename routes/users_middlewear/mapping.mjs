@@ -7,6 +7,7 @@ import { getForm } from "./_new.mjs";
 import { createGuest, createUser } from "./create.mjs";
 import { ifReqNotEmpty } from "../../resources/session/borderControl.mjs";
 import { RouteMap } from "../../resources/route-map.mjs";
+import { deleteUser } from "./destroy.mjs";
 
 const usersMap = new RouteMap();
 
@@ -14,6 +15,7 @@ usersMap.secureRoutes = {
   Logout: [destroySession],
   UpdateDetails: [update],
   ShowDetails: [getDetails],
+  Destroy: [deleteUser],
 };
 usersMap.insecureRoutes = {
   Index: [skipLogin, loginPage],
@@ -22,6 +24,6 @@ usersMap.insecureRoutes = {
   Register: [createGuest, createUser],
 };
 usersMap.addCommonPrefix(["Login", "Register", "Logout"], [ifReqNotEmpty]);
-
+usersMap.addCommonSuffix(["Destroy"], [deleteUser]);
 
 export const serve = (key) => usersMap.get(key);

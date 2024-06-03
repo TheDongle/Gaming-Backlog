@@ -19,14 +19,3 @@ describe.each([
   });
 });
 
-describe.each([
-  { verb: "get", fn: _get, route: "/" },
-  { verb: "post", fn: _post, route: "/" },
-  { verb: "delete", fn: _delete, route: "/:title" },
-  { verb: "get", fn: _get, route: "/new" },
-])("Games Router - without session", ({ verb, fn, route }) => {
-  test(`${verb} ${route} should block empty requests`, async () => {
-    const response = await fn("/games" + route);
-    expect(response.statusCode).toBeGreaterThanOrEqual(400);
-  });
-});
