@@ -1,5 +1,4 @@
-import * as process from "node:process";
-const { SECRET1, SECRET2, SECRET3 } = process.env;
+import { env } from "node:process";
 
 const settings = {
   cookie: {
@@ -10,7 +9,7 @@ const settings = {
   },
   resave: false,
   saveUninitialized: true,
-  secret: [SECRET1, SECRET2, SECRET3],
+  secret: [env.SECRET1, env.SECRET2, env.SECRET3],
   unset: "keep",
 };
 

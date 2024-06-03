@@ -5,10 +5,6 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.disable("x-powered-by");
 
-import session from "express-session";
-import { settings } from "./resources/session/sessionSettings.mjs";
-app.use(session(settings));
-
 import logger from "morgan";
 app.use(logger("dev"));
 
@@ -43,6 +39,12 @@ app.locals.models = {
   Guest,
 };
 
+import session from "express-session";
+import MongoStore from "connect-mongo";
+import { settings } from "./resources/session/sessionSettings.mjs";
+settings.store = MongoStore.create(conn);
+app.use(session(settings));
+
 // HTML templating
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -72,3 +74,4 @@ app.use(function errorHandler(err, req, res, next) {
 });
 
 export { app };
+
