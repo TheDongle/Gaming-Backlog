@@ -12,4 +12,3 @@ router.patch("/details", serve("UpdateDetails"));
 router.get("/details", serve("ShowDetails"));
 
 export { router };
-

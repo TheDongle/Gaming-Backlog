@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for Gaming Backlog v2/resources/session/sessionSettings.mjs</title>
+    <title>Code coverage report for Gaming Backlog v2/routes/games_middlewear/mapping.mjs</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">Gaming Backlog v2/resources/session</a> sessionSettings.mjs</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">Gaming Backlog v2/routes/games_middlewear</a> mapping.mjs</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -80,41 +80,44 @@
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
 <a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as process from "node:process";
-const { SECRET1, SECRET2, SECRET3 } = process.env;
+<span class="cline-any cline-yes">20x</span></td><td class="text"><pre class="prettyprint lang-js">import { RouteMap } from "../../resources/route-map.mjs";
+import { setPageView, showGames } from "./index.mjs";
+import { setTableView } from "./reset.mjs";
+import { searchforGame } from "./_new.mjs";
+import { createGame } from "./create.mjs";
+import { destroyGame } from "./destroy.mjs";
+import { ifReqNotEmpty } from "../../resources/session/borderControl.mjs";
 &nbsp;
-const settings = {
-  cookie: {
-    maxAge: 24 * 60 * 60 * 1000,
-    httpOnly: false,
-    sameSite: true,
-    validated: false,
-  },
-  resave: false,
-  saveUninitialized: true,
-  secret: [SECRET1, SECRET2, SECRET3],
-  unset: "keep",
+const routeMap = new RouteMap();
+routeMap.secureRoutes = {
+  ShowPage: [setPageView, showGames],
+  Search: [searchforGame],
+  Create: [createGame],
+  Destroy: [destroyGame],
 };
+routeMap.addCommonPrefix(["Create", "Destroy"], [ifReqNotEmpty]);
+routeMap.addCommonSuffix(["Create", "Destroy"], [setTableView, showGames]);
 &nbsp;
-export { settings };
-&nbsp;</pre></td></tr></table></pre>
+export const serve = (key) =&gt; routeMap.get(key)</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
