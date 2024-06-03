@@ -8,4 +8,3 @@ router.post("/", serve("Create"));
 router.delete("/:title", serve("Destroy"));
 
 export { router };
-

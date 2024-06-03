@@ -21,7 +21,7 @@ usersMap.insecureRoutes = {
   ShowRegisterForm: [getForm],
   Register: [createGuest, createUser],
 };
-usersMap.addCommonPrefix(["Login", "Register"], [ifReqNotEmpty]);
+usersMap.addCommonPrefix(["Login", "Register", "Logout"], [ifReqNotEmpty]);
 
 
 export const serve = (key) => usersMap.get(key);
