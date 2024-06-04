@@ -17,11 +17,13 @@ async function updateDb(UserId, newDetails, model) {
   });
 
   if (!user) {
+    console.log("This is the issue")
     throw createError(500, "Could not find user's details");
   }
 }
 
 async function update(req, res, next) {
+  console.log(req.session)
   const { User } = req.app.locals.models;
   try {
     await updateDb(req.session.user, req.body, User);

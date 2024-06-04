@@ -1,9 +1,40 @@
 import { connectionFactory } from "../../db/index.mjs";
 import { updateDb } from "./update.mjs";
+import session from "express-session";
 import { app } from "../../app.mjs";
+import MongoStore from "../../node_modules/connect-mongo/build/main/index";
+import { settings } from "../../resources/session/sessionSettings.mjs";
 import { AddNewUserToDB, AddNewGuestToDB } from "./create.mjs";
-import { expect, jest, test } from "@jest/globals";
 import request from "supertest";
+import { expect, jest, test } from "@jest/globals";
+
+// describe("Update Real User", () => {
+//   let conn, User, createdUser;
+//   let defaults = settings;
+//   const params = {
+//     username: "updsssaffra123",
+//     password: "passwossrdface1s234",
+//     playStyle: "completionist",
+//   };
+//   beforeAll(async () => {
+//     conn = await connectionFactory();
+//     User = conn.models.User;
+//     createdUser = await AddNewUserToDB(User, params);
+//   });
+//   afterAll(async () => {
+//     if (createdUser !== undefined) {
+//       await User.deleteOne({ _id: createdUser._id });
+//     }
+//     await conn.close();
+//   });
+//   test("User can be updated", async () => {
+//     const response = await request(app)
+//     .patch("/details")
+//     .field("username", "MrssdgdsSamps97799")
+//     .
+//     expect(response.status).toEqual(200);
+//   });
+// });
 
 describe("Update User", () => {
   let conn, TestUser, params, createdUser;

@@ -5,6 +5,36 @@ import request from "supertest";
 import { expect, jest, test } from "@jest/globals";
 import { passwordValidation } from "../../db/validation.mjs";
 
+// describe("Create User(Properly)", () => {
+//   let conn, User;
+//   beforeAll(async () => {
+//     conn = await connectionFactory();
+//     User = conn.models.User;
+//   });
+//   afterAll(async () => {
+//     await conn.close();
+//   });
+//   test("User is created", async () => {
+//     const params = {
+//       username: "imaReallyRealGuy1234",
+//       password: "passwordface1234",
+//       playStyle: "completionist",
+//     };
+//     request(app)
+//       .post("/new")
+//       .field("username", "imaReallyRealGuy123")
+//       .field("password", "passwordface1234")
+//       .field("playStyle", "completionist")
+//       .expect(200)
+//       .end(function (err, res) {
+//         if (err) throw err;
+//       });
+//     if (await User.exists({ username: "imaReallyRealGuy123" })) {
+//       await User.deleteOne({ username: "imaReallyRealGuy123" });
+//     }
+//   });
+// });
+
 describe("Create User", () => {
   let conn, TestUser, createdUser;
   const params = { username: "crabbyFace10", password: "passy1234", playStyle: "casual" };
