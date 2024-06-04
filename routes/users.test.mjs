@@ -55,57 +55,32 @@ describe("Secure Routes", () => {
 });
 
 
-
-// describe.each([
-//   { verb: "post", fn: _post, route: "/" },
-//   { verb: "post", fn: _post, route: "/new" },
-//   { verb: "patch", fn: _patch, route: "/details" },
-// ])("Users Router", ({ verb, fn, route }) => {
-//   test(`${verb} ${route} should block empty requests`, async () => {
-//     const response = await fn(route);
-//     expect(response.statusCode).toBeGreaterThanOrEqual(400);
-//   });
-// });
-
-// describe.each([
-//   { verb: "delete", fn: _delete, route: "/" },
-//   { verb: "post", fn: _post, route: "/" },
-//   { verb: "delete", fn: _delete, route: "/details" },
-//   { verb: "get", fn: _get, route: "/details" },
-//   { verb: "patch", fn: _patch, route: "/details" },
-// ])("Users Router", ({ verb, fn, route }) => {
-//   test(`${verb} ${route} should block insecure requests`, async () => {
-//     const response = await fn(route);
-//     expect(response.statusCode).toBeGreaterThanOrEqual(400);
-//   });
-// });
-
-// describe("When logged In", () => {
-//   let conn, TestUser, params, createdUser, id;
-//   jest.mock("express-session", () => ({
-//     default: (options) => (req, res, next) => {
-//       req.user = id;
-//       next();
-//     },
-//   }));
-//   beforeAll(async () => {
-//     conn = await connectionFactory();
-//     TestUser = conn.models.TestUser;
-//     params = { username: "crabbyFace400", password: "passy1234", playStyle: "casual" };
-//   });
-//   beforeEach(async () => {
-//     createdUser = await AddNewUserToDB(TestUser, params);
-//     id = createdUser._id;
-//   });
-//   afterEach(async () => {
-//     if (await TestUser.exists({ _id: id })) {
-//       await TestUser.deleteOne({ _id: id });
-//     }
-//   });
-//   afterAll(async () => {
-//     await conn.close();
-//   });
-//   test("Should actually delete Session", () => {
-//     request(app).delete("/").expect(200);
-//   });
-// });
+describe("Faking secure route", () => {
+  let conn, TestUser, params, createdUser, id;
+  jest.mock("express-session", () => ({
+    default: (options) => (req, res, next) => {
+      req.user = id;
+      next();
+    },
+  }));
+  beforeAll(async () => {
+    conn = await connectionFactory();
+    TestUser = conn.models.TestUser;
+    params = { username: "crabbyFace400", password: "passy1234", playStyle: "casual" };
+  });
+  beforeEach(async () => {
+    createdUser = await AddNewUserToDB(TestUser, params);
+    id = createdUser._id;
+  });
+  afterEach(async () => {
+    if (await TestUser.exists({ _id: id })) {
+      await TestUser.deleteOne({ _id: id });
+    }
+  });
+  afterAll(async () => {
+    await conn.close();
+  });
+  test("DELETE / Should return Successful", () => {
+    request(app).delete("/").expect(200);
+  });
+});
