@@ -8,17 +8,7 @@ guestSchema.add({
   username: {
     type: String,
     default: "guest",
-    required: true,
-  },
-  password: {
-    type: String,
-    default: randomUUID(),
-    required: true,
   },
 });
-
-// guestSchema.pre("save", async function () {
-//   console.log("hhelp");
-// });
 
 export { guestSchema };

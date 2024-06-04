@@ -10,7 +10,7 @@ const settings = {
   resave: false,
   saveUninitialized: true,
   secret: [env.SECRET1, env.SECRET2, env.SECRET3],
-  unset: "keep",
+  unset: "destroy",
 };
 
 export { settings };
