@@ -2,11 +2,7 @@ import createError from "http-errors";
 
 async function ifLoggedIn(req, res, next) {
   try {
-    const { User, Guest, Test } = req.app.locals.models;
-    if (
-      !Object.hasOwn(req.session, "user") ||
-      ![User, Guest, Test].some(async (x) => await x.exists({ _id: req.session.user }))
-    ) {
+    if (!Object.hasOwn(req.session, "user")) {
       throw createError(403, "User not logged in");
     }
     next();

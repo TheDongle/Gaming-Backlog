@@ -14,7 +14,7 @@
     ". estimate ."
     "preferences preferences preferences";
 
-  @media only screen and (min-width: 860px) {
+  @include bp.tablet {
     grid-template-columns:
       1.5em 0.5fr 1fr 1.5em;
     grid-template-areas:
@@ -23,21 +23,36 @@
       "... estimate estimate ..."
       "preferences preferences preferences preferences";
   }
+
+  @include bp.widescreen {
+    gap: 2em;
+    grid-template-columns:
+      1.5em 0.5fr 1fr 0.5fr 1.5em;
+    grid-template-areas:
+      "header header header header header"
+      "... search table  estimate ..."
+      "... search table  preferences ...";
+  }
+
   text-align: center;
 }
 
 #games-header {
   grid-area: header;
 }
+
 #search-area {
   grid-area: search;
 }
+
 #table-container {
   grid-area: table;
 }
+
 #estimate-area {
   grid-area: estimate;
 }
+
 #preferences_area {
   grid-area: preferences;
 }
