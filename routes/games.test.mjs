@@ -1,6 +1,8 @@
-import { app } from "../app.mjs";
 import { expect, jest, test } from "@jest/globals";
 import request from "supertest";
+import { default as MakeApp } from "../app.mjs";
+import { connectionFactory } from "../db/index.mjs";
+const app = MakeApp(await connectionFactory());
 
 const rootURL = "/games";
 const _get = request(app).get;

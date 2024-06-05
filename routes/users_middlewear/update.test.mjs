@@ -1,12 +1,15 @@
-import { connectionFactory } from "../../db/index.mjs";
+import { expect, jest, test } from "@jest/globals";
 import { updateDb } from "./update.mjs";
 import session from "express-session";
-import { app } from "../../app.mjs";
 import MongoStore from "../../node_modules/connect-mongo/build/main/index";
 import { settings } from "../../resources/session/sessionSettings.mjs";
 import { AddNewUserToDB, AddNewGuestToDB } from "./create.mjs";
 import request from "supertest";
-import { expect, jest, test } from "@jest/globals";
+import { default as MakeApp } from "../../app.mjs";
+import { connectionFactory } from "../../db/index.mjs";
+const app = MakeApp(await connectionFactory());
+
+
 
 // describe("Update Real User", () => {
 //   let conn, User, createdUser;

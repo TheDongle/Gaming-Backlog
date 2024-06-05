@@ -1,9 +1,10 @@
-import { app } from "../app.mjs";
 import { expect, jest, test } from "@jest/globals";
 import session from "express-session";
 import request from "supertest";
 import { AddNewUserToDB } from "./users_middlewear/create.mjs";
 import { connectionFactory } from "../db/index.mjs";
+import { default as MakeApp } from "../app.mjs";
+const app = MakeApp(await connectionFactory());
 
 describe("Insecure Routes, body not required", () => {
   test(`GET / should return Successful`, async () => {

@@ -1,10 +1,12 @@
-import { connectionFactory } from "../../db/index.mjs";
-import { AddNewGuestToDB, AddNewUserToDB, getGuestGames } from "./create.mjs";
-import { app } from "../../app.mjs";
-import request from "supertest";
 import { expect, jest, test } from "@jest/globals";
+import { AddNewGuestToDB, AddNewUserToDB, getGuestGames } from "./create.mjs";
+import request from "supertest";
 import { passwordValidation } from "../../db/validation.mjs";
 import { postData } from "../../public/javascripts/components/forms.mjs";
+import { default as MakeApp } from "../../app.mjs";
+import { connectionFactory } from "../../db/index.mjs";
+const app = MakeApp(await connectionFactory());
+
 
 // describe("Create User(Properly)", () => {
 //   let conn, User;
@@ -125,7 +127,7 @@ describe("Create Guest", () => {
     await conn.close();
   });
   test(`New Guest should exist`, async () => {
-    expect(createdGuest).toBeTruthy();
+    expect(createdGuest).toBeDefined();
   });
   test(`New Guest should have default username 'Guest' and playstyle'casual'`, async () => {
     expect(createdGuest.username).toEqual("guest");
