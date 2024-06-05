@@ -1,0 +1,43 @@
+@use "../components/default" as df;
+@use "../components/breakpoints" as bp;
+@forward "../components/title";
+
+.games-main {
+  margin: 0;
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 1.5em 1fr 1.5em;
+  grid-template-areas:
+    "header header header"
+    ". search ."
+    ". table ."
+    ". estimate ."
+    "preferences preferences preferences";
+
+  @media only screen and (min-width: 860px) {
+    grid-template-columns:
+      1.5em 0.5fr 1fr 1.5em;
+    grid-template-areas:
+      "header header header header"
+      "... search table ..."
+      "... estimate estimate ..."
+      "preferences preferences preferences preferences";
+  }
+  text-align: center;
+}
+
+#games-header {
+  grid-area: header;
+}
+#search-area {
+  grid-area: search;
+}
+#table-container {
+  grid-area: table;
+}
+#estimate-area {
+  grid-area: estimate;
+}
+#preferences_area {
+  grid-area: preferences;
+}

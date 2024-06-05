@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.9% </span>
+                <span class="strong">20.93% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/42</span>
+                <span class='fraction'>9/43</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/12</span>
+                <span class='fraction'>4/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">22.22% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/9</span>
+                <span class='fraction'>2/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.9% </span>
+                <span class="strong">20.93% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/42</span>
+                <span class='fraction'>9/43</span>
             </div>
         
             
@@ -144,7 +144,8 @@
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -152,30 +153,31 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -231,6 +233,7 @@ import bcrypt, { hashSync } from "bcrypt";
 &nbsp;
 async function <span class="fstat-no" title="function not covered" >getGuestGames(</span>GuestModel, GuestID) {
   const guest = <span class="cstat-no" title="statement not covered" >await GuestModel.findById(GuestID);</span>
+<span class="cstat-no" title="statement not covered" >  console.log(GuestID)</span>
 <span class="cstat-no" title="statement not covered" >  if (!guest) {</span>
 <span class="cstat-no" title="statement not covered" >    throw createError(500, "Guest activity could not be located in database");</span>
   }
@@ -240,8 +243,8 @@ async function <span class="fstat-no" title="function not covered" >getGuestGame
 }
 &nbsp;
 async function AddNewUserToDB(model, params) {
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (!RegExp(passwordValidation.pattern).test(params.password)) {
-<span class="cstat-no" title="statement not covered" >    throw new Error(passwordValidation.message);</span>
+  if (!RegExp(passwordValidation.pattern).test(params.password)) {
+    throw new Error(passwordValidation.message);
   }
   params.password = bcrypt.hashSync(params.password, 10);
   const user = await model.create(params);
@@ -251,12 +254,12 @@ async function AddNewUserToDB(model, params) {
   return user;
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >AddNewGuestToDB(</span>model) {
-  const guest = <span class="cstat-no" title="statement not covered" >await model.create({});</span>
-<span class="cstat-no" title="statement not covered" >  if (!guest) {</span>
+async function AddNewGuestToDB(model) {
+  const guest = await model.create({});
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (!guest) {
 <span class="cstat-no" title="statement not covered" >    throw createError(500, "New guest could not be saved to database");</span>
   }
-<span class="cstat-no" title="statement not covered" >  return guest;</span>
+  return guest;
 }
 &nbsp;
 async function <span class="fstat-no" title="function not covered" >createGuest(</span>req, res, next) {
@@ -313,7 +316,7 @@ export { AddNewGuestToDB, AddNewUserToDB, getGuestGames };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-04T12:03:21.221Z
+                at 2024-06-05T06:09:04.695Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

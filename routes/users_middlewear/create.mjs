@@ -4,6 +4,7 @@ import bcrypt, { hashSync } from "bcrypt";
 
 async function getGuestGames(GuestModel, GuestID) {
   const guest = await GuestModel.findById(GuestID);
+  console.log(GuestID)
   if (!guest) {
     throw createError(500, "Guest activity could not be located in database");
   }

@@ -42,9 +42,10 @@ const baseSchema = new Schema(
   { validateModifiedOnly: true },
 );
 
-baseSchema.pre("init", function () {
-  let user = this;
-  user.expireAt = user.updatedAt
-});
+// this wasn't quite right - expired immediately
+// baseSchema.pre("init", function () {
+//   let user = this;
+//   user.expireAt = user.updatedAt
+// });
 
 export { baseSchema };
