@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/31</span>
+                <span class='fraction'>0/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/16</span>
+                <span class='fraction'>0/8</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/29</span>
+                <span class='fraction'>0/24</span>
             </div>
         
             
@@ -112,8 +112,7 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -130,30 +129,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -177,33 +175,32 @@ async function <span class="fstat-no" title="function not covered" >verifyPasswo
 <span class="cstat-no" title="statement not covered" >  return user;</span>
 }
 &nbsp;
+async function <span class="fstat-no" title="function not covered" >appendGuestGames(</span>user, guest, guestModel){
+<span class="cstat-no" title="statement not covered" >  for (let game of guest.games) {</span>
+<span class="cstat-no" title="statement not covered" >    await user.games.addToSet(game);</span>
+  }
+<span class="cstat-no" title="statement not covered" >  await Promise.all([user.save(), guestModel.deleteOne({ _id: guest._id })]);</span>
+}
+&nbsp;
 async function <span class="fstat-no" title="function not covered" >userLogin(</span>req, res, next) {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { User, Guest } = <span class="cstat-no" title="statement not covered" >req.app.locals.models;</span>
     const user = <span class="cstat-no" title="statement not covered" >await verifyPasswordAndReturnUser(req.body, User);</span>
 &nbsp;
-    let uid = <span class="cstat-no" title="statement not covered" >user._id;</span>
-    let gid = <span class="cstat-no" title="statement not covered" >req.session.user ?? undefined;</span>
-    let isGuest = <span class="cstat-no" title="statement not covered" >req.session.isGuest ?? undefined;</span>
-<span class="cstat-no" title="statement not covered" >    if (gid &amp;&amp; isGuest) {</span>
-      let { games: guestGames } = <span class="cstat-no" title="statement not covered" >await Guest.findById(gid);</span>
-      let user = <span class="cstat-no" title="statement not covered" >await User.findById(uid);</span>
-<span class="cstat-no" title="statement not covered" >      for (let game of guestGames) {</span>
-<span class="cstat-no" title="statement not covered" >        user.games.addToSet(game);</span>
-      }
-<span class="cstat-no" title="statement not covered" >      await user.save();</span>
+<span class="cstat-no" title="statement not covered" >    if ("user" in req.session &amp;&amp; req.session.isGuest === true) {</span>
+<span class="cstat-no" title="statement not covered" >      await appendGuestGames(user, await Guest.findById(req.session.user), Guest)</span>
     }
-<span class="cstat-no" title="statement not covered" >    req.session.regenerate(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >next(err);</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    await req.session.regenerate(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      req.session.user = uid;</span>
-<span class="cstat-no" title="statement not covered" >      req.app.locals.loggedIn = true;</span>
-<span class="cstat-no" title="statement not covered" >      req.app.locals.registered = true;</span>
 <span class="cstat-no" title="statement not covered" >      req.session.isGuest = false;</span>
-<span class="cstat-no" title="statement not covered" >      req.session.save(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        if (err) <span class="cstat-no" title="statement not covered" >next(err);</span></span>
-<span class="cstat-no" title="statement not covered" >        res.send("/games");</span>
-      });
     });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    req.app.locals.loggedIn = true;</span>
+<span class="cstat-no" title="statement not covered" >    req.app.locals.registered = true;</span>
+<span class="cstat-no" title="statement not covered" >    user.sid = req.session.id;</span>
+<span class="cstat-no" title="statement not covered" >    await user.save();</span>
+<span class="cstat-no" title="statement not covered" >    res.send("/games");</span>
   } catch (err) {
 <span class="cstat-no" title="statement not covered" >    next(err);</span>
   }
@@ -220,7 +217,7 @@ export { verifyPasswordAndReturnUser };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-05T06:25:12.285Z
+                at 2024-06-05T08:48:26.084Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

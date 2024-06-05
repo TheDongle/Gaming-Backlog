@@ -31,11 +31,14 @@ const baseSchema = new Schema(
         message: (props) => `Duplicate game entry for ${props.value} disregarded`,
       },
     },
-    expireAt: {
-      default: Date.now(),
-      type: Date,
-      expires: 24 * 60 * 60,
+    sid: {
+      type: String,
     },
+    // expireAt: {
+    //   default: Date.now(),
+    //   type: Date,
+    //   expires: 24 * 60 * 60,
+    // },
   },
   { timestamps: true },
   { collection: "users" },

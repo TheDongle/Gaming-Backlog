@@ -23,11 +23,11 @@ userSchema.add({
     type: String,
     required: true,
   },
-  expireAt: {
-    default: Date.now(),
-    type: Date,
-    expires: 182 * 24 * 60 * 60,
-  },
+  // expireAt: {
+  //   default: Date.now(),
+  //   type: Date,
+  //   expires: 182 * 24 * 60 * 60,
+  // },
 });
 
 userSchema.plugin(uniqueValidator);

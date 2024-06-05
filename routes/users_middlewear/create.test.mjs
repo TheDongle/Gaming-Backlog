@@ -4,6 +4,7 @@ import { app } from "../../app.mjs";
 import request from "supertest";
 import { expect, jest, test } from "@jest/globals";
 import { passwordValidation } from "../../db/validation.mjs";
+import { postData } from "../../public/javascripts/components/forms.mjs";
 
 // describe("Create User(Properly)", () => {
 //   let conn, User;
@@ -115,6 +116,7 @@ describe("Create Guest", () => {
     conn = await connectionFactory();
     Guest = conn.models.Guest;
     createdGuest = await AddNewGuestToDB(Guest);
+    console.log(createdGuest)
   });
   afterAll(async () => {
     if (createdGuest !== undefined) {

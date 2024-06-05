@@ -4,7 +4,6 @@ import bcrypt, { hashSync } from "bcrypt";
 
 async function getGuestGames(GuestModel, GuestID) {
   const guest = await GuestModel.findById(GuestID);
-  console.log(GuestID)
   if (!guest) {
     throw createError(500, "Guest activity could not be located in database");
   }
@@ -37,16 +36,15 @@ async function createGuest(req, res, next) {
   try {
     if (req.body.username === "guest") {
       const guest = await AddNewGuestToDB(req.app.locals.models.Guest);
-
-      req.session.regenerate(() => {
+      await req.session.regenerate(() => {
         req.session.user = guest._id;
         req.session.isGuest = true;
-        req.app.locals.loggedIn = true;
-        req.app.locals.registered = false;
-        req.session.save(() => {
-          res.send("/games");
-        });
       });
+      req.app.locals.loggedIn = true;
+      req.app.locals.registered = false;
+      guest.sid = req.session.id;
+      console.log(await guest.save());
+      await res.send("/games");
     } else {
       next();
     }
@@ -58,20 +56,21 @@ async function createGuest(req, res, next) {
 async function createUser(req, res, next) {
   try {
     const params = Object.assign({}, req.body);
-    if (req.session.isGuest) {
+    if ("user" in req.session && req.session.isGuest === true) {
       params.games = await getGuestGames(req.app.locals.models.Guest, req.session.user);
     }
     const user = await AddNewUserToDB(req.app.locals.models.User, params);
 
-    req.session.regenerate(() => {
+    await req.session.regenerate(() => {
       req.session.user = user._id;
       req.session.isGuest = false;
-      req.app.locals.loggedIn = true;
-      req.app.locals.registered = true;
-      req.session.save(() => {
-        res.send("/games");
-      });
     });
+
+    req.app.locals.loggedIn = true;
+    req.app.locals.registered = true;
+    user.sid = req.session.id;
+    await user.save();
+    res.send("/games");
   } catch (err) {
     next(err);
   }

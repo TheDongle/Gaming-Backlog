@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20.93% </span>
+                <span class="strong">20.45% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/43</span>
+                <span class='fraction'>9/44</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">28.57% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/12</span>
+                <span class='fraction'>4/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.22% </span>
+                <span class="strong">28.57% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/9</span>
+                <span class='fraction'>2/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20.93% </span>
+                <span class="strong">20.45% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/43</span>
+                <span class='fraction'>9/44</span>
             </div>
         
             
@@ -144,13 +144,11 @@
 <a name='L79'></a><a href='#L79'>79</a>
 <a name='L80'></a><a href='#L80'>80</a>
 <a name='L81'></a><a href='#L81'>81</a>
-<a name='L82'></a><a href='#L82'>82</a>
-<a name='L83'></a><a href='#L83'>83</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L82'></a><a href='#L82'>82</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -184,25 +182,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -210,15 +194,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -233,7 +231,6 @@ import bcrypt, { hashSync } from "bcrypt";
 &nbsp;
 async function <span class="fstat-no" title="function not covered" >getGuestGames(</span>GuestModel, GuestID) {
   const guest = <span class="cstat-no" title="statement not covered" >await GuestModel.findById(GuestID);</span>
-<span class="cstat-no" title="statement not covered" >  console.log(GuestID)</span>
 <span class="cstat-no" title="statement not covered" >  if (!guest) {</span>
 <span class="cstat-no" title="statement not covered" >    throw createError(500, "Guest activity could not be located in database");</span>
   }
@@ -266,16 +263,15 @@ async function <span class="fstat-no" title="function not covered" >createGuest(
 <span class="cstat-no" title="statement not covered" >  try {</span>
 <span class="cstat-no" title="statement not covered" >    if (req.body.username === "guest") {</span>
       const guest = <span class="cstat-no" title="statement not covered" >await AddNewGuestToDB(req.app.locals.models.Guest);</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >      req.session.regenerate(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      await req.session.regenerate(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        req.session.user = guest._id;</span>
 <span class="cstat-no" title="statement not covered" >        req.session.isGuest = true;</span>
-<span class="cstat-no" title="statement not covered" >        req.app.locals.loggedIn = true;</span>
-<span class="cstat-no" title="statement not covered" >        req.app.locals.registered = false;</span>
-<span class="cstat-no" title="statement not covered" >        req.session.save(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >          res.send("/games");</span>
-        });
       });
+<span class="cstat-no" title="statement not covered" >      req.app.locals.loggedIn = true;</span>
+<span class="cstat-no" title="statement not covered" >      req.app.locals.registered = false;</span>
+<span class="cstat-no" title="statement not covered" >      guest.sid = req.session.id;</span>
+<span class="cstat-no" title="statement not covered" >      console.log(await guest.save());</span>
+<span class="cstat-no" title="statement not covered" >      await res.send("/games");</span>
     } else {
 <span class="cstat-no" title="statement not covered" >      next();</span>
     }
@@ -287,20 +283,21 @@ async function <span class="fstat-no" title="function not covered" >createGuest(
 async function <span class="fstat-no" title="function not covered" >createUser(</span>req, res, next) {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const params = <span class="cstat-no" title="statement not covered" >Object.assign({}, req.body);</span>
-<span class="cstat-no" title="statement not covered" >    if (req.session.isGuest) {</span>
+<span class="cstat-no" title="statement not covered" >    if ("user" in req.session &amp;&amp; req.session.isGuest === true) {</span>
 <span class="cstat-no" title="statement not covered" >      params.games = await getGuestGames(req.app.locals.models.Guest, req.session.user);</span>
     }
     const user = <span class="cstat-no" title="statement not covered" >await AddNewUserToDB(req.app.locals.models.User, params);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    req.session.regenerate(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    await req.session.regenerate(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      req.session.user = user._id;</span>
 <span class="cstat-no" title="statement not covered" >      req.session.isGuest = false;</span>
-<span class="cstat-no" title="statement not covered" >      req.app.locals.loggedIn = true;</span>
-<span class="cstat-no" title="statement not covered" >      req.app.locals.registered = true;</span>
-<span class="cstat-no" title="statement not covered" >      req.session.save(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        res.send("/games");</span>
-      });
     });
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    req.app.locals.loggedIn = true;</span>
+<span class="cstat-no" title="statement not covered" >    req.app.locals.registered = true;</span>
+<span class="cstat-no" title="statement not covered" >    user.sid = req.session.id;</span>
+<span class="cstat-no" title="statement not covered" >    await user.save();</span>
+<span class="cstat-no" title="statement not covered" >    res.send("/games");</span>
   } catch (err) {
 <span class="cstat-no" title="statement not covered" >    next(err);</span>
   }
@@ -316,7 +313,7 @@ export { AddNewGuestToDB, AddNewUserToDB, getGuestGames };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-05T06:25:12.285Z
+                at 2024-06-05T08:48:26.084Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
