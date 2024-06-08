@@ -32,15 +32,4 @@ userSchema.add({
 
 userSchema.plugin(uniqueValidator);
 
-userSchema.pre("save", async function () {
-  const user = this;
-  if (user.isModified("password")) {
-    user.password = bcrypt.hashSync(user.password, 10);
-  }
-});
-
-userSchema.methods.comparePassword = async function (candidatePassword) {
-  return bcrypt.compareSync(candidatePassword, this.password);
-};
-
 export { userSchema };

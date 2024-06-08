@@ -14,8 +14,7 @@ const searchforGame = async function (req, res, next) {
     res.locals.titles = titles;
     req.session.links = links;
     req.session.titles = titles;
-    res.render("games/components/results", async (err, html) => {
-      if (err) next(err);
+    res.render("games/components/results", async (_, html) => {
       res.send(html);
     });
   } catch (err) {

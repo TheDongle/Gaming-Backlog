@@ -1,10 +1,11 @@
 import { expect, jest, test } from "@jest/globals";
 import session from "express-session";
 import request from "supertest";
-import { AddNewUserToDB } from "./users_middlewear/create.mjs";
-import { connectionFactory } from "../db/index.mjs";
 import { default as MakeApp } from "../app.mjs";
-const app = MakeApp(await connectionFactory());
+import { freshDB } from "../db/index.mjs";
+import { connectionFactory } from "../db/connection.mjs";
+
+const app = MakeApp(await freshDB(), true);
 
 describe("Insecure Routes, body not required", () => {
   test(`GET / should return Successful`, async () => {
@@ -70,7 +71,7 @@ describe("Faking secure route", () => {
     params = { username: "crabbyFace400", password: "passy1234", playStyle: "casual" };
   });
   beforeEach(async () => {
-    createdUser = await AddNewUserToDB(TestUser, params);
+    createdUser = await TestUser.create(params)
     id = createdUser._id;
   });
   afterEach(async () => {

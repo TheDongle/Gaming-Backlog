@@ -3,23 +3,20 @@ import createError from "http-errors";
 
 const createGame = async function (req, res, next) {
   try {
-    let { index } = req.body;
-    let { links, titles } = req.session;
-    let { title, standardLength, completionist } = await getGameData(links[index], titles[index]);
-    let _id = req.session.user;
-    const { User, Game, Guest } = req.app.locals.models;
-    const currentUser = req.session.isGuest ? await Guest.findById(_id) : await User.findById(_id);
-    const currentGame = new Game({
-      title,
-      standardLength,
-      completionist,
-    });
-    currentUser.games.push(currentGame);
-    await currentUser.save();
+    // Select game from search results
+    const { index } = req.body;
+    const [link, gameTitle] = [req.session.links[index], req.session.titles[index]];
+    // Scrape additional data
+    const { title, standardLength, completionist } = await getGameData(link, gameTitle);
+    // Update DB
+    const db = req.app.get("db");
+    const user = await db.addGame(req.session.user, { title, standardLength, completionist });
+    // Update Views
+    req.app.locals.games = user.games;
+    next();
   } catch (err) {
     next(err);
   }
-  next();
 };
 
 export { createGame };

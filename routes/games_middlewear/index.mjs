@@ -2,7 +2,7 @@ import createError from "http-errors";
 
 const setPageView = async function (req, res, next) {
   try {
-    req.session.gamesView = "games";
+    req.app.locals.gamesView = "page";
     next();
   } catch (err) {
     next(err);
@@ -11,22 +11,18 @@ const setPageView = async function (req, res, next) {
 
 const showGames = async function (req, res, next) {
   try {
-    let view = req.session.gamesView;
-    const { User, Guest } = req.app.locals.models;
-    let currentUser = req.session.isGuest
-      ? await Guest.findById(req.session.user)
-      : await User.findById(req.session.user);
+    const db = req.app.get("db");
+    const user = await db.find(req.session.user);
     res.render(
-      view,
+      "games",
       {
-        username: currentUser.username,
-        loggedGames: currentUser.games,
-        playStyle: currentUser.playStyle,
+        username: user.username,
+        loggedGames: user.games,
+        playStyle: user.playStyle,
         isGuest: req.session.isGuest,
-        id: req.session.user,
+        id: user._id,
       },
-      async (err, html) => {
-        if (err) next(err);
+      async (_, html) => {
         res.send(html);
       },
     );

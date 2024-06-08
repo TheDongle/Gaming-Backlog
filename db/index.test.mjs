@@ -1,23 +1,59 @@
-import { env } from "node:process";
-import { connectionFactory } from "./index.mjs";
 import { expect, jest, test } from "@jest/globals";
+import { myDB } from "./index.mjs";
+import { settings } from "../resources/session/sessionSettings.mjs";
+import MongoStore from "connect-mongo";
+
+describe("Initialise DB", () => {
+  let db;
+  beforeAll(async () => {
+    db = new myDB();
+  });
+  test("Should not be able to access connection before using 'connect' method", () => {
+    expect(() => db.conn).toThrow();
+  });
+});
 
 const states = { 0: "disconnected", 1: "connected", 2: "connecting", 3: "disconnecting" };
-describe("Connection Factory", () => {
-  let conn;
-  test("env file should contain connection details", () => {
-    expect(env).toHaveProperty("mongoURI");
+describe("Connecting", () => {
+  let db, conn;
+  beforeAll(async () => {
+    db = new myDB();
+    conn = await db.connect();
   });
-  test("Mongo DB should connect be connected", async () => {
-    conn = await connectionFactory(env.mongoURI);
+  afterAll(async () => {
+    await db.disconnect();
+  });
+  test("DB Should be connected", () => {
     expect(states[conn.readyState]).toBe("connected");
   });
-  test.each(["Guest", "User", "Game"])(`Connection should contain %p Model`, (Model) => {
-    expect(conn.models).toHaveProperty(Model);
+});
+
+describe("Disconnecting", () => {
+  let db, conn;
+  beforeAll(async () => {
+    db = new myDB();
+    conn = await db.connect();
   });
-  test("Mongo DB should be disconnected", async () => {
-    await conn.close();
+  test("Should be disconnected", async () => {
+    await db.disconnect();
     expect(states[conn.readyState]).toBe("disconnected");
   });
 });
 
+describe("Models", () => {
+  let db, conn;
+  beforeAll(async () => {
+    db = new myDB();
+    conn = await db.connect();
+  });
+  afterAll(async () => {
+    await db.disconnect();
+  });
+  test.each(["User", "Guest", "TestUser"])("Model should set/get on valid strings", (val) => {
+    db.model = val;
+    expect(db.model).toEqual(val);
+  });
+  test("Should Error on Invalid string", () => {
+    expect(() => (db.model = "Invalid")).toThrow();
+  });
+});

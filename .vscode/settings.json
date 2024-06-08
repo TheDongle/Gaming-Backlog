@@ -1,5 +1,6 @@
 {
   "[xml]": {
     "editor.defaultFormatter": "DotJoshJohnson.xml"
-  }
+  },
+  "eslint.codeActionsOnSave.mode": "problems"
 }

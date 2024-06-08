@@ -31,9 +31,6 @@ const baseSchema = new Schema(
         message: (props) => `Duplicate game entry for ${props.value} disregarded`,
       },
     },
-    sid: {
-      type: String,
-    },
     // expireAt: {
     //   default: Date.now(),
     //   type: Date,

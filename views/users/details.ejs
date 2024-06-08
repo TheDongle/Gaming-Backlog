@@ -17,10 +17,10 @@
       <label for="playStyle"><b>PlayStyle: </b></label>
       <label for="completionist">Completionist: </label>
       <input disabled type="radio" id="completionist" name="playStyle" value="completionist"
-        <% if (user.playStyle==="completionist") { %> checked <% } %> />
+        <% if (playStyle==="completionist") { %> checked <% } %> />
       <label for="casual">Casual: </label>
       <input disabled type="radio" id="casual" name="playStyle" value="casual" <%
-      if (user.playStyle==="casual") { %> checked <% } %> />
+      if (playStyle==="casual") { %> checked <% } %> />
       <button class="hidden button-is-small" id="edit_playstyle" type="submit">
         Submit Change
       </button>
@@ -35,7 +35,7 @@
     <form enctype="multipart/form-data" class="form-is-inline" action="/details" method="PATCH"
       id="patch_username_form">
       <label class="form-field" for="username"><b>Username: </b></label>
-      <input disabled type="text" name="username" placeholder="<%= user.username %>" id="username" />
+      <input disabled type="text" name="username" placeholder="<%= username %>" id="username" />
       <button class="hidden button-is-small" id="edit_password" type="submit">
         Submit Change
       </button>

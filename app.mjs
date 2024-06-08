@@ -6,15 +6,28 @@ import path from "node:path";
 import * as sass from "sass";
 import * as fs from "node:fs";
 import multer from "multer";
-import session from "express-session";
-import MongoStore from "connect-mongo";
-import { settings } from "./resources/session/sessionSettings.mjs";
-import { passwordValidation, usernameValidation } from "./db/validation.mjs";
 import { router as usersRouter } from "./routes/users.mjs";
 import { router as gamesRouter } from "./routes/games.mjs";
 import createError from "http-errors";
+import { settings } from "./resources/session/sessionSettings.mjs";
+import MongoStore from "connect-mongo";
+import { syncData } from "./resources/locals.mjs";
+import { freshDB } from "./db/index.mjs";
+import session from "express-session";
+const defaultDB = await freshDB();
 
-export default function (DbConnection) {
+/**
+ *
+ * @param {object} db
+ * @param {*} cookieStore
+ * @param {object} session
+ * @returns {object} app
+ */
+export default function (
+  db = defaultDB,
+  cookieStore = MongoStore,
+  _session = session,
+) {
   const app = express();
   app.use(express.urlencoded({ extended: true }));
   app.use(express.static(path.join(path.dirname(""), "public")));
@@ -23,15 +36,14 @@ export default function (DbConnection) {
   app.set("views", path.join(path.dirname(""), "views"));
   app.disable("x-powered-by");
 
-  // Data base Things
-  settings.store = MongoStore.create(DbConnection);
-  app.use(session(settings));
-  const { User, Game, Guest } = DbConnection.models;
-  app.locals.models = {
-    User,
-    Game,
-    Guest,
-  };
+  // Session
+  if (Object.entries(session).length > 0) {
+    if (Object.entries(cookieStore).length > 0) {
+      settings.store = cookieStore.create(db.conn);
+    }
+    app.use(_session(settings));
+  }
+  app.set("db", db);
 
   // SASS
   const compressed = sass.compile("./public/stylesheets/style.scss", {
@@ -48,15 +60,10 @@ export default function (DbConnection) {
   app.patch("*", upload.none(), (req, res, next) => next());
   app.delete("*", upload.none(), (req, res, next) => next());
 
-  app.locals.passwordValidation = passwordValidation;
-  app.locals.usernameValidation = usernameValidation;
-  app.locals.loggedIn = false;
-  app.locals.registered = false;
-  app.use(function addPath(req, res, next) {
-    app.locals.path = req.path;
-    next();
-  });
+  // Keeps locals and Session data in Sync
+  app.use(syncData);
 
+  // Routers
   app.use("/", usersRouter);
   app.use("/games", gamesRouter);
   app.use(function notFound(req, res, next) {
