@@ -2,7 +2,7 @@
 <% let rowIndex = 0 %>
 
 <article class="table-container" id="table-container">
-  <% if (Object.entries(loggedGames).length === 0) { %>
+  <% if (Object.entries(games).length === 0) { %>
   <h3>No games entered yet.</h3>
   <% } else { %>
   <table class="table" id="games_table">
@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <% for(let game of loggedGames){ %>
+      <% for(let game of games){ %>
       <tr id="row-<%=rowIndex%>">
         <th scope="row"><%= game.title %></th>
         <td id="hours-<%=rowIndex%>">

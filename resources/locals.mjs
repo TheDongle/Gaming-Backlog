@@ -1,5 +1,6 @@
 import { passwordValidation } from "../db/validation.mjs";
 import { usernameValidation } from "../db/validation.mjs";
+import { strict as assert } from 'node:assert';
 
 const defaultLocals = {
   username: "",
@@ -62,6 +63,11 @@ async function syncData(req, res, next) {
     req.app.locals.registered = localSettings.registered;
     req.app.locals.passwordValidation = localSettings.passwordValidation;
     req.app.locals.usernameValidation = localSettings.usernameValidation;
+
+    // If I can't spy on session, I can assert
+    assert(req.app.locals.registered === req.session.registered)
+    assert(req.app.locals.loggedIn === req.session.loggedIn)
+
     next();
   } catch (err) {
     next(err);

@@ -10,22 +10,15 @@ const setPageView = async function (req, res, next) {
 };
 
 const showGames = async function (req, res, next) {
+  console.log("here??");
   try {
-    const db = req.app.get("db");
-    const user = await db.find(req.session.user);
-    res.render(
-      "games",
-      {
-        username: user.username,
-        loggedGames: user.games,
-        playStyle: user.playStyle,
-        isGuest: req.session.isGuest,
-        id: user._id,
-      },
-      async (_, html) => {
+    if (req.app.locals.gamesView === "page") {
+      res.render("games");
+    } else {
+      res.render("/games/components/table", (_, html) => {
         res.send(html);
-      },
-    );
+      });
+    }
   } catch (err) {
     next(err);
   }

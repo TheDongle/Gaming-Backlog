@@ -1,5 +1,3 @@
-<% if (gamesView === "page") { %>
-
 <%- include("../header"); -%>
 <main class="games-main" id="main" data-state="">
   <hgroup id="games-header">
@@ -9,11 +7,9 @@
 
   <%- include("components/search"); -%>
 
-<% } %>
 
   <%- include("components/table") %>
 
-<% if (gamesView === "page") { %>
 
   <%- include("components/estimate") %>
 
@@ -24,4 +20,3 @@
 <script type="module" src="/javascripts/games.mjs"></script>
 <%- include("../footer"); -%>
 
-<% } %>

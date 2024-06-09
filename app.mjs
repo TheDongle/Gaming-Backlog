@@ -26,10 +26,12 @@ const defaultDB = await freshDB();
 export default function (db = defaultDB, cookieStore = MongoStore, _session = session) {
   const app = express();
   app.use(express.urlencoded({ extended: true }));
-  app.use(express.static(path.join(path.dirname(""), "public")));
+  const _dirname = path.dirname("");
+  app.use(express.static(path.join(_dirname, "public")));
   app.use(logger("dev"));
   app.set("view engine", "ejs");
-  app.set("views", path.join(path.dirname(""), "views"));
+  app.set("views", path.join(_dirname, "views"));
+  console.log(app.get("views"))
   app.disable("x-powered-by");
 
   // Session
@@ -40,7 +42,6 @@ export default function (db = defaultDB, cookieStore = MongoStore, _session = se
     app.use(_session(settings));
   }
   app.set("db", db);
-
   // SASS
   const compressed = sass.compile("./public/stylesheets/style.scss", {
     style: "compressed",

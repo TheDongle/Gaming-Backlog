@@ -3,7 +3,7 @@
     <h2 class="title">Preferences</h2>
   </hgroup>
   <p>The "Days to complete" is based on some wild assumptions about your lifestyle.</p>
-  <% if(username=="guest" ) { %>
+  <% if(!registered) { %>
   <p>Registered users can record more details about their lifestyle, and get a *less* wild estimate.</p>
   <form action="../new" method="get">
     <legend>Click here to register</legend>
