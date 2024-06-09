@@ -29,6 +29,9 @@ describe("Sync Data - default settings", () => {
       expect(locals[key]).toEqual(val);
     }
   });
+  test("addPath function", async () => {
+      expect(locals.path).toEqual("/");
+  });
 });
 
 describe("Sync Data - Already logged in", () => {

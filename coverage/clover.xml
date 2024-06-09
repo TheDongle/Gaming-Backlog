@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1717891983999" clover="3.2.0">
-  <project timestamp="1717891983999" name="All files">
+<coverage generated="1717892424623" clover="3.2.0">
+  <project timestamp="1717892424623" name="All files">
     <metrics statements="387" coveredstatements="265" conditionals="89" coveredconditionals="41" methods="95" coveredmethods="62" elements="571" coveredelements="368" complexity="0" loc="387" ncloc="387" packages="12" files="36" classes="36"/>
     <package name="Gaming Backlog v2">
       <metrics statements="33" coveredstatements="31" conditionals="13" coveredconditionals="7" methods="7" coveredmethods="6"/>
