@@ -2,7 +2,7 @@ import createError from "http-errors";
 
 async function ifLoggedIn(req, res, next) {
   try {
-    if (req.session.user === "") {
+    if (!req.session.user) {
       throw createError(403, "User not logged in");
     }
     next();

@@ -11,7 +11,7 @@ import { router as gamesRouter } from "./routes/games.mjs";
 import createError from "http-errors";
 import { settings } from "./resources/session/sessionSettings.mjs";
 import MongoStore from "connect-mongo";
-import { syncData } from "./resources/locals.mjs";
+import { addPath } from "./resources/locals.mjs";
 import { freshDB } from "./db/index.mjs";
 import session from "express-session";
 const defaultDB = await freshDB();
@@ -23,11 +23,7 @@ const defaultDB = await freshDB();
  * @param {object} session
  * @returns {object} app
  */
-export default function (
-  db = defaultDB,
-  cookieStore = MongoStore,
-  _session = session,
-) {
+export default function (db = defaultDB, cookieStore = MongoStore, _session = session) {
   const app = express();
   app.use(express.urlencoded({ extended: true }));
   app.use(express.static(path.join(path.dirname(""), "public")));
@@ -61,7 +57,7 @@ export default function (
   app.delete("*", upload.none(), (req, res, next) => next());
 
   // Keeps locals and Session data in Sync
-  app.use(syncData);
+  app.use(addPath);
 
   // Routers
   app.use("/", usersRouter);

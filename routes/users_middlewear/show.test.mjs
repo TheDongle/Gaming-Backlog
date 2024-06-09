@@ -19,7 +19,7 @@ const app = MakeApp(
 
 describe("Show User Details", () => {
   let response;
-  beforeEach(async () => {
+  beforeAll(async () => {
     response = await request(app).get("/details");
   });
   it("should have user details in locals", async () => {

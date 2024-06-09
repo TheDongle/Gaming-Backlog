@@ -35,8 +35,6 @@ const activeSession = (dbUser) => ({
 
 async function syncData(req, res, next) {
   try {
-    //Always make path accessible to view engine
-    req.app.locals.path = req.path;
     //Check if we have a valid user stored in session
     const db = req.app.get("db");
     const id = req.session.user ?? "";
@@ -70,4 +68,13 @@ async function syncData(req, res, next) {
   }
 }
 
-export { syncData };
+async function addPath(req, res, next) {
+  try {
+    req.app.locals.path = req.path;
+    next();
+  } catch (err) {
+    next(err);
+  }
+}
+
+export { syncData, defaultLocals, activeLocals, addPath };

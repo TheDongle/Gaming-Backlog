@@ -26,6 +26,7 @@ usersMap.insecureRoutes = {
   Register: [createGuest, createUser],
 };
 
+usersMap.addCommonPrefix(["Index", "ShowDetails"], [syncData]);
 usersMap.addCommonPrefix(["Login", "Register"], [ifReqNotEmpty]);
 usersMap.addCommonSuffix(["Destroy"], [destroySession]);
 usersMap.addCommonSuffix(["Login", "Register"], [syncData, setPageView, showGames]);
