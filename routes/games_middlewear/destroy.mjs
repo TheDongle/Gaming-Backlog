@@ -7,7 +7,7 @@ const destroyGame = async function (req, res, next) {
     const db = req.app.get("db");
     const user = await db.removeGame(req.session.user, title);
     // Update Views
-    req.app.locals._games = user.games;
+    req.app.locals.games = user.games;
     next();
   } catch (err) {
     next(err);

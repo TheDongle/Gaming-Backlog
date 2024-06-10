@@ -2,7 +2,7 @@ import createError from "http-errors";
 
 async function userLogin(req, res, next) {
   try {
-    const db = app.get("db");
+    const db = req.app.get("db");
     db.model = "User";
     const { username, password } = req.body;
     let user = await db.verify(username, password);
@@ -11,15 +11,8 @@ async function userLogin(req, res, next) {
       const guestID = req.session.user;
       user = await db.combine(user._id, guestID);
     }
-
-    req.session.user = user_id;
-    req.session.loggedIn = true;
-    req.session.registered = true;
-    
-    req.app.locals.loggedIn = req.session.loggedIn;
-    req.app.locals.registered = req.session.registered;
-
-    res.send("games");
+    req.session.user = user._id;
+    next()
   } catch (err) {
     next(err);
   }

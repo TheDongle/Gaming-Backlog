@@ -27,7 +27,7 @@ usersMap.insecureRoutes = {
 
 usersMap.addCommonPrefix(["Index", "ShowDetails"], [syncData]);
 usersMap.addCommonPrefix(["Login", "Register"], [ifReqNotEmpty]);
-usersMap.addCommonSuffix(["Register"], [syncData, toGames]);
+usersMap.addCommonSuffix(["Register", "Login"], [syncData, toGames]);
 usersMap.addCommonSuffix(["Destroy"], [destroySession]);
 
 export const serve = (key) => usersMap.get(key);
