@@ -5,6 +5,7 @@ import { searchforGame } from "./_new.mjs";
 import { createGame } from "./create.mjs";
 import { destroyGame } from "./destroy.mjs";
 import { ifReqNotEmpty } from "../../resources/session/borderControl.mjs";
+import { syncData } from "../../resources/locals.mjs";
 
 const routeMap = new RouteMap();
 routeMap.secureRoutes = {
@@ -13,6 +14,8 @@ routeMap.secureRoutes = {
   Create: [createGame],
   Destroy: [destroyGame],
 };
+
+routeMap.addCommonPrefix(["ShowPage"], [syncData]);
 routeMap.addCommonPrefix(["Create", "Destroy"], [ifReqNotEmpty]);
 routeMap.addCommonSuffix(["Create", "Destroy"], [setTableView, showGames]);
 

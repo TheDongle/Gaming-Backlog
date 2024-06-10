@@ -13,10 +13,13 @@ async function userLogin(req, res, next) {
     }
 
     req.session.user = user_id;
-    req.app.locals.loggedIn = true;
-    req.app.locals.registered = true;
+    req.session.loggedIn = true;
+    req.session.registered = true;
     
-    res.send("/games");
+    req.app.locals.loggedIn = req.session.loggedIn;
+    req.app.locals.registered = req.session.registered;
+
+    res.send("games");
   } catch (err) {
     next(err);
   }

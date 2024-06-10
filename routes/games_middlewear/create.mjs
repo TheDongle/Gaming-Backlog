@@ -12,7 +12,7 @@ const createGame = async function (req, res, next) {
     const db = req.app.get("db");
     const user = await db.addGame(req.session.user, { title, standardLength, completionist });
     // Update Views
-    req.app.locals.games = user.games;
+    req.app.locals._games = user.games;
     next();
   } catch (err) {
     next(err);

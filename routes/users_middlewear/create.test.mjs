@@ -43,8 +43,8 @@ describe("Create User", () => {
       password: "12345612465321",
       playStyle: "hardestcore",
     };
-    create.mockResolvedValue(params);
-    find.mockResolvedValue(params);
+    create.mockReturnValue(params);
+    find.mockReturnValue(params);
     const response = await request(app)
       .post("/new")
       .field("username", params.username)
@@ -55,5 +55,23 @@ describe("Create User", () => {
     expect(playStyle).toBe(params.playStyle);
     expect(password).not.toBeDefined();
     expect(_id).not.toBeDefined();
+  });
+  test("Should redirect to /games", async () => {
+    const params = {
+      _id: "123",
+      username: "realUserHonest5",
+      password: "12345612465321",
+      playStyle: "hardestcore",
+    };
+    create.mockReturnValue(params);
+    find.mockReturnValue(params);
+    const response = await request(app)
+      .post("/new")
+      .field("username", params.username)
+      .field("password", params.password)
+      .field("playStyle", params.playStyle);
+    expect(response.statusCode).toBeGreaterThanOrEqual(300);
+    expect(response.statusCode).toBeLessThan(400);
+    expect(response.headers.location).toMatch("./games");
   });
 });

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1717960662322" clover="3.2.0">
-  <project timestamp="1717960662323" name="All files">
-    <metrics statements="392" coveredstatements="268" conditionals="91" coveredconditionals="42" methods="95" coveredmethods="61" elements="578" coveredelements="371" complexity="0" loc="392" ncloc="392" packages="12" files="36" classes="36"/>
+<coverage generated="1718004374525" clover="3.2.0">
+  <project timestamp="1718004374525" name="All files">
+    <metrics statements="370" coveredstatements="242" conditionals="99" coveredconditionals="51" methods="95" coveredmethods="59" elements="564" coveredelements="352" complexity="0" loc="370" ncloc="370" packages="12" files="36" classes="36"/>
     <package name="Gaming Backlog v2">
-      <metrics statements="35" coveredstatements="33" conditionals="13" coveredconditionals="7" methods="7" coveredmethods="6"/>
+      <metrics statements="34" coveredstatements="32" conditionals="13" coveredconditionals="9" methods="7" coveredmethods="6"/>
       <file name="app.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\app.mjs">
-        <metrics statements="33" coveredstatements="31" conditionals="13" coveredconditionals="7" methods="7" coveredmethods="6"/>
+        <metrics statements="32" coveredstatements="30" conditionals="13" coveredconditionals="9" methods="7" coveredmethods="6"/>
         <line num="17" count="7" type="stmt"/>
         <line num="27" count="8" type="stmt"/>
         <line num="28" count="8" type="stmt"/>
@@ -15,11 +15,10 @@
         <line num="32" count="8" type="stmt"/>
         <line num="33" count="8" type="stmt"/>
         <line num="34" count="8" type="stmt"/>
-        <line num="35" count="8" type="stmt"/>
+        <line num="37" count="8" type="cond" truecount="1" falsecount="1"/>
         <line num="38" count="8" type="cond" truecount="1" falsecount="1"/>
-        <line num="39" count="8" type="cond" truecount="1" falsecount="1"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="42" count="8" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="41" count="8" type="stmt"/>
         <line num="44" count="8" type="stmt"/>
         <line num="46" count="8" type="stmt"/>
         <line num="49" count="8" type="stmt"/>
@@ -35,9 +34,9 @@
         <line num="66" count="8" type="stmt"/>
         <line num="67" count="0" type="stmt"/>
         <line num="70" count="8" type="stmt"/>
-        <line num="71" count="14" type="stmt"/>
-        <line num="72" count="14" type="cond" truecount="1" falsecount="1"/>
-        <line num="73" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="71" count="13" type="stmt"/>
+        <line num="72" count="13" type="cond" truecount="1" falsecount="1"/>
+        <line num="73" count="13" type="cond" truecount="2" falsecount="0"/>
         <line num="76" count="8" type="stmt"/>
       </file>
       <file name="puppeteer.config.cjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\puppeteer.config.cjs">
@@ -50,25 +49,25 @@
       <metrics statements="37" coveredstatements="23" conditionals="5" coveredconditionals="1" methods="16" coveredmethods="8"/>
       <file name="connection.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\db\connection.mjs">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="9" count="22" type="stmt"/>
-        <line num="10" count="22" type="stmt"/>
-        <line num="11" count="22" type="stmt"/>
-        <line num="12" count="22" type="stmt"/>
-        <line num="13" count="22" type="stmt"/>
-        <line num="14" count="22" type="stmt"/>
+        <line num="9" count="21" type="stmt"/>
+        <line num="10" count="21" type="stmt"/>
+        <line num="11" count="21" type="stmt"/>
+        <line num="12" count="21" type="stmt"/>
+        <line num="13" count="21" type="stmt"/>
+        <line num="14" count="21" type="stmt"/>
       </file>
       <file name="index.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\db\index.mjs">
         <metrics statements="28" coveredstatements="14" conditionals="5" coveredconditionals="1" methods="15" coveredmethods="7"/>
-        <line num="18" count="12" type="stmt"/>
-        <line num="19" count="12" type="stmt"/>
-        <line num="20" count="12" type="stmt"/>
+        <line num="18" count="11" type="stmt"/>
+        <line num="19" count="11" type="stmt"/>
+        <line num="20" count="11" type="stmt"/>
         <line num="23" count="8" type="stmt"/>
         <line num="24" count="7" type="stmt"/>
         <line num="27" count="3" type="stmt"/>
         <line num="30" count="4" type="stmt"/>
         <line num="31" count="3" type="stmt"/>
-        <line num="34" count="11" type="stmt"/>
-        <line num="35" count="11" type="stmt"/>
+        <line num="34" count="10" type="stmt"/>
+        <line num="35" count="10" type="stmt"/>
         <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="39" count="0" type="stmt"/>
         <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -84,9 +83,9 @@
         <line num="63" count="0" type="stmt"/>
         <line num="66" count="0" type="stmt"/>
         <line num="69" count="3" type="stmt"/>
-        <line num="74" count="8" type="stmt"/>
-        <line num="75" count="8" type="stmt"/>
-        <line num="76" count="8" type="stmt"/>
+        <line num="74" count="7" type="stmt"/>
+        <line num="75" count="7" type="stmt"/>
+        <line num="76" count="7" type="stmt"/>
       </file>
       <file name="validation.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\db\validation.mjs">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -175,52 +174,34 @@
       </file>
     </package>
     <package name="Gaming Backlog v2.public.javascripts.components">
-      <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+      <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <file name="forms.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\public\javascripts\components\forms.mjs">
-        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
       </file>
     </package>
     <package name="Gaming Backlog v2.resources">
-      <metrics statements="42" coveredstatements="40" conditionals="6" coveredconditionals="6" methods="12" coveredmethods="12"/>
+      <metrics statements="25" coveredstatements="23" conditionals="14" coveredconditionals="14" methods="11" coveredmethods="11"/>
       <file name="locals.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\resources\locals.mjs">
-        <metrics statements="33" coveredstatements="31" conditionals="6" coveredconditionals="6" methods="4" coveredmethods="4"/>
-        <line num="5" count="7" type="stmt"/>
-        <line num="15" count="7" type="stmt"/>
-        <line num="25" count="7" type="stmt"/>
-        <line num="31" count="7" type="stmt"/>
-        <line num="38" count="6" type="stmt"/>
-        <line num="40" count="6" type="stmt"/>
-        <line num="41" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="42" count="6" type="stmt"/>
-        <line num="43" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="44" count="3" type="stmt"/>
-        <line num="47" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="48" count="3" type="stmt"/>
-        <line num="49" count="3" type="stmt"/>
-        <line num="51" count="3" type="stmt"/>
-        <line num="52" count="3" type="stmt"/>
-        <line num="55" count="6" type="stmt"/>
-        <line num="56" count="6" type="stmt"/>
-        <line num="57" count="6" type="stmt"/>
-        <line num="59" count="6" type="stmt"/>
-        <line num="60" count="6" type="stmt"/>
-        <line num="61" count="6" type="stmt"/>
-        <line num="62" count="6" type="stmt"/>
-        <line num="63" count="6" type="stmt"/>
-        <line num="64" count="6" type="stmt"/>
-        <line num="65" count="6" type="stmt"/>
-        <line num="68" count="6" type="stmt"/>
-        <line num="69" count="6" type="stmt"/>
-        <line num="71" count="6" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="78" count="22" type="stmt"/>
-        <line num="79" count="22" type="stmt"/>
-        <line num="80" count="22" type="stmt"/>
-        <line num="82" count="0" type="stmt"/>
+        <metrics statements="16" coveredstatements="14" conditionals="14" coveredconditionals="14" methods="3" coveredmethods="3"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="16" count="8" type="stmt"/>
+        <line num="18" count="8" type="stmt"/>
+        <line num="19" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="20" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="8" type="stmt"/>
+        <line num="23" count="8" type="stmt"/>
+        <line num="24" count="56" type="stmt"/>
+        <line num="26" count="8" type="stmt"/>
+        <line num="27" count="8" type="stmt"/>
+        <line num="28" count="8" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="35" count="23" type="stmt"/>
+        <line num="36" count="23" type="stmt"/>
+        <line num="37" count="23" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
       </file>
       <file name="route-map.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\resources\route-map.mjs">
         <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
@@ -231,8 +212,8 @@
         <line num="20" count="8" type="stmt"/>
         <line num="21" count="30" type="stmt"/>
         <line num="28" count="98" type="stmt"/>
-        <line num="35" count="44" type="stmt"/>
-        <line num="42" count="37" type="stmt"/>
+        <line num="35" count="51" type="stmt"/>
+        <line num="42" count="30" type="stmt"/>
       </file>
     </package>
     <package name="Gaming Backlog v2.resources.game_data_scraping">
@@ -311,10 +292,10 @@
         <line num="6" count="6" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
         <line num="10" count="6" type="stmt"/>
-        <line num="15" count="8" type="stmt"/>
-        <line num="16" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="9" type="stmt"/>
+        <line num="16" count="9" type="cond" truecount="2" falsecount="0"/>
         <line num="17" count="4" type="stmt"/>
-        <line num="19" count="4" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
         <line num="21" count="4" type="stmt"/>
       </file>
       <file name="sessionSettings.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\resources\session\sessionSettings.mjs">
@@ -346,7 +327,7 @@
       </file>
     </package>
     <package name="Gaming Backlog v2.routes.games_middlewear">
-      <metrics statements="54" coveredstatements="17" conditionals="8" coveredconditionals="1" methods="9" coveredmethods="3"/>
+      <metrics statements="54" coveredstatements="11" conditionals="8" coveredconditionals="0" methods="9" coveredmethods="1"/>
       <file name="_new.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\routes\games_middlewear\_new.mjs">
         <metrics statements="14" coveredstatements="1" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="4" count="7" type="stmt"/>
@@ -389,28 +370,28 @@
         <line num="13" count="0" type="stmt"/>
       </file>
       <file name="index.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\routes\games_middlewear\index.mjs">
-        <metrics statements="13" coveredstatements="9" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+        <metrics statements="12" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="3" count="7" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="12" count="7" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="16" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
       </file>
       <file name="mapping.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\routes\games_middlewear\mapping.mjs">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="9" count="7" type="stmt"/>
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="10" count="7" type="stmt"/>
-        <line num="16" count="7" type="stmt"/>
-        <line num="17" count="7" type="stmt"/>
-        <line num="19" count="28" type="stmt"/>
+        <line num="11" count="7" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="19" count="7" type="stmt"/>
+        <line num="20" count="7" type="stmt"/>
+        <line num="22" count="28" type="stmt"/>
       </file>
       <file name="reset.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\routes\games_middlewear\reset.mjs">
         <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -421,7 +402,7 @@
       </file>
     </package>
     <package name="Gaming Backlog v2.routes.users_middlewear">
-      <metrics statements="88" coveredstatements="53" conditionals="22" coveredconditionals="11" methods="15" coveredmethods="11"/>
+      <metrics statements="85" coveredstatements="51" conditionals="22" coveredconditionals="11" methods="16" coveredmethods="12"/>
       <file name="_new.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\routes\users_middlewear\_new.mjs">
         <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
         <line num="1" count="7" type="stmt"/>
@@ -431,34 +412,29 @@
         <line num="12" count="1" type="stmt"/>
       </file>
       <file name="create.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\routes\users_middlewear\create.mjs">
-        <metrics statements="27" coveredstatements="21" conditionals="8" coveredconditionals="5" methods="2" coveredmethods="2"/>
-        <line num="34" count="4" type="stmt"/>
-        <line num="35" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
+        <metrics statements="22" coveredstatements="19" conditionals="8" coveredconditionals="5" methods="3" coveredmethods="3"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="19" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="25" count="4" type="cond" truecount="2" falsecount="2"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="47" count="3" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="54" count="3" type="stmt"/>
-        <line num="55" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="56" count="3" type="stmt"/>
-        <line num="58" count="3" type="stmt"/>
-        <line num="59" count="3" type="stmt"/>
-        <line num="61" count="3" type="cond" truecount="2" falsecount="2"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="66" count="3" type="stmt"/>
-        <line num="67" count="1" type="stmt"/>
-        <line num="68" count="1" type="stmt"/>
-        <line num="70" count="1" type="stmt"/>
-        <line num="71" count="1" type="stmt"/>
-        <line num="73" count="1" type="stmt"/>
-        <line num="75" count="2" type="stmt"/>
       </file>
       <file name="destroy.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\routes\users_middlewear\destroy.mjs">
         <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -483,7 +459,7 @@
         <line num="19" count="0" type="stmt"/>
       </file>
       <file name="login.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\routes\users_middlewear\login.mjs">
-        <metrics statements="13" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="15" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="4" count="0" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -496,7 +472,9 @@
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
       </file>
       <file name="logout.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\routes\users_middlewear\logout.mjs">
         <metrics statements="5" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
@@ -508,14 +486,14 @@
       </file>
       <file name="mapping.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\routes\users_middlewear\mapping.mjs">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="14" count="7" type="stmt"/>
-        <line num="16" count="7" type="stmt"/>
-        <line num="22" count="7" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
+        <line num="15" count="7" type="stmt"/>
+        <line num="21" count="7" type="stmt"/>
+        <line num="28" count="7" type="stmt"/>
         <line num="29" count="7" type="stmt"/>
         <line num="30" count="7" type="stmt"/>
         <line num="31" count="7" type="stmt"/>
-        <line num="32" count="7" type="stmt"/>
-        <line num="34" count="56" type="stmt"/>
+        <line num="33" count="56" type="stmt"/>
       </file>
       <file name="show.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\routes\users_middlewear\show.mjs">
         <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>

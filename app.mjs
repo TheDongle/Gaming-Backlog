@@ -31,16 +31,16 @@ export default function (db = defaultDB, cookieStore = MongoStore, _session = se
   app.use(logger("dev"));
   app.set("view engine", "ejs");
   app.set("views", path.join(_dirname, "views"));
-  console.log(app.get("views"))
   app.disable("x-powered-by");
 
-  // Session
+  // Session Object
   if (Object.entries(session).length > 0) {
     if (Object.entries(cookieStore).length > 0) {
       settings.store = cookieStore.create(db.conn);
     }
     app.use(_session(settings));
   }
+  // Mongoose, usually
   app.set("db", db);
   // SASS
   const compressed = sass.compile("./public/stylesheets/style.scss", {

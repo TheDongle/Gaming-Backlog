@@ -10,7 +10,6 @@ const setPageView = async function (req, res, next) {
 };
 
 const showGames = async function (req, res, next) {
-  console.log("here??");
   try {
     if (req.app.locals.gamesView === "page") {
       res.render("games");

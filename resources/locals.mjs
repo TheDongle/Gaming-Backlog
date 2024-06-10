@@ -1,37 +1,15 @@
 import { passwordValidation } from "../db/validation.mjs";
 import { usernameValidation } from "../db/validation.mjs";
-import { strict as assert } from 'node:assert';
+import { strict as assert } from "node:assert";
 
-const defaultLocals = {
-  username: "",
-  games: [],
-  playStyle: "",
-  registered: false,
-  loggedIn: false,
+const localSettings = (dbUser) => ({
+  username: dbUser ? dbUser.username : "",
+  games: dbUser ? dbUser.games : [],
+  playStyle: dbUser ? dbUser.playStyle : "",
+  loggedIn: dbUser !== null && dbUser !== undefined,
+  registered: dbUser ? dbUser.username !== "guest" : false,
   usernameValidation: usernameValidation,
   passwordValidation: passwordValidation,
-};
-
-const activeLocals = (dbUser) => ({
-  username: dbUser.username,
-  games: dbUser.games,
-  playStyle: dbUser.playStyle,
-  registered: dbUser.username !== "guest",
-  loggedIn: true,
-  usernameValidation: usernameValidation,
-  passwordValidation: passwordValidation,
-});
-
-const defaultSession = {
-  user: "",
-  loggedIn: false,
-  registered: false,
-};
-
-const activeSession = (dbUser) => ({
-  user: dbUser._id,
-  loggedIn: true,
-  registered: dbUser.username !== "guest",
 });
 
 async function syncData(req, res, next) {
@@ -39,35 +17,14 @@ async function syncData(req, res, next) {
     //Check if we have a valid user stored in session
     const db = req.app.get("db");
     const id = req.session.user ?? "";
-    let dbUser = {};
-    if (id !== "") {
-      dbUser = await db.find(id);
+    const dbUser = id !== "" ? await db.find(id) : null;
+    // Set locals
+    const settings = localSettings(dbUser);
+    for (let [key, val] of Object.entries(settings)) {
+      req.app.locals[key] = val;
     }
-    let sessionSettings, localSettings;
-    if (Object.entries(dbUser).length === 0) {
-      sessionSettings = defaultSession;
-      localSettings = defaultLocals;
-    } else {
-      sessionSettings = activeSession(dbUser);
-      localSettings = activeLocals(dbUser);
-    }
-    // Apply Settings
-    req.session.user = sessionSettings.user;
-    req.session.loggedIn = sessionSettings.loggedIn;
-    req.session.registered = sessionSettings.registered;
-
-    req.app.locals.username = localSettings.username;
-    req.app.locals.games = localSettings.games;
-    req.app.locals.playStyle = localSettings.playStyle;
-    req.app.locals.loggedIn = localSettings.loggedIn;
-    req.app.locals.registered = localSettings.registered;
-    req.app.locals.passwordValidation = localSettings.passwordValidation;
-    req.app.locals.usernameValidation = localSettings.usernameValidation;
-
-    // If I can't spy on session, I can assert
-    assert(req.app.locals.registered === req.session.registered)
-    assert(req.app.locals.loggedIn === req.session.loggedIn)
-
+    req.session.loggedIn = req.app.locals.loggedIn;
+    req.session.registered = req.app.locals.registered;
     next();
   } catch (err) {
     next(err);
@@ -83,4 +40,4 @@ async function addPath(req, res, next) {
   }
 }
 
-export { syncData, defaultLocals, activeLocals, addPath };
+export { syncData, localSettings, addPath };

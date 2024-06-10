@@ -1,15 +1,25 @@
 import { expect, jest, test } from "@jest/globals";
 import request from "supertest";
 import { default as MakeApp } from "../app.mjs";
-import { activeLocals, defaultLocals } from "./locals.mjs";
 import session from "express-session";
+import { passwordValidation, usernameValidation } from "../db/validation.mjs";
+
+const defaultLocals = {
+  username: "",
+  playStyle: "",
+  games: [],
+  registered: false,
+  loggedIn: false,
+  passwordValidation: passwordValidation,
+  usernameValidation: usernameValidation,
+};
 
 describe("Sync Data - default settings", () => {
   const session = jest.fn((options) => (req, res, next) => {
     req.session = {};
     next();
   });
-  const find = jest.fn(() => ({}));
+  const find = jest.fn(() => null);
   const app = MakeApp(
     {
       model: "",
@@ -25,8 +35,8 @@ describe("Sync Data - default settings", () => {
     response = await request(app).get("/");
     locals = app.locals;
   });
-  test("If this throws, session isn't equal to locals", async () => {
-    expect(response.statusCode).toBe(200);
+  test("Session should be called", async () => {
+    expect(session.mock.calls.length).toBe(1);
   });
   test("App should have default locals", async () => {
     for (let [key, val] of Object.entries(defaultLocals)) {
@@ -43,7 +53,13 @@ describe("Sync Data - Already logged in", () => {
     req.session = { user: "54321", id: "12344566" };
     next();
   });
-  const user = { username: "ms", password: "1", _id: "54321", playStyle: "hockey" };
+  const user = {
+    username: "ms",
+    password: "1",
+    _id: "54321",
+    playStyle: "hockey",
+    games: ["hockeyGame", "hockeyGame2"],
+  };
   const find = jest.fn(() => user);
   const app = MakeApp(
     {
@@ -59,12 +75,20 @@ describe("Sync Data - Already logged in", () => {
     response = await request(app).get("/");
     locals = app.locals;
   });
-  test("If this throws, session isn't equal to locals", async () => {
-    expect(response.statusCode).toBeLessThan(400);
-  });
-  it("Should have active locals", async () => {
-    for (let [key, val] of Object.entries(activeLocals(user))) {
-      expect(locals[key]).toEqual(val);
+  test("Required user details are in locals", async () => {
+    for (let key of ["username", "playStyle", "games"]) {
+      expect(locals[key]).toEqual(user[key]);
     }
+  });
+  test("Secret user details are not in locals", async () => {
+    for (let key of ["_id", "password"]) {
+      expect(locals[key]).not.toEqual(user[key]);
+    }
+  });
+  test("All other locals are as expected", async () => {
+    expect(locals["loggedIn"]).toBe(true);
+    expect(locals["registered"]).toBe(true);
+    expect(locals["passwordValidation"]).toEqual(passwordValidation);
+    expect(locals["usernameValidation"]).toEqual(usernameValidation);
   });
 });

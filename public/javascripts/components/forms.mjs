@@ -1,5 +1,4 @@
 async function postData(form) {
-  console.log(form)
   return await fetch(form.action, {
     body: new FormData(form),
     method: "POST",

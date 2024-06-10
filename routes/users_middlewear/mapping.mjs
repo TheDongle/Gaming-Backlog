@@ -4,11 +4,10 @@ import { getDetails } from "./show.mjs";
 import { skipLogin, loginPage } from "./index.mjs";
 import { userLogin } from "./login.mjs";
 import { getForm } from "./_new.mjs";
-import { createGuest, createUser } from "./create.mjs";
+import { createGuest, createUser, toGames } from "./create.mjs";
 import { ifReqNotEmpty } from "../../resources/session/borderControl.mjs";
 import { RouteMap } from "../../resources/route-map.mjs";
 import { deleteUser } from "./destroy.mjs";
-import { setPageView, showGames } from "../games_middlewear/index.mjs";
 import { syncData } from "../../resources/locals.mjs";
 
 const usersMap = new RouteMap();
@@ -28,7 +27,7 @@ usersMap.insecureRoutes = {
 
 usersMap.addCommonPrefix(["Index", "ShowDetails"], [syncData]);
 usersMap.addCommonPrefix(["Login", "Register"], [ifReqNotEmpty]);
+usersMap.addCommonSuffix(["Register"], [syncData, toGames]);
 usersMap.addCommonSuffix(["Destroy"], [destroySession]);
-usersMap.addCommonSuffix(["Login", "Register"], [syncData, setPageView, showGames]);
 
 export const serve = (key) => usersMap.get(key);

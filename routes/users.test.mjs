@@ -5,7 +5,7 @@ import { default as MakeApp } from "../app.mjs";
 import { freshDB } from "../db/index.mjs";
 import { connectionFactory } from "../db/connection.mjs";
 
-const app = MakeApp(await freshDB(), true);
+const app = MakeApp();
 
 describe("Insecure Routes, body not required", () => {
   test(`GET / should return Successful`, async () => {
