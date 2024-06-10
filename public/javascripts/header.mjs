@@ -11,16 +11,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function logOut() {
-  const res = () => {
-    const options = {
+  const send = async () =>
+    await fetch("/", {
+      body: "",
       method: "DELETE",
       mode: "same-origin",
-    };
-    const resource = new Request("/");
-    return fetch(resource, options);
-  };
-  const url = await (await res()).text();
-  location.replace(url);
+    });
+  const response = await send();
+  if (response.status >= 400) {
+    alert(await response.text());
+  } else {
+    location.replace("/")
+  }
 }
 
 export { logOut };

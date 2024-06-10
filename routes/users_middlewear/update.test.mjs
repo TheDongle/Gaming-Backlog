@@ -3,7 +3,7 @@ import request from "supertest";
 import { default as MakeApp } from "../../app.mjs";
 
 const session = jest.fn((options) => (req, res, next) => {
-  req.session = { user: "1" };
+  req.session = { user: "1", loggedIn: true };
   next();
 });
 const startingUser = { username: "jerry", password: "kidneysStone1", _id: "1" };

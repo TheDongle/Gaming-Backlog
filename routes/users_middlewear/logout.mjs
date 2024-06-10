@@ -6,7 +6,7 @@ async function destroySession(req, res, next) {
       (req.sessionID,
       (err) => {
         if (err) throw createError(500, err.message);
-        res.send("/");
+        res.status(205).send("Logged out successfully")
       }),
     );
   } catch (err) {

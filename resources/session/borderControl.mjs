@@ -11,6 +11,19 @@ async function ifLoggedIn(req, res, next) {
   }
 }
 
+async function Home(req, res, next) {
+  try {
+    if (!req.session.loggedIn) {
+      res.set("location", "/")
+      res.redirect("/")
+    } else {
+      next();
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
 async function ifReqNotEmpty(req, res, next) {
   try {
     if (Object.keys(req.body).length === 0) {
@@ -22,4 +35,4 @@ async function ifReqNotEmpty(req, res, next) {
   }
 }
 
-export { ifLoggedIn, ifReqNotEmpty };
+export { Home, ifLoggedIn, ifReqNotEmpty };

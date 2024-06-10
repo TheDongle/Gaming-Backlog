@@ -1,10 +1,10 @@
-import { ifLoggedIn } from "./session/borderControl.mjs";
+import { Home } from "./session/borderControl.mjs";
 class RouteMap {
   #routes;
   constructor() {
     this.#routes = new Map();
   }
-  static ifLoggedIn = ifLoggedIn;
+  static ifLoggedIn = Home;
   /**
    * @param {object} routes
    */

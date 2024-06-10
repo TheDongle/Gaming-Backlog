@@ -13,7 +13,7 @@ test.each([
   { verb: "post", fn: _post, route: "/" },
   { verb: "delete", fn: _delete, route: "/:title" },
   { verb: "get", fn: _get, route: "/new" },
-])("$verb $route should block empty requests", async ({ verb, fn, route }) => {
+])("$verb $route should not accept empty requests", async ({ verb, fn, route }) => {
   const response = await fn(rootURL + route);
-  expect(response.statusCode).toBeGreaterThanOrEqual(400);
+  expect(response.statusCode).toBeGreaterThanOrEqual(300)
 });

@@ -34,24 +34,24 @@ describe("Insecure Routes, body required", () => {
 });
 
 describe("Secure Routes", () => {
-  test(`DELETE / should return Client Error`, async () => {
+  test(`DELETE / should be redirected`, async () => {
     const response = await request(app).delete("/");
-    expect(response.statusCode).toBeGreaterThanOrEqual(400)
+    expect(response.statusCode).toBeGreaterThanOrEqual(300)
     expect(response.statusCode).toBeLessThan(500)
   });
-  test(`GET /details should return Client Error`, async () => {
+  test(`GET /details should be redirected`, async () => {
     const response = await request(app).get("/details");
-    expect(response.statusCode).toBeGreaterThanOrEqual(400)
+    expect(response.statusCode).toBeGreaterThanOrEqual(300)
     expect(response.statusCode).toBeLessThan(500)
   });
-  test(`PATCH /details should return Client Error`, async () => {
+  test(`PATCH /details should be redirected`, async () => {
     const response = await request(app).patch("/details");
-    expect(response.statusCode).toBeGreaterThanOrEqual(400)
+    expect(response.statusCode).toBeGreaterThanOrEqual(300)
     expect(response.statusCode).toBeLessThan(500)
   });
-  test(`DELETE /details should return Client Error`, async () => {
+  test(`DELETE /details should be redirected`, async () => {
     const response = await request(app).delete("/details");
-    expect(response.statusCode).toBeGreaterThanOrEqual(400)
+    expect(response.statusCode).toBeGreaterThanOrEqual(300)
     expect(response.statusCode).toBeLessThan(500)
   });
 });

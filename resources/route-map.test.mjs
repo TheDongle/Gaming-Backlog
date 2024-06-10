@@ -1,5 +1,5 @@
 import { expect, jest, test } from "@jest/globals";
-import { ifLoggedIn } from "./session/borderControl.mjs";
+import { Home as ifLoggedIn } from "./session/borderControl.mjs";
 import { RouteMap } from "./route-map.mjs";
 
 describe("Route Map", () => {
