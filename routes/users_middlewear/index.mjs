@@ -6,7 +6,8 @@ class Index {
   async skipLogin(req, res, next) {
     try {
       if (req.session.registered) {
-        res.redirect("/games");
+        res.set("location", "/games")
+        res.redirect("/games")
       } else {
         next();
       }

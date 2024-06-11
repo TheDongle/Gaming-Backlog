@@ -21,7 +21,8 @@ class SessionDestroyer {
   }
   async congrats(req, res, next) {
     try {
-      res.status(205).send("Logged out successfully");
+      res.set("location", "/")
+      res.redirect("/")
     } catch (err) {
       next(err);
     }
