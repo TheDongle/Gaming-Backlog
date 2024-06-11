@@ -1,5 +1,3 @@
-import { strict as assert } from "node:assert/strict";
-
 class Index {
   constructor(syncFn) {
     this.syncFn = syncFn;
