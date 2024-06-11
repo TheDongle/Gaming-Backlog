@@ -1,26 +1,20 @@
 import createError from "http-errors";
 
-const setPageView = async function (req, res, next) {
-  try {
-    req.app.locals.gamesView = "page";
-    next();
-  } catch (err) {
-    next(err);
+class ShowOff {
+  constructor(verifyFn) {
+    this.verifyFn = verifyFn;
+    this.route = [this.verifyFn, this.showGames];
   }
-};
-
-const showGames = async function (req, res, next) {
-  try {
-    if (req.app.locals.gamesView === "page") {
+  async showGames(req, res, next) {
+    try {
       res.render("games");
-    } else {
-      res.render("/games/components/table", (_, html) => {
-        res.send(html);
-      });
+    } catch (err) {
+      next(err);
     }
-  } catch (err) {
-    next(err);
   }
-};
+}
 
-export { setPageView, showGames };
+export default function (verifyFn) {
+  const show = new ShowOff(verifyFn);
+  return show.route;
+}

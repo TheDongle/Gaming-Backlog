@@ -1,7 +1,5 @@
 import { expect, jest, test } from "@jest/globals";
 import request from "supertest";
-import { passwordValidation } from "../../db/validation.mjs";
-import { postData } from "../../public/javascripts/components/forms.mjs";
 import { default as MakeApp } from "../../app.mjs";
 
 const create = jest.fn();

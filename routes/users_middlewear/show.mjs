@@ -1,6 +1,4 @@
-import createError from "http-errors";
-import { strict as assert } from "node:assert";
-import { showGames } from "../games_middlewear/index.mjs";
+
 
 async function getDetails(req, res, next) {
   try {

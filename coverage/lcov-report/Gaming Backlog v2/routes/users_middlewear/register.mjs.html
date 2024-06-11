@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.42% </span>
+                <span class="strong">90.32% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>32/35</span>
+                <span class='fraction'>28/31</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.42% </span>
+                <span class="strong">90.32% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>32/35</span>
+                <span class='fraction'>28/31</span>
             </div>
         
             
@@ -136,6 +136,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -146,7 +155,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -160,7 +168,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -180,18 +187,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -200,66 +200,66 @@
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import createError from "http-errors";
-import asset from "node:assert/strict";
-import { assert } from "node:console";
-&nbsp;
-const throwIfEmpty = async (req, res, next) =&gt; {
-  try {
-    if (Object.keys(req.body).length === 0) {
-      throw createError(403, "Request Body is empty");
-    }
-    next();
-  } catch (err) {
-    next(err);
-  }
-};
-&nbsp;
-const createGuest = async (req, res, next) =&gt; {
-  try {
-    if (req.body.username === "guest") {
-      const db = req.app.get("db");
-      db.model = "Guest";
-      const guest = await db.create({});
-      req.session.user = guest._id;
-    }
-    next();
-  } catch (err) {
-    next(err);
-  }
-};
-&nbsp;
-const createUser = async (req, res, next) =&gt; {
-  try {
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (req.body.username !== "guest") {
-      const db = req.app.get("db");
-&nbsp;
-      db.model = "User";
-      let user = await db.create(req.body);
-&nbsp;
-      <span class="missing-if-branch" title="if path not taken" >I</span>if (req.session.loggedIn &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!req.session.registered)</span> {
-        const guestID = <span class="cstat-no" title="statement not covered" >req.session.user;</span>
-<span class="cstat-no" title="statement not covered" >        user = await db.combine(user._id, guestID);</span>
-      }
-      req.session.user = user._id;
-    }
-    next();
-  } catch (err) {
-    next(err);
-  }
-};
-&nbsp;
-const goToGames = async (req, res, next) =&gt; {
-  try {
-    res.redirect("./games");
-  } catch (err) {
-<span class="cstat-no" title="statement not covered" >    next(err);</span>
-  }
-};
 &nbsp;
 class Register {
   constructor(SyncFn) {
     this.SyncFn = SyncFn;
-    this.route = [throwIfEmpty, createGuest, createUser, this.SyncFn, goToGames];
+    this.route = [
+      this.throwIfEmpty,
+      this.createGuest,
+      this.createUser,
+      this.SyncFn,
+      this.redirectToGames,
+    ];
+  }
+  async throwIfEmpty(req, res, next) {
+    try {
+      if (Object.keys(req.body).length === 0) {
+        throw createError(403, "Request Body is empty");
+      }
+      next();
+    } catch (err) {
+      next(err);
+    }
+  }
+  async createGuest(req, res, next) {
+    try {
+      if (req.body.username === "guest") {
+        const db = req.app.get("db");
+        db.model = "Guest";
+        const guest = await db.create({});
+        req.session.user = guest._id;
+      }
+      next();
+    } catch (err) {
+      next(err);
+    }
+  }
+  async createUser(req, res, next) {
+    try {
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (req.body.username !== "guest") {
+        const db = req.app.get("db");
+&nbsp;
+        db.model = "User";
+        let user = await db.create(req.body);
+&nbsp;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (req.session.loggedIn &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!req.session.registered)</span> {
+          const guestID = <span class="cstat-no" title="statement not covered" >req.session.user;</span>
+<span class="cstat-no" title="statement not covered" >          user = await db.combine(user._id, guestID);</span>
+        }
+        req.session.user = user._id;
+      }
+      next();
+    } catch (err) {
+      next(err);
+    }
+  }
+  async redirectToGames(req, res, next) {
+    try {
+      res.redirect("./games");
+    } catch (err) {
+<span class="cstat-no" title="statement not covered" >      next(err);</span>
+    }
   }
 }
 &nbsp;
@@ -274,7 +274,7 @@ export default function (SyncFn) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-11T00:40:28.778Z
+                at 2024-06-11T08:33:39.780Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
