@@ -1,18 +1,20 @@
-const getForm = async function (req, res, next) {
-  res.render(
-    "users/register",
-    {
-      isGuest: req.session.isGuest,
-      id: req.session.user,
-    },
-    async (err, html) => {
-      if (err) {
-        next(err);
-      } else {
-        res.send(html);
-      }
-    },
-  );
-};
+async function _new(req, res, next) {
+  try {
+    res.render("users/register", async (_, html) => {
+      res.send(html);
+    });
+  } catch (err) {
+    next(err);
+  }
+}
 
-export { getForm };
+class Newbie {
+  constructor() {
+    this.route = [_new];
+  }
+}
+
+export default function () {
+  const _new = new Newbie();
+  return _new.route;
+}

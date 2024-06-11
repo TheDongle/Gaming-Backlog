@@ -1,6 +1,19 @@
 import createError from "http-errors";
+import asset from "node:assert/strict";
+import { assert } from "node:console";
 
-async function createGuest(req, res, next) {
+const throwIfEmpty = async (req, res, next) => {
+  try {
+    if (Object.keys(req.body).length === 0) {
+      throw createError(403, "Request Body is empty");
+    }
+    next();
+  } catch (err) {
+    next(err);
+  }
+};
+
+const createGuest = async (req, res, next) => {
   try {
     if (req.body.username === "guest") {
       const db = req.app.get("db");
@@ -12,9 +25,9 @@ async function createGuest(req, res, next) {
   } catch (err) {
     next(err);
   }
-}
+};
 
-async function createUser(req, res, next) {
+const createUser = async (req, res, next) => {
   try {
     if (req.body.username !== "guest") {
       const db = req.app.get("db");
@@ -32,14 +45,24 @@ async function createUser(req, res, next) {
   } catch (err) {
     next(err);
   }
-}
+};
 
-async function toGames(req, res, next) {
+const goToGames = async (req, res, next) => {
   try {
-    res.redirect("./games")
+    res.redirect("./games");
   } catch (err) {
     next(err);
   }
+};
+
+class Register {
+  constructor(SyncFn) {
+    this.SyncFn = SyncFn;
+    this.route = [throwIfEmpty, createGuest, createUser, this.SyncFn, goToGames];
+  }
 }
 
-export { createGuest, createUser, toGames };
+export default function (SyncFn) {
+  const register = new Register(SyncFn);
+  return register.route;
+}

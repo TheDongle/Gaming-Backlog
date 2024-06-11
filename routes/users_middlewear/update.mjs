@@ -1,8 +1,9 @@
 import createError from "http-errors";
 import { passwordValidation } from "../../db/validation.mjs";
 import bcrypt, { hashSync } from "bcrypt";
+import { strict as assert } from "node:assert";
 
-async function update(req, res, next) {
+const update = async (req, res, next) => {
   try {
     // Update db
     const db = req.app.get("db");
@@ -20,7 +21,16 @@ async function update(req, res, next) {
   } catch (err) {
     next(err);
   }
+};
+
+class Update {
+  constructor(verifyFn) {
+    this.verifyFn = verifyFn;
+    this.route = [verifyFn, update];
+  }
 }
 
-// Express Middlewear
-export { update };
+export default function (verifyFn) {
+  const update = new Update(verifyFn);
+  return update.route;
+}
