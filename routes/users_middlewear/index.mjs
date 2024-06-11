@@ -27,7 +27,7 @@ class Index {
   }
 }
 
-export default function (syncFn) {
-  const index = new Index(syncFn);
+export default function (syncData) {
+  const index = new Index(syncData);
   return index.route;
 }

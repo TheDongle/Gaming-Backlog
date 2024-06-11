@@ -3,10 +3,10 @@ import request from "supertest";
 import { default as MakeApp } from "../../app.mjs";
 
 const session = jest.fn((options) => (req, res, next) => {
-  req.session = { user: "12345" };
+  req.session = { user: "12345", loggedIn: true, registered: true };
   next();
 });
-const user = { username: "me", password: "drowssap", _id: "12345", playStyle: "casual" };
+const user = { username: "me", password: "drowssap", _id: "12345", playStyle: "casual", games: [] };
 const find = jest.fn(() => user);
 const app = MakeApp(
   {
@@ -22,10 +22,11 @@ describe("Show User Details", () => {
   beforeAll(async () => {
     response = await request(app).get("/details");
   });
-  it("should have user details in locals", async () => {
+  it("find db data should be called", async () => {
     expect(find.mock.calls.length).toBe(1);
   });
   it("should be OK", async () => {
+    console.log(response.text)
     expect(response.statusCode).toBe(200);
   });
   it("should have appropriate user details in locals", async () => {

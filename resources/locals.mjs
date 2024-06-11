@@ -25,6 +25,7 @@ async function syncData(req, res, next) {
     }
     req.session.loggedIn = req.app.locals.loggedIn;
     req.session.registered = req.app.locals.registered;
+
     next();
   } catch (err) {
     next(err);
@@ -40,4 +41,15 @@ async function addPath(req, res, next) {
   }
 }
 
-export { syncData, localSettings, addPath };
+async function CheckSync(req, res, next) {
+  try {
+    if (!("games" in req.app.locals)) {
+      syncData(req, res, next);
+    }
+    next();
+  } catch (err) {
+    next(err);
+  }
+}
+
+export { syncData, localSettings, addPath, CheckSync };
