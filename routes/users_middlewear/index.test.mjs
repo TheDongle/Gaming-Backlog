@@ -19,7 +19,7 @@ describe("Index - Not logged in", () => {
   };
   let app, response;
   beforeAll(async () => {
-    app = MakeApp(db, {}, session);
+    app = MakeApp({ db, cookieStore: {}, sessionObj: session });
     jest.replaceProperty(app, "locals", locals);
     response = await request(app).get("/");
   });
@@ -64,7 +64,7 @@ describe("Index - logged in", () => {
   };
   let app, response;
   beforeAll(async () => {
-    app = MakeApp(db, {}, session);
+    app = MakeApp({ db, cookieStore: {}, sessionObj: session });
     jest.replaceProperty(app, "locals", locals);
     response = await request(app).get("/");
   });

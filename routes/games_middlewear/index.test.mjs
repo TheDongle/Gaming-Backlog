@@ -31,7 +31,11 @@ describe("Games Index - logged in", () => {
   };
   let app, response;
   beforeAll(async () => {
-    app = MakeApp(db, {}, session);
+    app = MakeApp({
+      db,
+      cookieStore: {},
+      sessionObj: session,
+    });
     jest.replaceProperty(app, "locals", locals);
     response = await request(app).get("/games/");
   });
@@ -79,12 +83,16 @@ describe("Games Index - not logged in", () => {
   };
   let app, response;
   beforeAll(async () => {
-    app = MakeApp(db, {}, session);
+    app = MakeApp({
+      db,
+      cookieStore: {},
+      sessionObj: session,
+    });
     jest.replaceProperty(app, "locals", locals);
     response = await request(app).get("/games/");
   });
   it("Should redirect to login page", async () => {
     expect(response.statusCode).toBe(302);
-    expect(response.headers.location).toEqual("/")
+    expect(response.headers.location).toEqual("/");
   });
 });

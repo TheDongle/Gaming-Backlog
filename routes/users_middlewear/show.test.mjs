@@ -8,14 +8,14 @@ const session = jest.fn((options) => (req, res, next) => {
 });
 const user = { username: "me", password: "drowssap", _id: "12345", playStyle: "casual", games: [] };
 const find = jest.fn(() => user);
-const app = MakeApp(
-  {
+const app = MakeApp({
+  db: {
     model: "",
     find,
   },
-  {},
-  session,
-);
+  cookieStore: {},
+  sessionObj: session,
+});
 
 describe("Show User Details", () => {
   let response;
@@ -26,7 +26,7 @@ describe("Show User Details", () => {
     expect(find.mock.calls.length).toBe(1);
   });
   it("should be OK", async () => {
-    console.log(response.text)
+    console.log(response.text);
     expect(response.statusCode).toBe(200);
   });
   it("should have appropriate user details in locals", async () => {

@@ -7,14 +7,14 @@ import * as sass from "sass";
 import * as fs from "node:fs";
 import multer from "multer";
 import { router as usersRouter } from "./routes/users.mjs";
-import { router as gamesRouter } from "./routes/games.mjs";
+import { default as makeGamesRouter } from "./routes/games.mjs";
 import createError from "http-errors";
 import { settings } from "./resources/session/sessionSettings.mjs";
 import MongoStore from "connect-mongo";
 import { addPath } from "./resources/locals.mjs";
 import { freshDB } from "./db/index.mjs";
 import session from "express-session";
-const defaultDB = await freshDB();
+const myDB = await freshDB();
 
 /**
  *
@@ -23,8 +23,13 @@ const defaultDB = await freshDB();
  * @param {object} session
  * @returns {object} app
  */
-export default function (db = defaultDB, cookieStore = MongoStore, _session = session) {
-  const app = express();
+export default function ({
+  app = express(),
+  db = myDB,
+  cookieStore = MongoStore,
+  sessionObj = session,
+  gamesRouter = makeGamesRouter(),
+} = {}) {
   app.use(express.urlencoded({ extended: true }));
   const _dirname = path.dirname("");
   app.use(express.static(path.join(_dirname, "public")));
@@ -38,7 +43,7 @@ export default function (db = defaultDB, cookieStore = MongoStore, _session = se
     if (Object.entries(cookieStore).length > 0) {
       settings.store = cookieStore.create(db.conn);
     }
-    app.use(_session(settings));
+    app.use(sessionObj(settings));
   }
   // Mongoose, usually
   app.set("db", db);

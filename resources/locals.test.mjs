@@ -20,14 +20,14 @@ describe("Sync Data - default settings", () => {
     next();
   });
   const find = jest.fn(() => null);
-  const app = MakeApp(
-    {
+  const app = MakeApp({
+    db: {
       model: "",
       find,
     },
-    {},
-    session,
-  );
+    cookieStore: {},
+    sessionObj: session,
+  });
   let response;
   let locals;
 
@@ -61,14 +61,14 @@ describe("Sync Data - Already logged in", () => {
     games: ["hockeyGame", "hockeyGame2"],
   };
   const find = jest.fn(() => user);
-  const app = MakeApp(
-    {
+  const app = MakeApp({
+    db: {
       model: "",
       find,
     },
-    {},
-    session,
-  );
+    cookieStore: {},
+    sessionObj: session,
+  });
   let response;
   let locals;
   beforeAll(async () => {

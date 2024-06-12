@@ -5,14 +5,14 @@ const session = jest.fn((options) => (req, res, next) => {
   next();
 });
 const find = jest.fn();
-const app = MakeApp(
-  {
+const app = MakeApp({
+  db: {
     model: "",
     find,
   },
-  {},
-  session,
-);
+  cookieStore: {},
+  sessionObj: session,
+});
 
 test("App should be Initialised", async () => {
   expect(app).toBeDefined();

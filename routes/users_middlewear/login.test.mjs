@@ -12,7 +12,7 @@ describe("Normal Login", () => {
       find: jest.fn(() => user),
       verify: jest.fn(() => user),
     };
-    app = MakeApp(db, {});
+    app = MakeApp({db, cookieStore: {}});
     response = await request(app)
       .post("/")
       .field("username", user.username)
@@ -36,7 +36,7 @@ describe("Bad Login", () => {
         throw createHttpError(403, "Invalid");
       }),
     };
-    app = MakeApp(db, {});
+    app = MakeApp({db, cookieStore: {}});
     response = await request(app)
       .post("/")
       .field("username", user.username)

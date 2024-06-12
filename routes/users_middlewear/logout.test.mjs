@@ -24,7 +24,7 @@ describe("Logout", () => {
   };
   let app, response;
   beforeAll(async () => {
-    app = MakeApp(db, {}, session);
+    app = MakeApp({ db, cookieStore: {}, sessionObj: session });
     jest.replaceProperty(app, "locals", locals);
     response = await request(app).delete("/");
   });
@@ -32,9 +32,9 @@ describe("Logout", () => {
     expect(destroy.mock.calls.length).toBe(1);
   });
   it("should be Clear locals", () => {
-    expect(locals.username).toEqual("")
-    expect(locals.games).toEqual([])
-    expect(locals.loggedIn).toBe(false)
+    expect(locals.username).toEqual("");
+    expect(locals.games).toEqual([]);
+    expect(locals.loggedIn).toBe(false);
   });
   it("should redirect to home page", () => {
     expect(response.statusCode).toBe(302);

@@ -4,14 +4,14 @@ import { default as MakeApp } from "../../app.mjs";
 
 const create = jest.fn();
 const find = jest.fn();
-const app = MakeApp(
-  {
+const app = MakeApp({
+  db: {
     model: "",
     create,
     find,
   },
-  {},
-);
+  cookieStore: {},
+});
 
 describe("Create User", () => {
   beforeEach(() => {

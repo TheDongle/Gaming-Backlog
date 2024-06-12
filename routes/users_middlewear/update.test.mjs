@@ -9,15 +9,15 @@ const session = jest.fn((options) => (req, res, next) => {
 const startingUser = { username: "jerry", password: "kidneysStone1", _id: "1" };
 const update = jest.fn((_, params) => Object.assign(startingUser, params));
 const find = jest.fn(() => startingUser);
-const app = MakeApp(
-  {
+const app = MakeApp({
+  db: {
     model: "",
     find,
     update,
   },
-  {},
-  session,
-);
+  cookiesStore: {},
+  sessionObj: session,
+});
 
 describe("Update User", () => {
   test("Details should be updated", async () => {
