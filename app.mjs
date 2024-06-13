@@ -3,18 +3,21 @@
 import express from "express";
 import logger from "morgan";
 import path from "node:path";
-import * as sass from "sass";
 import * as fs from "node:fs";
+import * as sass from "sass";
 import multer from "multer";
+import { addPath } from "./resources/locals.mjs";
 import { router as usersRouter } from "./routes/users.mjs";
 import { default as makeGamesRouter } from "./routes/games.mjs";
 import createError from "http-errors";
+import session from "express-session";
 import { settings } from "./resources/session/sessionSettings.mjs";
 import MongoStore from "connect-mongo";
-import { addPath } from "./resources/locals.mjs";
 import { freshDB } from "./db/index.mjs";
-import session from "express-session";
 const myDB = await freshDB();
+
+
+
 
 /**
  *
