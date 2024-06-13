@@ -14,22 +14,24 @@ class Searcher {
         throw createError(400, "Query must include the game's title");
       }
       const { title, quantity } = req.headers;
-      let { titles, links } = await Searcher.searchFn(title, parseInt(quantity));
+      const { titles, links } = await Searcher.searchFn(title, parseInt(quantity));
       if (titles.length === 0 || links.length === 0) {
         throw createError(404, `No search results found for '${title}'`);
       }
-      res.locals.titles = titles;
-      req.session.links = links;
-      req.session.titles = titles;
-      res.render("games/components/results", async (_, html) => {
-        res.send(html);
-      });
+      const db = req.app.get("db");
+      const savedResults = await db.storeResults(titles, links);
+      res.render(
+        "games/components/results",
+        { titles, links, resultsID: savedResults._id },
+        async (_, html) => {
+          res.send(html);
+        },
+      );
     } catch (err) {
       next(err);
     }
   }
 }
-
 
 export default function (verifyFn, searchFn) {
   const searcher = new Searcher(verifyFn, searchFn);

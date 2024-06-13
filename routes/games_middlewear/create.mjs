@@ -13,12 +13,15 @@ class Creator {
         throw createError(400, "Request Body is empty");
       }
       // Select game from search results
-      const { index } = req.body;
-      const [link, gameTitle] = [req.session.links[index], req.session.titles[index]];
+      const { resultsID, index } = req.body;
+      const db = req.app.get("db");
+      const { link, title: gameTitle } = await db.findResults(resultsID, index);
+      if (link === undefined || gameTitle === undefined) {
+        throw createError(410, "Search results are stored for a maximum of 30 minutes.");
+      }
       // Scrape additional data
       const { title, standardLength, completionist } = await this.scrapeHTML(link, gameTitle);
       // Update DB
-      const db = req.app.get("db");
       const user = await db.addGame(req.session.user, { title, standardLength, completionist });
       // Update Views
       req.app.locals.games = user.games;

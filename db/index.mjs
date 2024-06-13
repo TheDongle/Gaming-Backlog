@@ -1,7 +1,13 @@
 import createHttpError from "http-errors";
 import { connectionFactory } from "./connection.mjs";
 import assert from "node:assert";
-import { reconcileGames, createGame, deleteGame } from "./methods/game_methods.mjs";
+import {
+  reconcileGames,
+  createGame,
+  deleteGame,
+  saveResults,
+  getResults,
+} from "./methods/game_methods.mjs";
 import {
   createEntry,
   updateEntry,
@@ -64,6 +70,12 @@ class myDB {
   }
   async removeGame(id, gameTitle) {
     return await deleteGame(this.conn.models[this.model], id, gameTitle);
+  }
+  async storeResults(titles, links) {
+    return await saveResults(this.conn.models["SearchResults"], titles, links);
+  }
+  async findResults(id, index) {
+    return await getResults(this.conn.models["SearchResults"], id, index);
   }
   async disconnect() {
     return await this.conn.close();

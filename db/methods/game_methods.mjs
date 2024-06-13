@@ -27,4 +27,15 @@ async function deleteGame(model, id, gameTitle) {
   return user;
 }
 
-export { reconcileGames, createGame, deleteGame };
+async function saveResults(model, titles, links) {
+  return await model.create({ titles, links });
+}
+
+async function getResults(model, id, index) {
+  const { titles, links } = await model.findById(id);
+  const selected = { title: titles[index], link: links[index] };
+  await model.deleteOne({ _id: id });
+  return selected;
+}
+
+export { reconcileGames, createGame, deleteGame, saveResults, getResults };

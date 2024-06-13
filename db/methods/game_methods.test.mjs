@@ -1,6 +1,12 @@
 import { expect, jest, test } from "@jest/globals";
 import { connectionFactory } from "../connection.mjs";
-import { reconcileGames, createGame, deleteGame } from "./game_methods.mjs";
+import {
+  reconcileGames,
+  createGame,
+  deleteGame,
+  saveResults,
+  getResults,
+} from "./game_methods.mjs";
 import mongoose from "mongoose";
 
 describe("Create Game", () => {
@@ -147,5 +153,45 @@ describe("Reconcile Games", () => {
     for (let i = 0; i < someMoreGames.length; i++) {
       expect(returned.games.find((game) => game.title === someMoreGames[i].title)).toBeDefined();
     }
+  });
+});
+
+describe("new game", () => {
+  let conn, userModel, resultsModel, user, results, foundResults;
+  const params = {
+    username: "xxxxxxxxxxxxxx5",
+    password: "veryveryvalid546290",
+    playStyle: "casual",
+  };
+  const exampleResults = { games: ["g1", "g2", "g3"], links: ["l1", "l2", "l3"] };
+  const index = 2;
+  beforeAll(async () => {
+    conn = await connectionFactory();
+    userModel = conn.models.TestUser;
+    resultsModel = conn.models.SearchResults;
+    user = await userModel.create(params);
+    results = await saveResults(resultsModel, exampleResults.games, exampleResults.links);
+    foundResults = await getResults(resultsModel, results._id, index);
+  });
+  afterAll(async () => {
+    if (user && (await userModel.exists({ _id: user._id }))) {
+      await userModel.deleteOne({ _id: user._id });
+    }
+    if (results && (await resultsModel.exists({ _id: results._id }))) {
+      await resultsModel.deleteOne({ _id: results._id });
+    }
+    await conn.close();
+  });
+  test("results are saved to DB", () => {
+    expect(results).toBeDefined();
+    expect(results.titles).toEqual(exampleResults.games);
+    expect(results.links).toEqual(exampleResults.links);
+  });
+  test("Saved results are in original order", () => {
+    expect(foundResults.title).toEqual(exampleResults.games[index]);
+    expect(foundResults.link).toEqual(exampleResults.links[index]);
+  });
+  test("results are deleted from DB after retrieval", async () => {
+    expect(await resultsModel.findById(results._id)).toBe(null);
   });
 });

@@ -19,6 +19,7 @@ const session = jest.fn((options) => (req, res, next) => {
 });
 const db = {
   model: "w",
+  storeResults: jest.fn((titles, links) => ({ titles, links, _id: 1 })),
   find: jest.fn(() => user),
   verify: jest.fn(() => user),
 };
@@ -45,7 +46,7 @@ describe("New game - no headers", () => {
 });
 
 describe("New game - Headers", () => {
-  let app, response, mockEmpty; 
+  let app, response, mockEmpty;
   beforeAll(async () => {
     mockEmpty = jest.fn(async () => ({ titles: [], links: [] }));
     app = MakeApp({
@@ -83,6 +84,6 @@ describe("New game - Headers", () => {
     expect(response.statusCode).toBe(200);
   });
   it("Should include result in the rendered page", () => {
-    expect(response.text).toMatch("Jeff Game")
+    expect(response.text).toMatch("Jeff Game");
   });
 });

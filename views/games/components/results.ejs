@@ -1,6 +1,6 @@
 <form data-cansubmit="true" enctype="multipart/form-data" action="/games/" method="POST" id="results-form">
   <label for="search-results">Confirm the game you were thinking of:</label>
-
+  <input type="hidden" id="results-id" name="resultsID" value="<%=resultsID%>" />
   <select required autofocus="true" class="select block" id="results-label" name="index">
     <option value="" disabled selected>--Please Select an Option--</option>
     <% for( let i=0; i < titles.length; i++) { %>
