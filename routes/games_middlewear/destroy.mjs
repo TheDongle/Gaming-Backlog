@@ -23,9 +23,7 @@ class Destroyer {
   }
   async updateTable(req, res, next) {
     try {
-      // send partial html to be inserted at front-end
       res.render("games/components/table", (_, html) => {
-        console.log(html)
         res.send(html);
       });
     } catch (err) {
