@@ -66,6 +66,4 @@ class SearchPrototype {
   }
 }
 
-const searchEngine = new SearchPrototype();
-
-export { searchEngine };
+export { SearchPrototype };

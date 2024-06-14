@@ -2,25 +2,28 @@ import { getGameData } from "../../resources/game_data_scraping/scraper.mjs";
 import createError from "http-errors";
 
 class Creator {
+  static verifyFn;
+  static scrapeHTML;
   constructor(verifyFn, scrapeFn) {
-    this.verifyFn = verifyFn;
-    this.scrapeHTML = scrapeFn;
-    this.route = [this.verifyFn, this.createGame, this.updateTable];
+    Creator.verifyFn = verifyFn;
+    Creator.scrapeHTML = scrapeFn;
+    this.route = [Creator.verifyFn, Creator.createGame, Creator.updateTable];
   }
-  async createGame(req, res, next) {
+  static async createGame(req, res, next) {
     try {
-      if (Object.keys(req.body).length === 0) {
+      if (Object.keys(req.body).length < 2) {
         throw createError(400, "Request Body is empty");
       }
       // Select game from search results
       const { resultsID, index } = req.body;
       const db = req.app.get("db");
-      const { link, title: gameTitle } = await db.findResults(resultsID, index);
-      if (link === undefined || gameTitle === undefined) {
+      const results = await db.findResults(resultsID, index);
+      if (results === null) {
         throw createError(410, "Search results are stored for a maximum of 30 minutes.");
       }
       // Scrape additional data
-      const { title, standardLength, completionist } = await this.scrapeHTML(link, gameTitle);
+      const { link, title: gameTitle } = results;
+      const { title, standardLength, completionist } = await Creator.scrapeHTML(link, gameTitle);
       // Update DB
       const user = await db.addGame(req.session.user, { title, standardLength, completionist });
       // Update Views
@@ -30,9 +33,9 @@ class Creator {
       next(err);
     }
   }
-  async updateTable(req, res, next) {
+  static async updateTable(req, res, next) {
     try {
-      res.render("/games/components/table", (_, html) => {
+      res.render("games/components/table", (_, html) => {
         res.send(html);
       });
     } catch (err) {

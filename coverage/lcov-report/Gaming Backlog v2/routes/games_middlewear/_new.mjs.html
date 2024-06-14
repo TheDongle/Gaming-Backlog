@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.11% </span>
+                <span class="strong">70.58% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>16/17</span>
+                <span class='fraction'>12/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.33% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.11% </span>
+                <span class="strong">70.58% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>16/17</span>
+                <span class='fraction'>12/17</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -108,47 +108,47 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import createError from "http-errors";
 &nbsp;
 class Searcher {
-  static searchFn;
+  static searchClass;
   static verifyFn;
-  constructor(verifyFn, searchFn) {
+  constructor(verifyFn, searchClass) {
     Searcher.verifyFn = verifyFn;
-    Searcher.searchFn = searchFn;
+    Searcher.searchClass = new searchClass();
     this.route = [Searcher.verifyFn, Searcher.find];
   }
   static async find(req, res, next) {
@@ -157,17 +157,17 @@ class Searcher {
 <span class="cstat-no" title="statement not covered" >        throw createError(400, "Query must include the game's title");</span>
       }
       const { title, quantity } = req.headers;
-      const { titles, links } = await Searcher.searchFn(title, parseInt(quantity));
-      if (titles.length === 0 || links.length === 0) {
+      const { titles, links } = await Searcher.searchClass.search(title, parseInt(quantity));
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (titles.length === 0 || <span class="branch-1 cbranch-no" title="branch not covered" >links.length === 0)</span> {
         throw createError(404, `No search results found for '${title}'`);
       }
-      const db = req.app.get("db");
-      const savedResults = await db.storeResults(titles, links);
-      res.render(
+      const db = <span class="cstat-no" title="statement not covered" >req.app.get("db");</span>
+      const savedResults = <span class="cstat-no" title="statement not covered" >await db.storeResults(titles, links);</span>
+<span class="cstat-no" title="statement not covered" >      res.render(</span>
         "games/components/results",
         { titles, links, resultsID: savedResults._id },
-        async (_, html) =&gt; {
-          res.send(html);
+<span class="fstat-no" title="function not covered" >        as</span>ync (_, html) =&gt; {
+<span class="cstat-no" title="statement not covered" >          res.send(html);</span>
         },
       );
     } catch (err) {
@@ -176,8 +176,8 @@ class Searcher {
   }
 }
 &nbsp;
-export default function (verifyFn, searchFn) {
-  const searcher = new Searcher(verifyFn, searchFn);
+export default function (verifyFn, searchClass) {
+  const searcher = new Searcher(verifyFn, searchClass);
   return searcher.route;
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -187,7 +187,7 @@ export default function (verifyFn, searchFn) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-13T11:18:54.090Z
+                at 2024-06-14T08:12:33.009Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

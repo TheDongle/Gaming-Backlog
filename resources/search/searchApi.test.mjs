@@ -1,4 +1,5 @@
-import { searchEngine } from "./searchApi.mjs";
+import { SearchPrototype } from "./searchApi.mjs";
+const searchEngine = new SearchPrototype()
 import { json } from "express";
 import { expect, jest, test } from "@jest/globals";
 import { default as spellingResponse } from "./responseExamples/spellingIncluded.json";

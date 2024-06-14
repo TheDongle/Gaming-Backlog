@@ -1,11 +1,11 @@
 import createError from "http-errors";
 
 class Searcher {
-  static searchFn;
+  static searchClass;
   static verifyFn;
-  constructor(verifyFn, searchFn) {
+  constructor(verifyFn, searchClass) {
     Searcher.verifyFn = verifyFn;
-    Searcher.searchFn = searchFn;
+    Searcher.searchClass = new searchClass();
     this.route = [Searcher.verifyFn, Searcher.find];
   }
   static async find(req, res, next) {
@@ -14,7 +14,7 @@ class Searcher {
         throw createError(400, "Query must include the game's title");
       }
       const { title, quantity } = req.headers;
-      const { titles, links } = await Searcher.searchFn(title, parseInt(quantity));
+      const { titles, links } = await Searcher.searchClass.search(title, parseInt(quantity));
       if (titles.length === 0 || links.length === 0) {
         throw createError(404, `No search results found for '${title}'`);
       }
@@ -33,7 +33,7 @@ class Searcher {
   }
 }
 
-export default function (verifyFn, searchFn) {
-  const searcher = new Searcher(verifyFn, searchFn);
+export default function (verifyFn, searchClass) {
+  const searcher = new Searcher(verifyFn, searchClass);
   return searcher.route;
 }

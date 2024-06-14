@@ -22,7 +22,9 @@ class Table {
     if (response.status >= 400) {
       alert(await response.text());
     } else {
-      await this.fill(await response.text());
+      const text = await response.text()
+      console.log(text)
+      await this.fill(text);
       this.updateFunction("deleted");
     }
   }

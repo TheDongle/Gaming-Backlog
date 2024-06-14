@@ -26,13 +26,13 @@ const db = {
 
 describe("New game - no headers", () => {
   let app, response;
-  const mockSearchy = jest.fn();
+  const mock = jest.fn().mockImplementation(() => ({ search: jest.fn() }));
   beforeAll(async () => {
     app = MakeApp({
       db,
       cookieStore: {},
       sessionObj: session,
-      gamesRouter: MakeRouter({ searchFn: mockSearchy }),
+      gamesRouter: MakeRouter({ searchClass: mock }),
     });
     jest.replaceProperty(app, "locals", locals);
     response = await request(app).get("/games/new");
@@ -45,37 +45,46 @@ describe("New game - no headers", () => {
   });
 });
 
-describe("New game - Headers", () => {
-  let app, response, mockEmpty;
+
+describe("New game - Empty Search", () => {
+  let app, response;
+  const empty = jest.fn(() => ({ titles: [], links: [] }));
+  const mockClass = jest.fn().mockImplementation(() => {
+    return { search: empty };
+  });
   beforeAll(async () => {
-    mockEmpty = jest.fn(async () => ({ titles: [], links: [] }));
     app = MakeApp({
       db,
       cookieStore: {},
       sessionObj: session,
-      gamesRouter: MakeRouter({ searchFn: mockEmpty }),
+      gamesRouter: MakeRouter({ searchClass: mockClass }),
     });
     jest.replaceProperty(app, "locals", locals);
-    response = await request(app).get("/games/new").set("title", "Jeff");
+    response = await request(app).get("/games/new").set("title", "Jeff").set("quantity", "6");
   });
-  it("Should call Search", () => {
-    expect(mockEmpty.mock.calls.length).toBe(1);
-    expect(mockEmpty.mock.calls[0][0]).toEqual("Jeff");
+  it("Should call search with expected arguments", () => {
+    expect(empty.mock.calls.length).toBe(1);
+    expect(empty.mock.calls[0][0]).toEqual("Jeff");
+    expect(empty.mock.calls[0][1]).toBe(6);
   });
-  it("Should respond 404 when search comes-up empty", () => {
+  it("should give 404 for an empty search", () => {
     expect(response.statusCode).toBe(404);
   });
 });
 
+
 describe("New game - Headers", () => {
-  const mockSearch = jest.fn(() => ({ titles: ["Jeff Game"], links: ["jeffs_game.com"] }));
   let app, response;
+  const mockSearch = jest.fn(() => ({ titles: ["Jeff Game"], links: ["jeffs_game.com"] }));
+  const mockSearchClass = jest.fn().mockImplementation(() => {
+    return { search: mockSearch };
+  });
   beforeAll(async () => {
     app = MakeApp({
       db,
       cookieStore: {},
       sessionObj: session,
-      gamesRouter: MakeRouter({ searchFn: mockSearch }),
+      gamesRouter: MakeRouter({ searchClass: mockSearchClass }),
     });
     jest.replaceProperty(app, "locals", locals);
     response = await request(app).get("/games/new").set("title", "Jeff");

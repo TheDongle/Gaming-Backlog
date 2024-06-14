@@ -1,7 +1,7 @@
 import express from "express";
 import { syncData } from "../resources/locals.mjs";
 import { redirectToHome, throwUnauthenticated } from "../resources/session/borderControl.mjs";
-import { searchEngine } from "../resources/search/searchApi.mjs";
+import { SearchPrototype } from "../resources/search/searchApi.mjs";
 import { getGameData } from "../resources/game_data_scraping/scraper.mjs";
 import { default as create } from "./games_middlewear/create.mjs";
 import { default as index } from "./games_middlewear/index.mjs";
@@ -13,7 +13,7 @@ export default function ({
   verifyFn = throwUnauthenticated,
   syncFn = syncData,
   redirectFn = redirectToHome,
-  searchFn = searchEngine.search,
+  searchClass = SearchPrototype,
   scrapeFn = getGameData,
 } = {}) {
 
@@ -31,7 +31,7 @@ export default function ({
 
   router.get("/", index(redirectFn, syncFn));
   router.post("/", create(verifyFn, scrapeFn));
-  router.get("/new", search(verifyFn, searchFn));
+  router.get("/new", search(verifyFn, searchClass));
   router.delete("/:title", destroy(verifyFn));
 
   return router;
