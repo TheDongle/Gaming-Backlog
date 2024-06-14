@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1718360258006" clover="3.2.0">
-  <project timestamp="1718360258006" name="All files">
-    <metrics statements="50" coveredstatements="46" conditionals="6" coveredconditionals="4" methods="12" coveredmethods="10" elements="68" coveredelements="60" complexity="0" loc="50" ncloc="50" packages="3" files="9" classes="9"/>
+<coverage generated="1718370376006" clover="3.2.0">
+  <project timestamp="1718370376007" name="All files">
+    <metrics statements="52" coveredstatements="48" conditionals="6" coveredconditionals="4" methods="12" coveredmethods="10" elements="70" coveredelements="62" complexity="0" loc="52" ncloc="52" packages="3" files="10" classes="10"/>
     <package name="db">
-      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="connection.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\db\connection.mjs">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="10" count="5" type="stmt"/>
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="11" count="5" type="stmt"/>
         <line num="12" count="5" type="stmt"/>
         <line num="13" count="5" type="stmt"/>
         <line num="14" count="5" type="stmt"/>
         <line num="15" count="5" type="stmt"/>
         <line num="16" count="5" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
       </file>
       <file name="validation.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\db\validation.mjs">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -26,7 +27,7 @@
       <file name="user_methods.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\db\methods\user_methods.mjs">
         <metrics statements="15" coveredstatements="15" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6"/>
         <line num="7" count="2" type="stmt"/>
-        <line num="8" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="7" type="cond" truecount="2" falsecount="0"/>
         <line num="9" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="16" count="6" type="stmt"/>
@@ -43,7 +44,7 @@
       </file>
     </package>
     <package name="db.schemas">
-      <metrics statements="25" coveredstatements="21" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="3"/>
+      <metrics statements="26" coveredstatements="22" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="3"/>
       <file name="baseUser.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\db\schemas\baseUser.mjs">
         <metrics statements="8" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
         <line num="6" count="1" type="stmt"/>
@@ -67,6 +68,10 @@
         <line num="7" count="1" type="stmt"/>
       </file>
       <file name="searchresults.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\db\schemas\searchresults.mjs">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+      <file name="session.mjs" path="C:\Users\steve\OneDrive\Gaming Backlog v2\db\schemas\session.mjs">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="1" type="stmt"/>
       </file>

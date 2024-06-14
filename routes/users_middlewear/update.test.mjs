@@ -15,7 +15,7 @@ const app = MakeApp({
     find,
     update,
   },
-  cookiesStore: {},
+  cookieStore: {},
   sessionObj: session,
 });
 

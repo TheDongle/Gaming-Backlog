@@ -16,9 +16,6 @@ import MongoStore from "connect-mongo";
 import { freshDB } from "./db/index.mjs";
 const myDB = await freshDB();
 
-
-
-
 /**
  *
  * @param {object} db
@@ -42,12 +39,10 @@ export default function ({
   app.disable("x-powered-by");
 
   // Session Object
-  if (Object.entries(session).length > 0) {
-    if (Object.entries(cookieStore).length > 0) {
-      settings.store = cookieStore.create(db.conn);
-    }
-    app.use(sessionObj(settings));
+  if (cookieStore === MongoStore) {
+    settings.store = cookieStore.create(db.conn);
   }
+  app.use(sessionObj(settings));
   // Mongoose, usually
   app.set("db", db);
   // SASS
