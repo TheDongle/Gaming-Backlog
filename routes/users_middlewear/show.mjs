@@ -7,11 +7,9 @@ class ShowUser {
   async getDetails(req, res, next) {
     try {
       res.render("users/details", (_, html) => {
-        console.log(html)
         res.send(html);
       });
     } catch (err) {
-      console.log(err)
       next(err);
     }
   }

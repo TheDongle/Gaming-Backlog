@@ -17,18 +17,6 @@ export default function ({
   scrapeFn = getGameData,
 } = {}) {
 
-  // let needsSyncing = false;
-  // router.use((req, res, next) => {
-  //   if (!("username" in req.app.locals)) {
-  //     needsSyncing = true;
-  //   }
-  //   console.log(needsSyncing);
-  //   next();
-  // });
-  // if (needsSyncing) {
-  //   router.use(syncFn);
-  // }
-
   router.get("/", index(redirectFn, syncFn));
   router.post("/", create(verifyFn, scrapeFn));
   router.get("/new", search(verifyFn, searchClass));

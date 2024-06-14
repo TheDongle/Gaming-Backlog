@@ -1,4 +1,3 @@
-import { getGameData } from "../../resources/game_data_scraping/scraper.mjs";
 import createError from "http-errors";
 
 class Creator {
@@ -44,7 +43,7 @@ class Creator {
   }
 }
 
-export default function (verifyFn, scrapeFn = getGameData) {
+export default function (verifyFn, scrapeFn) {
   const create = new Creator(verifyFn, scrapeFn);
   return create.route;
 }

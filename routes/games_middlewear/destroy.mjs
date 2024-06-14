@@ -8,8 +8,8 @@ class Destroyer {
   async destroyGame(req, res, next) {
     try {
       // Check request is valid construct
-      if (Object.keys(req.body).length === 0) {
-        throw createError(403, "Request Body is empty");
+      if (!("title" in req.body) || req.body.title.length === 0) {
+        throw createError(400, "Game title not provided");
       }
       // Update db & Views
       const { title } = req.body;
@@ -24,7 +24,8 @@ class Destroyer {
   async updateTable(req, res, next) {
     try {
       // send partial html to be inserted at front-end
-      res.render("/games/components/table", (_, html) => {
+      res.render("games/components/table", (_, html) => {
+        console.log(html)
         res.send(html);
       });
     } catch (err) {
