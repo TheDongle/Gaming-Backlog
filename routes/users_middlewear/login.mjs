@@ -3,7 +3,7 @@ import createError from "http-errors";
 class Login {
   constructor(syncFn) {
     this.syncFn = syncFn;
-    this.route = [this.authenticate, this.syncFn, this.redirectToGames];
+    this.route = [this.authenticate, this.syncFn, this.congrats];
   }
   async authenticate(req, res, next) {
     try {
@@ -26,9 +26,9 @@ class Login {
       next(err);
     }
   }
-  async redirectToGames(req, res, next) {
+  async congrats(req, res, next) {
     try {
-      res.redirect("./games");
+      res.status(200).send("Login Successful");
     } catch (err) {
       next(err);
     }

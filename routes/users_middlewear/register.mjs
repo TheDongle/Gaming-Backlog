@@ -8,7 +8,7 @@ class Register {
       this.createGuest,
       this.createUser,
       this.SyncFn,
-      this.redirectToGames,
+      this.congrats,
     ];
   }
   async throwIfEmpty(req, res, next) {
@@ -53,9 +53,9 @@ class Register {
       next(err);
     }
   }
-  async redirectToGames(req, res, next) {
+  async congrats(req, res, next) {
     try {
-      res.redirect("./games");
+      res.status(201).send("Account Created")
     } catch (err) {
       next(err);
     }

@@ -8,8 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await postData(form);
       if (response.status >= 400) {
         alert(await response.text());
+      } else {
+        location.assign("/games")
       }
-      document.innerHTML = response.text();
     });
   });
 });

@@ -4,7 +4,11 @@ class SessionDestroyer {
   constructor(verifyFn, syncFn) {
     this.verifyFn = verifyFn;
     this.syncFn = syncFn;
-    this.route = [this.verifyFn, this.destroySession, this.syncFn, this.congrats];
+    this.route = [this.verifyFn, this.egoDeath, this.syncFn, this.destroySession];
+  }
+  async egoDeath(req, res, next) {
+    delete req.session.user;
+    next();
   }
   async destroySession(req, res, next) {
     try {
@@ -12,17 +16,9 @@ class SessionDestroyer {
         (req.sessionID,
         (err) => {
           if (err) throw createError(500, err.message);
+          res.status(200).send("User has been successfully logged out");
         }),
       );
-      next();
-    } catch (err) {
-      next(err);
-    }
-  }
-  async congrats(req, res, next) {
-    try {
-      res.set("location", "/")
-      res.redirect("/")
     } catch (err) {
       next(err);
     }

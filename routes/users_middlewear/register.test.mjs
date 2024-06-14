@@ -54,7 +54,7 @@ describe("Create User", () => {
     expect(password).not.toBeDefined();
     expect(_id).not.toBeDefined();
   });
-  test("Should redirect to /games", async () => {
+  test("Should be accepting of our lifestyle choices", async () => {
     const params = {
       _id: "123",
       username: "realUserHonest5",
@@ -68,8 +68,7 @@ describe("Create User", () => {
       .field("username", params.username)
       .field("password", params.password)
       .field("playStyle", params.playStyle);
-    expect(response.statusCode).toBeGreaterThanOrEqual(300);
-    expect(response.statusCode).toBeLessThan(400);
-    expect(response.headers.location).toMatch("./games");
+    expect(response.statusCode).toBe(201);
+    expect(response.text).toMatch(/./);
   });
 });

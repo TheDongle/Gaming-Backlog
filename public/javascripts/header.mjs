@@ -21,7 +21,7 @@ async function logOut() {
   if (response.status >= 400) {
     alert(await response.text());
   } else {
-    location.replace("/")
+    location.assign("./");
   }
 }
 

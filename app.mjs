@@ -7,6 +7,7 @@ import * as fs from "node:fs";
 import * as sass from "sass";
 import multer from "multer";
 import { addPath } from "./resources/locals.mjs";
+import { syncData } from "./resources/locals.mjs";
 import { router as usersRouter } from "./routes/users.mjs";
 import { default as makeGamesRouter } from "./routes/games.mjs";
 import createError from "http-errors";
@@ -60,9 +61,9 @@ export default function ({
   app.patch("*", upload.none(), (req, res, next) => next());
   app.delete("*", upload.none(), (req, res, next) => next());
 
-  // Keeps locals and Session data in Sync
+  // Makes path accessible in views
   app.use(addPath);
-
+  
   // Routers
   app.use("/", usersRouter);
   app.use("/games", gamesRouter);

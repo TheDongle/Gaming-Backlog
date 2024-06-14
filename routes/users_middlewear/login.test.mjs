@@ -18,10 +18,9 @@ describe("Normal Login", () => {
       .field("username", user.username)
       .field("password", user.password);
   });
-  it("should be redirected to /games", async () => {
-    expect(response.statusCode).toBeGreaterThanOrEqual(300);
-    expect(response.statusCode).toBeLessThan(400);
-    expect(response.headers.location).toMatch("./games");
+  it("should show us love and acceptance", async () => {
+    expect(response.statusCode).toBe(200);
+    expect(response.text.length).toBeGreaterThan(1)
   });
 });
 
