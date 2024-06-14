@@ -1,10 +1,10 @@
 class Newbie {
   constructor() {
-    this.route = [this._new];
+    this.route = [Newbie._new];
   }
-  async _new(req, res, next) {
+  static async _new(req, res, next) {
     try {
-      res.render("users/register", async (_, html) => {
+      res.render("users/register", (_, html) => {
         res.send(html);
       });
     } catch (err) {

@@ -26,7 +26,6 @@ describe("Show User Details", () => {
     expect(find.mock.calls.length).toBe(1);
   });
   it("should be OK", async () => {
-    console.log(response.text);
     expect(response.statusCode).toBe(200);
   });
   it("should have appropriate user details in locals", async () => {
