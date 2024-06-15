@@ -7,14 +7,25 @@ import { resultsSchema } from "./schemas/searchresults.mjs";
 import { sessionSchema } from "./schemas/session.mjs";
 import mongoose from "mongoose";
 
-async function connectionFactory() {
+/**
+ * @param  {...Object} customSchemas - Any quantity of objects, structured as { ModelName : Schema }
+ * @returns
+ */
+
+// Binds Models to a fresh DB Connection
+async function connectionFactory(...customSchemas) {
   const conn = await mongoose.createConnection(env.mongoURI, { maxPoolSize: 100 }).asPromise();
-  conn.model("TestUser", testUserSchema);
-  conn.model("Session", sessionSchema);
-  conn.model("User", userSchema);
-  conn.model("SearchResults", resultsSchema);
-  conn.model("Game", gameSchema);
-  conn.model("Guest", guestSchema);
+  const schemas = {
+    TestUser: testUserSchema,
+    Session: sessionSchema,
+    User: userSchema,
+    SearchResults: resultsSchema,
+    Game: gameSchema,
+    Guest: guestSchema,
+  };
+  for (let [modelName, schema] of Object.entries(Object.assign(schemas, ...customSchemas))) {
+    conn.model(modelName, schema);
+  }
   return conn;
 }
 

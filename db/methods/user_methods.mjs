@@ -45,4 +45,9 @@ async function verifyPassword(model, username, password) {
   return user;
 }
 
-export { createEntry, updateEntry, deleteEntry, verifyPassword, findModel };
+async function resetExpiry(user) {
+  user.expiryCounter = Date.now();
+  return await user.save();
+}
+
+export { createEntry, updateEntry, deleteEntry, verifyPassword, findModel, resetExpiry };

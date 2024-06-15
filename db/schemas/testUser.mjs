@@ -16,6 +16,11 @@ testUserSchema.add({
       message: usernameValidation.message,
     },
   },
+  expireAt: {
+    default: Date.now(),
+    type: Date,
+    expires: 60,
+  },
 });
 
 testUserSchema.set("collection", "test");

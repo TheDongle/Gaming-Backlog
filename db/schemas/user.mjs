@@ -23,12 +23,14 @@ userSchema.add({
     type: String,
     required: true,
   },
-  // expireAt: {
-  //   default: Date.now(),
-  //   type: Date,
-  //   expires: 182 * 24 * 60 * 60,
-  // },
+  expiryCounter: {
+    default: Date.now(),
+    type: Date,
+  },
 });
+
+userSchema.path("expiryCounter").index({ expires: 182 * 24 * 60 * 60 });
+
 
 userSchema.plugin(uniqueValidator);
 

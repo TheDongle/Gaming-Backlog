@@ -14,6 +14,7 @@ import {
   deleteEntry,
   verifyPassword,
   findModel,
+  resetExpiry,
 } from "./methods/user_methods.mjs";
 
 class myDB {
@@ -46,19 +47,19 @@ class myDB {
       if (found === "") return {};
       this.model = found;
     }
-    return await this.conn.models[this.model].findById(id);
+    return await resetExpiry(await this.conn.models[this.model].findById(id));
   }
   async create(userDetails) {
     return await createEntry(this.conn.models[this.model], userDetails);
   }
   async update(id, newDetails) {
-    return await updateEntry(this.conn.models[this.model], id, newDetails);
+    return await resetExpiry(await updateEntry(this.conn.models[this.model], id, newDetails));
   }
   async destroy(id) {
     return await deleteEntry(this.conn.models[this.model], id);
   }
   async verify(username, password) {
-    return await verifyPassword(this.conn.models[this.model], username, password);
+    return await resetExpiry(await verifyPassword(this.conn.models[this.model], username, password));
   }
   async combine(userID, guestID) {
     let { User, Guest } = this.conn.models;

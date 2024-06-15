@@ -1,6 +1,7 @@
 import { env } from "node:process";
 import { connectionFactory } from "./connection.mjs";
 import { expect, jest, test } from "@jest/globals";
+import { Schema } from "mongoose";
 
 const states = { 0: "disconnected", 1: "connected", 2: "connecting", 3: "disconnecting" };
 describe("Mongoose connection", () => {
@@ -30,5 +31,29 @@ describe("Mongoose connection", () => {
   test("Should Disconnect", async () => {
     await conn.close();
     expect(states[conn.readyState]).toBe("disconnected");
+  });
+});
+
+describe("Parameters", () => {
+  let conn, model1, model2;
+  beforeAll(async () => {
+    model1 = {
+      1: new Schema({
+        test: String,
+      }),
+    };
+    model2 = {
+      2: new Schema({
+        test: String,
+      }),
+    };
+    conn = await connectionFactory(model1, model2);
+  });
+  afterAll(async () => {
+    await conn.close();
+  });
+  test("Function should include optional models", async () => {
+    expect(conn.models["1"].schema).toBeDefined()
+    expect(conn.models["2"].schema).toBeDefined()
   });
 });
