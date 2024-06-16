@@ -24,7 +24,7 @@
     ]
   },
   "scripts": {
-    "start": "node --env-file=.env ./bin/www",
+    "start": "node ./bin/www",
     "test": "node --env-file=.env --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "dependencies": {
