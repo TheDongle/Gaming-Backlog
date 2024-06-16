@@ -1,4 +1,3 @@
-import { open } from "node:fs/promises";
 import { env } from "node:process";
 
 class SearchPrototype {
