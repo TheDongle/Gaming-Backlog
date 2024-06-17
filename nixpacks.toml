@@ -1,8 +1,2 @@
-[variables]
-NODE_ENV = 'production'
-
-[phase.build]
-cmds = ["--omit=dev"]
-
-[phase.install]
-cmds = ["--omit=dev"]
+[phases.install]
+cmds = ["npm ci --omit=dev"]
