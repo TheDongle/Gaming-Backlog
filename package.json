@@ -25,6 +25,7 @@
   },
   "scripts": {
     "start": "node ./bin/www",
+    "dev": "nodemon --env-file=.env ./bin/www -e mjs, s, html, ejs, scss, json",
     "test": "node --env-file=.env --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "dependencies": {
@@ -46,6 +47,7 @@
     "mongoose-unique-validator": "^5.0.0",
     "morgan": "~1.9.1",
     "multer": "^1.4.5-lts.1",
+    "node": "^20.14.0",
     "puppeteer": "^20.3.0",
     "uuid": "^9.0.1"
   },

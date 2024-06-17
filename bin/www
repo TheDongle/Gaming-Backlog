@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+
 import { default as makeApp } from "../app.mjs";
 const app = makeApp();
 import { default as debug } from "debug";
@@ -14,7 +15,7 @@ import { createServer } from "node:http";
  */
 import { env } from "node:process";
 const { NODE_ENV, PORT } = env;
-const HOST = NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1";
+const HOST = NODE_ENV === "development" ? "127.0.0.1" : "0.0.0.0";
 app.set("port", PORT);
 app.set("host", HOST);
 
