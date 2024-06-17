@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "os": ["win64"],
   "jest.autoRun": {},
   "jest": {
     "rootDir": "C:/Users/steve/OneDrive/Gaming Backlog v2",

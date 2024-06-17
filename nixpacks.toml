@@ -2,7 +2,7 @@
 NODE_ENV = 'production'
 
 [phase.build]
-omit = "dev"
+cmds = ["--omit=dev"]
 
 [phase.install]
-cmds = "dev"
+cmds = ["--omit=dev"]
