@@ -1,67 +1,16 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
-
 import { default as makeApp } from "../app.mjs";
+import { env } from "node:process";
+
 const app = makeApp();
 
-/**
- * Get port and host from environment and store in Express.
- */
-import { env } from "node:process";
-const { NODE_ENV, PORT } = env;
-const HOST = NODE_ENV === "development" ? "127.0.0.1" : "0.0.0.0";
-app.set("port", PORT);
-app.set("host", HOST);
-app.set("env", NODE_ENV || "development");
+const port = env.PORT || 3000;
+app.set("port", port);
 
-/**
- * Create HTTP server.
- */
+app.listen(port, () => {
+  console.log(`App listening on port: ${port}`);
+});
 
-// const server = createServer(app);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-app.listen(PORT, HOST);
-
-/**
- * Event listener for HTTP server "error" event.
- */
-
-// function onError(error) {
-//   if (error.syscall !== "listen") {
-//     throw error;
-//   }
-
-//   let bind = typeof PORT === "string" ? "Pipe " + PORT : "Port " + PORT;
-
-//   // handle specific listen errors with friendly messages
-//   switch (error.code) {
-//     case "EACCES":
-//       console.error(bind + " requires elevated privileges");
-//       process.exit(1);
-//       break;
-//     case "EADDRINUSE":
-//       console.error(bind + " is already in use");
-//       process.exit(1);
-//       break;
-//     default:
-//       throw error;
-//   }
-// }
-
-// /**
-//  * Event listener for HTTP server "listening" event.
-//  */
-
-// function onListening() {
-//   var addr = server.address();
-//   var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
-//   debug("Listening on " + bind);
-// }
 
