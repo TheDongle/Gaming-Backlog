@@ -1,0 +1,8 @@
+[variables]
+NODE_ENV = 'production'
+
+[phase.build]
+omit = "dev"
+
+[phase.install]
+cmds = "dev"
