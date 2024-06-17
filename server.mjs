@@ -1,11 +1,9 @@
-import { default as MakeApp } from "./app.mjs";
-import http from "node:http";
-import { env } from "node:process";
-const https = await import("node:https");
+// import { default as MakeApp } from "./app.mjs";
+// import { env } from "node:process";
+// import http from "node:http";
 
-const { PORT } = env;
-const HOST = "0.0.0.0";
+// const APP = MakeApp();
+// const { NODE_ENV, PORT } = env;
+// const HOST = NODE_ENV === "production" ? "0.0.0.0" : "127.0.0.1";
 
-const app = MakeApp();
-http.createServer(app).listen(PORT, HOST);
-https.createServer(app).listen(PORT, HOST);
+// http.createServer(APP).listen(PORT, HOST);

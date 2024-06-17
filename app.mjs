@@ -63,7 +63,7 @@ export default function ({
 
   // Makes path accessible in views
   app.use(addPath);
-  
+
   // Routers
   app.use("/", usersRouter);
   app.use("/games", gamesRouter);
@@ -73,7 +73,7 @@ export default function ({
 
   app.use(function errorHandler(err, req, res, next) {
     res.locals.message = err.message;
-    res.locals.error = req.app.get("env") === "development" ? err : {};
+    res.locals.error = err;
     res.status(err.status || 500).json(err.message);
   });
 
