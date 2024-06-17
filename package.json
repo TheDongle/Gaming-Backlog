@@ -24,7 +24,7 @@
     ]
   },
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node --omit=dev ./bin/www",
     "dev": "nodemon --env-file=.env ./bin/www -e mjs, s, html, ejs, scss, json",
     "test": "node --env-file=.env --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
