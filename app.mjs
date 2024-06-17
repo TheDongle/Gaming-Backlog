@@ -1,5 +1,3 @@
-// Command to start: nodemon --env-file=.env app.mjs -e mjs, js, html, ejs, scss, json
-// Command to start: nodemon --env-file=.env server.mjs -e mjs, js, html, ejs, scss, json
 import express from "express";
 import logger from "morgan";
 import path from "node:path";
