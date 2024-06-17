@@ -5,6 +5,7 @@ async function scrapeSite(url) {
     headless: "new",
     timeout: 7000,
     waitForInitialPage: false,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
   const context = await browser.createIncognitoBrowserContext();
   const page = await context.newPage();
