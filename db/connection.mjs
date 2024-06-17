@@ -14,7 +14,6 @@ import mongoose from "mongoose";
 
 // Binds Models to a fresh DB Connection
 async function connectionFactory(...customSchemas) {
-  console.log(env)
   const conn = await mongoose.createConnection(env.mongoURI, { maxPoolSize: 100 }).asPromise();
   const schemas = {
     TestUser: testUserSchema,

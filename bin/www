@@ -8,7 +8,10 @@ const app = makeApp();
 const port = env.PORT || 3000;
 app.set("port", port);
 
-app.listen(port, () => {
+const host = env.HOST || "0.0.0.0";
+app.set("host", host);
+
+app.listen(port, host, () => {
   console.log(`App listening on port: ${port}`);
 });
 
