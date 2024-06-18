@@ -1,14 +1,13 @@
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-extra";
+import StealthPlugin from "puppeteer-extra-plugin-stealth";
+puppeteer.use(StealthPlugin());
 
 async function scrapeSite(url) {
   const browser = await puppeteer.launch({
-    headless: "new",
+    headless: "true",
     timeout: 7000,
-    waitForInitialPage: false,
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
-  const context = await browser.createIncognitoBrowserContext();
-  const page = await context.newPage();
+  const page = await browser.newPage();
   await page.goto(url);
   const data = await page.content();
   await browser.close();

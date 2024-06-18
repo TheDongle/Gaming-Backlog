@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/19</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -108,81 +108,81 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import assert from "node:assert";
 import mongoose from "mongoose";
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >reconcileGames(</span>userModel, userID, guestModel, guestID) {
-  const [guest, user] = <span class="cstat-no" title="statement not covered" >await Promise.all([</span>
+async function reconcileGames(userModel, userID, guestModel, guestID) {
+  const [guest, user] = await Promise.all([
     guestModel.findById(guestID),
     userModel.findById(userID),
   ]);
-<span class="cstat-no" title="statement not covered" >  for (let game of guest.games) {</span>
-<span class="cstat-no" title="statement not covered" >    await user.games.addToSet(game);</span>
+  for (let game of guest.games) {
+    await user.games.addToSet(game);
   }
-<span class="cstat-no" title="statement not covered" >  await Promise.all([guestModel.deleteOne({ _id: guestID }), user.save()]);</span>
-<span class="cstat-no" title="statement not covered" >  return user;</span>
+  await Promise.all([guestModel.deleteOne({ _id: guestID }), user.save()]);
+  return user;
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >createGame(</span>model, id, game) {
-  const user = <span class="cstat-no" title="statement not covered" >await model.findById(id);</span>
-<span class="cstat-no" title="statement not covered" >  user.games.push(game);</span>
-<span class="cstat-no" title="statement not covered" >  await user.save();</span>
-<span class="cstat-no" title="statement not covered" >  return user;</span>
+async function createGame(model, id, game) {
+  const user = await model.findById(id);
+  user.games.push(game);
+  await user.save();
+  return user;
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >deleteGame(</span>model, id, gameTitle) {
-  const user = <span class="cstat-no" title="statement not covered" >await model.findById(id);</span>
-<span class="cstat-no" title="statement not covered" >  user.games = user.games.filter(<span class="fstat-no" title="function not covered" >(g</span>ame) =&gt; <span class="cstat-no" title="statement not covered" >game.title !== gameTitle)</span>;</span>
-<span class="cstat-no" title="statement not covered" >  await user.save();</span>
-<span class="cstat-no" title="statement not covered" >  return user;</span>
+async function deleteGame(model, id, gameTitle) {
+  const user = await model.findById(id);
+  user.games = user.games.filter((game) =&gt; game.title !== gameTitle);
+  await user.save();
+  return user;
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >saveResults(</span>model, titles, links) {
-<span class="cstat-no" title="statement not covered" >  return await model.create({ titles, links });</span>
+async function saveResults(model, titles, links) {
+  return await model.create({ titles, links });
 }
 &nbsp;
-async function <span class="fstat-no" title="function not covered" >getResults(</span>model, id, index) {
-  const { titles, links } = <span class="cstat-no" title="statement not covered" >await model.findById(id);</span>
-  const selected = <span class="cstat-no" title="statement not covered" >{ title: titles[index], link: links[index] };</span>
-<span class="cstat-no" title="statement not covered" >  await model.deleteOne({ _id: id });</span>
-<span class="cstat-no" title="statement not covered" >  return selected;</span>
+async function getResults(model, id, index) {
+  const { titles, links } = await model.findById(id);
+  const selected = { title: titles[index], link: links[index] };
+  await model.deleteOne({ _id: id });
+  return selected;
 }
 &nbsp;
 export { reconcileGames, createGame, deleteGame, saveResults, getResults };
@@ -193,7 +193,7 @@ export { reconcileGames, createGame, deleteGame, saveResults, getResults };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-15T10:17:23.710Z
+                at 2024-06-18T05:02:48.540Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
