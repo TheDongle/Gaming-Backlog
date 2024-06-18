@@ -1,11 +1,11 @@
 # syntax=docker/dockerfile:1
 ARG NODE_VERSION=20
-
+ARG RAILWAY_SERVICE_ID=679ac5a2-b343-4ddd-b7c0-7f55b7331814
 # Comments are provided throughout this file to help you get started.
 # If you need more help, visit the Dockerfile reference guide at
 # https://docs.docker.com/go/dockerfile-reference/
 FROM ghcr.io/puppeteer/puppeteer:22.11.1
-WORKDIR /usr/src/app
+WORKDIR /app/
 COPY . .
 ENV PUPPETEER_SKIP_CHROMINUM_DOWNLOAD=true \
     PUPPETEER_EXECUTABLE_PATH=/user/bin/google-chrome-stable \
@@ -23,13 +23,13 @@ FROM node:${NODE_VERSION}-alpine
 # into this layer.
 RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=package-lock.json,target=package-lock.json \
-    --mount=type=cache,id=s/679ac5a2-b343-4ddd-b7c0-7f55b7331814-/root/.npm,target=/root/.npm \
+    --mount=type=cache,id=:${RAILWAY_SERVICE_ID}/root/npm,target=/root/.npm\
     npm ci --omit=dev
 
+RUN printf '\nPATH=/app/node_modules/.bin:$PATH' >> /root/.profile
 # Run the application as a non-root user.
-USER node
 
-WORKDIR /usr/src/app
+WORKDIR /app/
 # Copy the rest of the source files into the image.
 COPY . .
 
