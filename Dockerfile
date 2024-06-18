@@ -12,7 +12,7 @@ COPY  . .
 
 RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=package-lock.json,target=package-lock.json \
-    --mount=type=cache,target=/root/.npm \
+    --mount=type=cache,id=<cache-id> \
     npm ci --omit=dev
 
 
