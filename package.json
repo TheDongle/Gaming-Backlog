@@ -24,12 +24,11 @@
     ]
   },
   "scripts": {
-    "start": "NODE_ENV=production node ./bin/www",
+    "start": "node ./bin/www",
     "dev": "nodemon --env-file=.env ./bin/www -e mjs, s, html, ejs, scss, json",
     "test": "node --env-file=.env --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "dependencies": {
-    "@types/jest": "^29.5.12",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
     "bulma": "^1.0.0",
@@ -48,12 +47,13 @@
     "morgan": "~1.9.1",
     "multer": "^1.4.5-lts.1",
     "node": "^20.14.0",
-    "puppeteer": "^22.11.1",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
+    "puppeteer": "^22.11.1",
+    "@types/jest": "^29.5.12",
     "@shelf/jest-mongodb": "^4.3.2",
     "cross-env": "^7.0.3",
     "jest": "^29.7.0",
