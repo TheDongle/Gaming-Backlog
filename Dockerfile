@@ -12,20 +12,14 @@ ENV PUPPETEER_SKIP_CHROMINUM_DOWNLOAD=true \
 
 # Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
 
-
-
 FROM node:${NODE_VERSION}-alpine
 
-# Download dependencies as a separate step to take advantage of Docker's caching.
-# Leverage a cache mount to /root/.npm to speed up subsequent builds.
-# Leverage a bind mounts to package.json and package-lock.json to avoid having to copy them into
-# into this layer.
+
 RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=package-lock.json,target=package-lock.json \
-    --mount=type=cache,id=s/679ac5a2-b343-4ddd-b7c0-7f55b7331814-/app/npm,target=/app/.npm\
     npm ci --omit=dev
 
-RUN printf '\nPATH=/app/node_modules/.bin:$PATH' >> /root/.profile
+
 # Run the application as a non-root user.
 
 WORKDIR /app/
