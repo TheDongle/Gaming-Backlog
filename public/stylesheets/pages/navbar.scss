@@ -22,6 +22,7 @@ $navbar-height: 3.2rem;
   &-right {
     @include ErasePadMarg();
     display: inline-flex;
+    min-width: 50%;
   }
   &-left {
     justify-content: flex-start;
@@ -29,9 +30,11 @@ $navbar-height: 3.2rem;
   }
   &-right {
     justify-content: flex-end;
+    flex-grow: 1;
   }
   &-item {
     display: flex;
+    position: relative;
   }
   &-link {
     @include ErasePadMarg();
