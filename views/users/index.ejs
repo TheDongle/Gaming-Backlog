@@ -1,75 +1,73 @@
 <%- include("../header"); -%>
-<main class="center">
+<main id="login-main">
 
   <hgroup class="title-group" id="hero">
     <h1 class="title-is-1">User Login</h1>
     <p>Log in or sign up for an account</p>
   </hgroup>
 
-  <div class="columns-3">
 
-    <article id="login-block" class="column">
-      <hgroup class="title-group">
-        <h2 class="title-is-3">Log In</h2>
-        <p>Log into your account</p>
-      </hgroup>
-      <form name="login-form" enctype="multipart/form-data" id="login-form" class="form-is-centered form-is-block"
-        action="/" method="post">
-        <label class="form-field" for="username">Enter your username:</label>
-        <div class="form-field">
-          <input title="<%= usernameValidation.message %>" pattern="<%= usernameValidation.pattern %>" type="text"
-            id="username" name="username" maxlength="32" required />
-        </div>
-        <label class="form-field" for="password">Enter your password:</label>
-        <div class="form-field">
-          <input title="<%= passwordValidation.message %>" pattern="<%= passwordValidation.pattern %>" type="password"
-            id="password" name="password" maxlength="32" required />
-        </div>
-        <div class="form-field">
-          <a><button class="button" type="submit"> Log in</button></a>
-        </div>
-      </form>
-    </article>
+  <article id="login-block">
+    <hgroup class="title-group">
+      <h2 class="title-is-3 hidden-when-mobile">Log In</h2>
+      <p>Log into your account</p>
+    </hgroup>
+    <form name="login-form" enctype="multipart/form-data" id="login-form" class="form-is-centered form-is-block"
+      action="/" method="post">
+      <label class="form-field" for="username">Enter your username:</label>
+      <div class="form-field">
+        <input title="<%= usernameValidation.message %>" pattern="<%= usernameValidation.pattern %>" type="text"
+          id="username" name="username" maxlength="32" required />
+      </div>
+      <label class="form-field" for="password">Enter your password:</label>
+      <div class="form-field">
+        <input title="<%= passwordValidation.message %>" pattern="<%= passwordValidation.pattern %>" type="password"
+          id="password" name="password" maxlength="32" required />
+      </div>
+      <div class="form-field">
+        <a><button class="button" type="submit"> Log in</button></a>
+      </div>
+    </form>
+  </article>
 
-    <article id="register-block" class="column">
-      <hgroup class="title-group">
-        <h2 class="title-is-3">Sign Up</h2>
-        <p>Create a new account</p>
-      </hgroup>
-      <form id="register-control" class="form-is-centered form-is-block" action="/new" method="get">
-        <div class="form-field">
-          <a><button class="button is-medium is-link" type="submit">Register</button></a>
-        </div>
-      </form>
-    </article>
+  <article id="register-block">
+    <hgroup class="title-group">
+      <h2 class="title-is-3">Sign Up</h2>
+      <p>Create a new account</p>
+    </hgroup>
+    <form id="register-control" class="form-is-centered form-is-block" action="/new" method="get">
+      <div class="form-field">
+        <a><button class="button is-medium is-link" type="submit">Register</button></a>
+      </div>
+    </form>
+  </article>
 
-    
-    <article id="guest-block" class="column">
-      <% if(!loggedIn) { %>
-      <hgroup class="title-group">
-        <h2 class="title-is-3">Guest</h2>
-        <p>No signup needed</p>
-      </hgroup>
-      <form id="guest-control" class="form-is-centered form-is-block" action="/new" method="post">
-        <input type="hidden" id="guest_username" name="username" value="guest" />
-        <div class="form-field">
-          <a><button class="button is-medium is-link" type="submit">Continue</button></a>
-        </div>
-      </form>
-      <% } else { %>
-        <hgroup class="title-group">
-          <h2 class="title-is-3">Howdy Stranger</h2>
-          <p>if you don't want to log in for real, that's still an option</p>
-        </hgroup>
-        <form id="guest-control" class="form-is-centered form-is-block" action="/games" method="get">
-          <div class="form-field">
-            <a><button class="button is-medium is-link" type="submit">Back to games</button></a>
-          </div>
-        </form>
-      <% } %>
-    </article>
 
-  </div>
+  <article id="guest-block">
+    <% if(!loggedIn) { %>
+    <hgroup class="title-group">
+      <h2 class="title-is-3">Guest Login</h2>
+      <p>No signup needed</p>
+    </hgroup>
+    <form id="guest-control" class="form-is-centered form-is-block" action="/new" method="post">
+      <input type="hidden" id="guest_username" name="username" value="guest" />
+      <div class="form-field">
+        <a><button class="button is-medium is-link" type="submit">Continue</button></a>
+      </div>
+    </form>
+    <% } else { %>
+    <hgroup class="title-group">
+      <h2 class="title-is-3">Howdy Stranger</h2>
+      <p>if you don't want to log in for real, that's still an option</p>
+    </hgroup>
+    <form id="guest-control" class="form-is-centered form-is-block" action="/games" method="get">
+      <div class="form-field">
+        <a><button class="button is-medium is-link" type="submit">Back to games</button></a>
+      </div>
+    </form>
+    <% } %>
+  </article>
+
 
 </main>
 

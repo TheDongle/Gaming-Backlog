@@ -6,10 +6,6 @@
 @forward "pages/details";
 @forward "pages/games";
 
-.center-me {
-  justify-self: center;
-}
-
 .loader {
   border: 16px solid #f3f3f3;
   border-top: 16px solid #3498db;
@@ -28,37 +24,3 @@
     transform: rotate(360deg);
   }
 }
-
-
-.hidden {
-  display: none;
-}
-
-.block {
-  display: block;
-}
-
-//Game
-table {
-  margin: 0 auto;
-}
-
-#game-columns {
-  border-bottom: 0.2em inset rgb(228, 224, 224);
-}
-
-// .column.is-left {
-//   @include bp.desktop {
-//     display: flex;
-//     justify-content: left;
-//     align-items: flex-start;
-//     padding-left: 0;
-//   }
-
-//   >article {
-//     @include bp.desktop {
-//       border: 0.2em inset rgb(228, 224, 224);
-//       border-radius: 5%;
-//     }
-//   }
-// }

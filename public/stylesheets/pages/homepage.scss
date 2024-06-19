@@ -1,10 +1,47 @@
 @use "../components/breakpoints" as bp;
-@forward "../components/default";
-@forward "../components/columns";
+@use "../components/default" as df;
 @forward "../components/forms";
 @forward "../components/title";
 
-#hero {
-  @include bp.sizes(margin, (0.5em, 2em, 5em));
+#login-main {
+  text-align: center;
+  @include bp.tablet {
+    display: grid;
+    margin: 0;
+    gap: 5%;
+    grid-template-columns: 1.5em 1fr 1fr 1fr 1.5em;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas:
+      "hero hero hero hero hero"
+      ". login register guest-login .";
+  }
+  @include bp.fullhd {
+    grid-template-rows: 1fr 1fr;
+  }
+  >article{
+    align-content:flex-start;
+  }
+  >article:not(:last-child){
+    @include bp.mobile {
+      border-bottom: df.$border;
+      padding-bottom: 0.75em;
+    }
+  }
 }
 
+#hero {
+  align-content: center;
+  grid-area: hero;
+}
+
+#login-block {
+  grid-area: login;
+}
+
+#register-block {
+  grid-area: register;
+}
+
+#guest-block {
+  grid-area: guest-login;
+}

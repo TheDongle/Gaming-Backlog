@@ -12,7 +12,6 @@ $border: 0.2em inset rgb(228, 224, 224);
 body {
   font-family: Inter, SF Pro, Segoe UI, Roboto, Oxygen, Ubuntu, Helvetica Neue,
     Helvetica, Arial, sans-serif;
-  @include bp.sizes(font-size, (medium, medium, larger));
 }
 p,
 h1,
@@ -72,6 +71,19 @@ li > a:hover {
   text-align: center;
 }
 
+.center-me {
+  justify-self: center;
+}
+
 .block {
   display: block;
+}
+
+.hidden {
+  display: none;
+  &-when-mobile {
+    @include bp.mobile {
+      display: none;
+    }
+  }
 }

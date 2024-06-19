@@ -3,29 +3,30 @@
 
 .title {
   &-is-1 {
-    @include bp.sizes(font-size, (3.5em, 4em, 4.5em));
-    @include bp.sizes(font-weight, (600, 650, 700));
+    font-size: 4rem;
   }
+
   &-is-2 {
-    @include bp.sizes(font-size, (3em, 3.5em, 4em));
-    @include bp.sizes(font-weight, (550, 600, 650));
+    font-size: 3rem;
   }
+
   &-is-3 {
-    @include bp.sizes(font-size, (2.5em, 3em, 3.5em));
-    @include bp.sizes(font-weight, (500, 550, 600));
+    font-size: 2rem;
   }
+
   &-is-4 {
+    font-size: 1.5rem;
     text-wrap: stable;
-    @include bp.sizes(font-size, (1.5em, 1.75em, 2em));
-    font-weight: 500;
   }
+
   &-group {
-    @include bp.sizes(margin-bottom, (0.2em, 0.75em, 2em));
     :nth-child(n) {
       margin: 0;
     }
+
     :nth-child(2) {
       font-size: larger;
+
       @include bp.mobile {
         display: none;
       }

@@ -1,9 +1,7 @@
 <% let ishidden=false %>
 <% if (Object.entries(games).length === 0) { ishidden  = true } %>
 <article id="estimate-area" data-ishidden="<%= ishidden %>">
-  <hgroup class="is-3">
-    <h2 class="title">Days to complete</h2>
-  </hgroup>
+  <h2 class="title-is-4">Days to complete</h2>
   <p id="estimate-text" class="<% if (ishidden === true) { %>hidden<% } %>">
     Based on your current lifestyle, it will take you around
     <b id="days-to-complete"></b> to finish all these games.

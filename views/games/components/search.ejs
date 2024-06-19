@@ -1,16 +1,16 @@
 <article id="search-area">
 
-  <h3 id="search-title">Increase the backlog</h3>
+  <h2 class="title-is-4" id="search-title">Increase the backlog</h2>
 
-  <form data-cansubmit="true" class="form-is-centered" data-submissions="0" action="/games/new" method="GET"
+  <form data-cansubmit="true" class="form-is-centered form-is-block"" data-submissions="0" action="/games/new" method="GET"
     id="search-form">
     <label class="form-field" for="search-input">Search for a game (1-32 characters): </label>
     <div class="form-field">
-      <input class="centre-me" maxlength="32" title="between 1 and 32 character" type="text" id="search-input"
+      <input maxlength="32" title="between 1 and 32 character" type="text" id="search-input"
         name="title" required />
     </div>
     <label class="form-field" for="quantity-label"> (optional) select max no. of results </label>
-    <div class="centre-me form-field">
+    <div class="form-field">
       <select class="form-field" id="quantity-select" name="quantity">
         <% for(let i=1; i <=10; i++) { %>
         <option value="<%=i%>" <% if(i===5){ %> selected <% } %>><%=i%>
