@@ -12,36 +12,37 @@
 <body>
   <nav id="navbar" class="navbar">
     <figure class="navbar-left">
-      <a class="navbar-logo navbar-item" id="logo-link" href="#"><img src="/images/logo.png"
-          alt="Game Controller logo and link">
-      </a>
+      <img class="navbar-logo" id="logo-link" src="/images/logo.png" alt="Game Controller logo and link">
     </figure>
     <ul class="navbar-right">
       <% let link="/games" %>
       <% if (loggedIn && path !== link) { %>
       <li class="navbar-item">
-        <a class="navbar-link is-arrowless" id="games-nav-link" href="<%= link %>">Games</a>
+        <a class="navbar-link" id="games-nav-link" href="<%= link %>">Games</a>
       </li>
       <% } %>
-      <li tabindex="0" class="navbar-item">
-        <a class="navbar-link dropdown">User</a>
-        <ul class="dropdown-content">
-          <% link="/" %>
-          <% if (!registered && path !== link) { %>
-          <li tabindex="1"><a href="<%= link %>">Log in</a></li>
-          <% } %>
-          <% link="/new" %>
-          <% if (!registered && path !== link) { %>
-          <li tabindex="2"><a href="<%= link %>">Register</a></li>
-          <% } %>
-          <% link="/details" %>
-          <% if (registered && path !== link) { %>
-          <li tabindex="3"><a href="<%= link %>">Profile</a></li>
-          <% } %>
-          <% if (loggedIn) { %>
-          <li tabindex="4"><a id="log_out_link" href="#">Log Out</a></li>
-          <% } %>
-        </ul>
+      <% link="/" %>
+      <% if (!registered && path !== link) { %>
+      <li class="navbar-item">
+        <a class="navbar-link" href="<%= link %>">Log in</a>
       </li>
+      <% } %>
+      <% link="/new" %>
+      <% if (!registered && path !== link) { %>
+      <li class="navbar-item">
+        <a class="navbar-link" href="<%= link %>">Register</a>
+      </li>
+      <% } %>
+      <% link="/details" %>
+      <% if (registered && path !== link) { %>
+      <li class="navbar-item">
+        <a class="navbar-link" href="<%= link %>">Profile</a>
+      </li>
+      <% } %>
+      <% if (loggedIn) { %>
+      <li class="navbar-item">
+        <a class="navbar-link" id="log_out_link" href="#">Log Out</a>
+      </li>
+      <% } %>
     </ul>
   </nav>

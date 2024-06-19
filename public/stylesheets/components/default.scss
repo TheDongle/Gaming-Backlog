@@ -1,10 +1,17 @@
 @use "breakpoints" as bp;
 $grey: rgba(0, 0, 0, 0.2);
 $purple: rgba(128, 0, 128, 0.558);
-$border: 0.2em inset rgb(228, 224, 224);
+
+
+$funky: #FF7F3E;
+$white: #FFF6E9;
+$light: #80C4E9;
+$dark: #604CC3;
+
+$border: 0.2em solid $dark;
 
 @mixin onHover {
-  background-color: $purple;
+  background-color: $funky;
   cursor: pointer;
 }
 
@@ -12,7 +19,11 @@ $border: 0.2em inset rgb(228, 224, 224);
 body {
   font-family: Inter, SF Pro, Segoe UI, Roboto, Oxygen, Ubuntu, Helvetica Neue,
     Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $white;
 }
+
 p,
 h1,
 h2,
@@ -38,33 +49,40 @@ a {
 
 $buttonWidth: 5rem;
 $buttonHeight: 3rem;
+
 .button {
   font: inherit;
   display: inline-block;
-  font-weight: 500;
-  background-color: peachpuff;
+  font-weight: 600;
+  background-color: $light;
   margin: 0.6rem;
   padding: 0 1rem;
   min-height: $buttonHeight;
   min-width: 5rem;
+
   &:hover {
     @include onHover();
   }
+
   &-is-small {
     @extend .button;
     min-height: calc($buttonHeight * 0.7);
     min-width: calc($buttonWidth * 0.5);
     padding: 0 0.5rem;
     margin: 0.3rem;
-    > * {
+
+    >* {
       padding: 0;
       margin: 0;
     }
   }
 }
 
-li > a:hover {
-  @include onHover();
+li>a {
+  font-weight: 600;
+  &:hover {
+    @include onHover();
+  }
 }
 
 .center {
@@ -81,6 +99,7 @@ li > a:hover {
 
 .hidden {
   display: none;
+
   &-when-mobile {
     @include bp.mobile {
       display: none;

@@ -3,28 +3,40 @@
 @forward "../components/forms";
 @forward "../components/title";
 
+// need to square this with padding for the mobile borders
+$mobile-gap-length:1em;
 #login-main {
   text-align: center;
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: $mobile-gap-length;
+  grid-template-areas:
+    "hero hero hero"
+    ". login ."
+    ". register ."
+    ". guest-login .";
+
   @include bp.tablet {
-    display: grid;
-    margin: 0;
     gap: 5%;
     grid-template-columns: 1.5em 1fr 1fr 1fr 1.5em;
-    grid-template-rows: 1fr 2fr;
     grid-template-areas:
       "hero hero hero hero hero"
-      ". login register guest-login .";
+      "... login register guest-login ...";
   }
+
+  >article {
+    align-content: flex-start;
+  }
+
   @include bp.fullhd {
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr 1fr
   }
-  >article{
-    align-content:flex-start;
-  }
-  >article:not(:last-child){
+
+  >article {
     @include bp.mobile {
-      border-bottom: df.$border;
-      padding-bottom: 0.75em;
+      padding-top: $mobile-gap-length;
+      border-top: df.$border;
     }
   }
 }
@@ -32,6 +44,20 @@
 #hero {
   align-content: center;
   grid-area: hero;
+  margin: 0;
+
+  >h1 {
+    line-height: 2ex;
+    margin-bottom: 0.5em;
+  }
+
+  >details {
+    margin: 0 1.5em;
+
+    &[open]>summary {
+      color: df.$dark;
+    }
+  }
 }
 
 #login-block {
