@@ -1,4 +1,5 @@
 import { env } from "node:process";
+const { NODE_ENV, PUPPETEER_EXECUTABLE_PATH } = env;
 import { executablePath } from "puppeteer";
 import puppeteer from "puppeteer-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
@@ -9,7 +10,7 @@ async function scrapeSite(url) {
     args: ["--disable-setuid-sandbox", "--no-sandbox", "--no-zygote"],
     headless: "shell",
     timeout: 7000,
-    executablePath: executablePath(),
+    executablePath: NODE_ENV === "production" ? PUPPETEER_EXECUTABLE_PATH : executablePath(),
   });
   const page = await browser.newPage();
   await page.goto(url);
