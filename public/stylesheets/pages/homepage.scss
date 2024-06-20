@@ -29,7 +29,7 @@ $mobile-gap-length:1em;
     align-content: flex-start;
   }
 
-  @include bp.fullhd {
+  @include bp.widescreen {
     grid-template-rows: 1fr 1fr
   }
 

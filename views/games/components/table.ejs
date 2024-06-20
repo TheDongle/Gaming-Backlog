@@ -6,11 +6,11 @@
   <h3>No games entered yet.</h3>
   <% } else { %>
   <table class="table" id="games_table">
-    <thead class="thead">
+    <thead>
       <tr>
-        <th class="title-is-4" scope="col">Title</th>
-        <th class="title-is-4" scope="col">Length</th>
-        <th aria-hidden="true"> </th>
+        <th scope="col">Title</th>
+        <th scope="col">Length</th>
+        <th scope="col"><img id="trash" src="/images/trash.webp" alt="delete icon" /></th>
       </tr>
     </thead>
     <tbody>
@@ -37,7 +37,6 @@
       <tr>
         <th scope="row">Total Hours</th>
         <td id="total-hours"><%=totalHours%></td>
-        <th aria-hidden="true"> </th>
       </tr>
     </tfoot>
   </table>

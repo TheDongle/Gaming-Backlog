@@ -11,7 +11,8 @@ $navbar-height: 3.2rem;
 
 
 .navbar {
-  background-color: df.$light;
+  background: linear-gradient(df.$light, df.$white);
+  // background-color: df.$light;
   list-style: none;
   width: 100%;
   height: $navbar-height;

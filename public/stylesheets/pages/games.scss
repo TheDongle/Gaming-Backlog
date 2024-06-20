@@ -1,29 +1,33 @@
 @use "../components/default" as df;
 @use "../components/breakpoints" as bp;
-@forward "../components/title";
+@use "../components/title" as title;
+@use "./homepage" as home;
 @forward "../components/forms";
 
 .games-main {
   text-align: center;
+  align-content: flex-start;
   margin: 0;
+  padding: 0;
   display: grid;
-  gap: 1em;
-  grid-template-columns: 1.5em 1fr 1.5em;
+  gap: home.$mobile-gap-length;
+  grid-template-columns: 1em 1fr 1em;
   grid-template-areas:
     "header header header"
     ". search ."
     ". table ."
     ". estimate ."
-    "preferences preferences preferences";
+    ". preferences .";
 
   @include bp.tablet {
+    gap: 5%;
     grid-template-columns:
-      1.5em 0.5fr 1fr 1.5em;
+      1.5em 1fr 1fr 1.5em;
     grid-template-areas:
       "header header header header"
       "... search table ..."
       ". estimate estimate ."
-      "preferences preferences preferences preferences";
+      ". preferences preferences .";
   }
 
   @include bp.widescreen {
@@ -32,13 +36,13 @@
     grid-template-areas:
       "header header header header header"
       ". search table estimate ."
-      "preferences preferences preferences preferences preferences";
+      ". search table preferences ."
   }
 
-  >article:not(:last-child) {
+  >article {
     @include bp.mobile {
-      border-bottom: df.$border;
-      padding-bottom: 0.75em;
+      padding-top: home.$mobile-gap-length;
+      border-top: df.$border;
     }
   }
 }
@@ -46,28 +50,50 @@
 table {
   table-layout: fixed;
   width: 100%;
-  height: 100%;
-  margin: 0;
-  border-collapse: collapse;
 }
 
+thead {
+  font-size: 1.5em;
+
+  @include bp.mobile() {
+    font-size: medium;
+  }
+}
+
+
 thead th {
+  >* {
+    height: 2em;
+  }
+
+  >tr th {
+    text-wrap: stable;
+  }
+
   &:nth-child(1) {
+    padding-left: 0;
     width: 60%;
   }
 
   &:nth-child(2) {
-    width: 20%;
+    width: 25%;
   }
 
   &:nth-child(3) {
-    width: 20%;
+    padding-right: 0;
+    width: 25%;
   }
+}
+
+#trash {
+  object-fit: scale-down;
+  height: 1.5em;
+  position: relative;
 }
 
 th,
 tr {
-  padding: 0.5em;
+  padding: 0.5em 0;
 }
 
 #games-header {
