@@ -28,7 +28,7 @@ const baseSchema = new Schema(
           }
           return true;
         },
-        message: (props) => `Duplicate game entry for ${props.value} disregarded`,
+        message: (props) => `Duplicate game entry for ${props.value.at(-1).title} disregarded`,
       },
     },
   },

@@ -9,8 +9,7 @@ async function scrapeSite(url) {
     args: ["--disable-setuid-sandbox", "--no-sandbox", "--no-zygote"],
     headless: "shell",
     timeout: 7000,
-    executablePath:
-      env.NODE_ENV === "production" ? env.PUPPETEER_EXECUTABLE_PATH : executablePath(),
+    executablePath: executablePath(),
   });
   const page = await browser.newPage();
   await page.goto(url);

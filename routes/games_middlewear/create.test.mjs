@@ -3,9 +3,7 @@ import request from "supertest";
 import { default as MakeApp } from "../../app.mjs";
 import { default as MakeRouter } from "../games.mjs";
 
-const locals = jest
-  .fn()
-  .mockImplementation(() => ({ ...user, loggedIn: true, registered: true }));
+const locals = jest.fn().mockImplementation(() => ({ ...user, loggedIn: true, registered: true }));
 const user = {
   _id: 62,
   username: "Dave",
@@ -51,7 +49,7 @@ describe("Create - no body", () => {
   });
 });
 
-describe("Create - no results", () => {
+describe("Create - no search results", () => {
   let app, response;
   const mockScrape = jest.fn(() => ({ link: "", title: "" }));
   const db = {
@@ -72,6 +70,30 @@ describe("Create - no results", () => {
   });
   it("Should Error handle deleted results", () => {
     expect(response.statusCode).toBe(410);
+  });
+});
+
+describe("Create - no times", () => {
+  let app, response;
+  const mockScrape = jest.fn(() => ({ title: "g1", standardLength: 0, completionist: 0 }));
+  const db = {
+    model: "eg",
+    findResults: jest.fn((id, index) => ({ title: "g1", link: "l1" })),
+    find: jest.fn(() => user),
+    verify: jest.fn(() => user),
+  };
+  beforeAll(async () => {
+    app = MakeApp({
+      db,
+      cookieStore: {},
+      sessionObj: session,
+      gamesRouter: MakeRouter({ scrapeFn: mockScrape }),
+    });
+    jest.replaceProperty(app, "locals", locals);
+    response = await request(app).post("/games/").field("resultsID", 1).field("index", 2);
+  });
+  it("Should return 404 for empty times", () => {
+    expect(response.statusCode).toBe(404);
   });
 });
 

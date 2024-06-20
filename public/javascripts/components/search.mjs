@@ -9,6 +9,7 @@ class SearchForm {
     this.form = document.getElementById(this.id);
     this.input = document.querySelector("#" + this.id + " " + "input");
     this.submitBtn = document.querySelector("#" + this.id + " " + "button[type='submit']");
+    this.resetBtn = document.querySelector("#" + this.id + " " + "button[type='reset']");
     this.select = document.querySelector("#" + this.id + " " + "select");
     this.buttonGroup = this.submitBtn.parentElement;
     await this.resetListener();
@@ -38,12 +39,15 @@ class SearchForm {
   }
   updateCanSubmit(bool) {
     this.form.dataset.cansubmit = bool;
+    const elements = [this.input, this.resetBtn, this.submitBtn, this.select];
     if (bool) {
-      this.input.removeAttribute("disabled");
-      this.submitBtn.style.cursor = "pointer";
+      elements.forEach((element) => {
+        element.removeAttribute("disabled");
+      });
     } else {
-      this.input.setAttribute("disabled", true);
-      this.submitBtn.style.cursor = "wait";
+      elements.forEach((element) => {
+        element.setAttribute("disabled", true);
+      });
     }
   }
   async submit(data) {

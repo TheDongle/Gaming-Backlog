@@ -1,13 +1,16 @@
-<form data-cansubmit="true" enctype="multipart/form-data" action="/games/" method="POST" id="results-form">
-  <label for="search-results">Confirm the game you were thinking of:</label>
+<form data-cansubmit="true" class="form-is-centered form-is-block" enctype="multipart/form-data" action="/games/"
+  method="POST" id="results-form">
+  <label class="form-field" for="search-results">Confirm the game you were thinking of:</label>
   <input type="hidden" id="results-id" name="resultsID" value="<%=resultsID%>" />
-  <select required autofocus="true" class="select block" id="results-label" name="index">
-    <option value="" disabled selected>--Please Select an Option--</option>
-    <% for( let i=0; i < titles.length; i++) { %>
-    <option value="<%=i%>"><%=titles[i]%></option>
-    <% } %>
-  </select>
-  <div id="results-buttons" class="block">
+  <div class="form-field center-me">
+    <select required autofocus="true" class="select" id="results-label" name="index">
+      <option value="" disabled selected>--Please Select an Option--</option>
+      <% for( let i=0; i < titles.length; i++) { %>
+      <option value="<%=i%>"><%=titles[i]%></option>
+      <% } %>
+    </select>
+  </div>
+  <div class="form-field" id="results-buttons" class="block">
     <button class="button" id="submit-result" type="submit">Confirm</button>
     <button class="button" id="cancel-result" type="reset">Cancel</button>
   </div>

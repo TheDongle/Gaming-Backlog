@@ -45,7 +45,6 @@ describe("New game - no headers", () => {
   });
 });
 
-
 describe("New game - Empty Search", () => {
   let app, response;
   const empty = jest.fn(() => ({ titles: [], links: [] }));
@@ -72,6 +71,25 @@ describe("New game - Empty Search", () => {
   });
 });
 
+describe.each([{}, null, undefined, [], "1"])("New game - Invalid results", (invalid) => {
+  let app, response;
+  const mockClass = jest.fn().mockImplementation(() => {
+    return { search: () => invalid };
+  });
+  beforeEach(async () => {
+    app = MakeApp({
+      db,
+      cookieStore: {},
+      sessionObj: session,
+      gamesRouter: MakeRouter({ searchClass: mockClass }),
+    });
+    jest.replaceProperty(app, "locals", locals);
+    response = await request(app).get("/games/new").set("title", "Jeff").set("quantity", "6");
+  });
+  test(`should throw 404 when search returns ${invalid}`, async () => {
+    expect(response.statusCode).toBe(404);
+  });
+});
 
 describe("New game - Headers", () => {
   let app, response;

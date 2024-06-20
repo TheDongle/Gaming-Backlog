@@ -10,19 +10,22 @@ class Creator {
   }
   static async createGame(req, res, next) {
     try {
+      console.log(req.body)
       if (Object.keys(req.body).length < 2) {
         throw createError(400, "Request Body is empty");
       }
       // Select game from search results
       const { resultsID, index } = req.body;
       const db = req.app.get("db");
-      const results = await db.findResults(resultsID, index);
+      const results = await db.findResults(resultsID, parseInt(index));
       if (results === null) {
         throw createError(410, "Search results are stored for a maximum of 30 minutes.");
       }
       // Scrape additional data
       const { link, title: gameTitle } = results;
       const { title, standardLength, completionist } = await Creator.scrapeHTML(link, gameTitle);
+      if (standardLength === 0 || completionist === 0)
+        throw createError(404, `Could not find any times for ${title}`);
       // Update DB
       const user = await db.addGame(req.session.user, { title, standardLength, completionist });
       // Update Views
