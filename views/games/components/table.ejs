@@ -6,7 +6,7 @@
   <h3>No games entered yet.</h3>
   <% } else { %>
   <table class="table" id="games_table">
-    <thead>
+    <thead class="thead">
       <tr>
         <th class="title-is-4" scope="col">Title</th>
         <th class="title-is-4" scope="col">Length</th>
@@ -16,7 +16,7 @@
     <tbody>
       <% for(let game of games){ %>
       <tr id="row-<%=rowIndex%>">
-        <th scope="row"><%= game.title %></th>
+        <th class="game-title" scope="row"><%= game.title %></th>
         <td id="hours-<%=rowIndex%>">
           <% if (playStyle === "casual" ) { %> <%= game.standardLength %> <%
         totalHours += game.standardLength %> <% } else { %> <%=
@@ -26,14 +26,14 @@
           <form data-index="<%=rowIndex%>" id="delete-form-<%=rowIndex%>" enctype="multipart/form-data"
             class="delete-form" method="DELETE" action="/games/<%-encodeURIComponent( game.title )%>">
             <input class="hidden" type="text" name="title" value="<%= game.title %>">
-            <button type="submit" class="button is-small is-danger">Delete entry</button>
+            <button type="submit" class="table-button">Delete</button>
           </form>
         </td>
       </tr>
       <% rowIndex += 1 %>
       <% } %>
     </tbody>
-    <tfoot>
+    <tfoot class="tfoot">
       <tr>
         <th scope="row">Total Hours</th>
         <td id="total-hours"><%=totalHours%></td>
