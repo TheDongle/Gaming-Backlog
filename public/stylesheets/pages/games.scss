@@ -34,12 +34,12 @@
   }
 
   @include bp.widescreen {
-    grid-template-columns:
-      1.5em 0.5fr 1fr 0.5fr 1.5em;
+    grid-template-columns: 1.5em 0.5fr 1fr 0.5fr 1.5em;
     grid-template-areas:
       "header header header header header"
+      "header header header header header"
       ". search table estimate ."
-      ". search table preferences ."
+      ". search table preferences .";
   }
 
   >article {

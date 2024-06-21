@@ -5,6 +5,13 @@
   margin: 0;
 }
 
+li>a {
+  font-weight: 600;
+  &:hover {
+    border-bottom: 0.2rem inset grey;
+    cursor: pointer;
+  }
+}
 
 $button-width: 4rem;
 $navbar-height: 3.2rem;

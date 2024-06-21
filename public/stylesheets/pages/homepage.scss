@@ -49,13 +49,17 @@ $mobile-gap-length:1em;
   >h1 {
     line-height: 2ex;
     margin-bottom: 0.5em;
+    text-shadow: 0.05em 0.05em 0.2em grey;
+    @include bp.mobile {
+      font-size: 3rem;
+    }
   }
 
   >details {
     margin: 0 1.5em;
 
     &[open]>summary {
-      color: df.$dark;
+      color: rgb(100, 100, 100);
     }
   }
 }
