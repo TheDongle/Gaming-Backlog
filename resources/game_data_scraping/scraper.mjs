@@ -6,7 +6,7 @@ puppeteer.use(StealthPlugin());
 
 async function scrapeSite(url) {
   const browser = await puppeteer.launch({
-    // args: ["--disable-setuid-sandbox", "--no-sandbox", "--no-zygote"],
+    args: ["--disable-setuid-sandbox", "--no-sandbox", "--no-zygote"],
     headless: "shell",
     timeout: 7000,
     executablePath: env.PUPPETEER_EXECUTABLE_PATH || executablePath(),
