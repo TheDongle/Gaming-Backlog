@@ -1,5 +1,4 @@
 buildImage = "ghcr.io/puppeteer/puppeteer:22.11.1"
 
-environment.systemPackages = [
-  pkgs.nixVersions.nix_2_21
-];
+[variables]
+systemPackages = ["...", "pkgs.nixVersions.nix_2_21"]
