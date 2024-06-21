@@ -10,7 +10,6 @@ class Creator {
   }
   static async createGame(req, res, next) {
     try {
-      console.log(req.body)
       if (Object.keys(req.body).length < 2) {
         throw createError(400, "Request Body is empty");
       }

@@ -6,9 +6,27 @@ puppeteer.use(StealthPlugin());
 
 async function scrapeSite(url) {
   const browser = await puppeteer.launch({
-    args: ["--disable-setuid-sandbox", "--no-sandbox", "--no-zygote"],
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-infobars",
+      "--no-first-run",
+      "--ignore-certificate-errors",
+      "--ignore-certificate-errors-skip-list",
+      "--disable-dev-shm-usage",
+      "--disable-accelerated-2d-canvas",
+      "--disable-gpu",
+      "--disable-notifications",
+      "--disable-background-timer-throttling",
+      "--disable-backgrounding-occluded-windows",
+      "--disable-breakpad",
+      "--disable-component-extensions-with-background-pages",
+      "--disable-extensions",
+      "--disable-features=TranslateUI,BlinkGenPropertyTrees",
+      "--disable-ipc-flooding-protection",
+      "--disable-renderer-backgrounding",
+    ],
     headless: "shell",
-    timeout: 7000,
     executablePath: env.PUPPETEER_EXECUTABLE_PATH || executablePath(),
   });
   const page = await browser.newPage();
