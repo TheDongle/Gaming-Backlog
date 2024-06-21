@@ -8,8 +8,8 @@ async function scrapeSite(url) {
   const browser = await puppeteer.launch({
     args: ["--disable-setuid-sandbox", "--no-sandbox", "--no-zygote"],
     headless: "shell",
-    timeout: 7000,
-    executablePath: executablePath(),
+    timeout: 5000,
+    executablePath: env.PUPPETEER_EXECUTABLE_PATH || executablePath(),
   });
   const page = await browser.newPage();
   await page.goto(url);
