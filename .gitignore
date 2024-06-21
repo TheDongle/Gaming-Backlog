@@ -4,5 +4,3 @@ jsconfig.json
 .vscode
 .cache
 .env
-.html
-coverage
