@@ -2,7 +2,7 @@
 buildImage = "ghcr.io/puppeteer/puppeteer:22.11.1"
 
 [phases.install]
-buildImage = "node:20-bullseye"
+buildImage = "ghcr.io//windows"
 
 [phases.build]
 buildImage = "ghcr.io/railwayapp/nixpacks:latest"
