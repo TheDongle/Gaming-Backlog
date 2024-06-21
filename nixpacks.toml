@@ -1,4 +1,5 @@
 [phases.setup]
 buildImage = "ghcr.io/puppeteer/puppeteer:22.11.1"
+dependsOn = ["build"]
 [phases.install]
-nixPkgs = ["...", "nix"]
+buildImage = "ghcr.io/railwayapp/nixpacks:ubuntu-1716249803@sha256:5ef4d2021c418fcaabb56cea5ea9e24a5fdedfe27f58062d9689214dfed45c46"

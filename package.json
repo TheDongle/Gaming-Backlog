@@ -5,7 +5,7 @@
   "type": "module",
   "jest.autoRun": {},
   "jest": {
-    "rootDir": "C:/Users/steve/OneDrive/Gaming Backlog v2",
+    "rootDir": "C:/Users/steve/OneDrive/Gaming Backlog",
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.m?[jt]sx?$"
   },
   "eslintConfig": {
