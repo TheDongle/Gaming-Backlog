@@ -1,4 +1,4 @@
 [phases.setup]
 buildImage = "ghcr.io/puppeteer/puppeteer:22.11.1"
 [phases.install]
-nixPkgs = ["...", "nix_2_21"]
+nixPkgs = ["...", "nix"]
