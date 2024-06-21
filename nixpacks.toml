@@ -1,6 +1,0 @@
-[phases.setup]
-buildImage = "ghcr.io/railwayapp/nixpacks:latest"
-nixPkgs = ["...", "nixos.mongodb"]
-
-[phases.install]
-buildImage = "ghcr.io/puppeteer/puppeteer:22.11.1"
