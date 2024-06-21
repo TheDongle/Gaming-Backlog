@@ -2,6 +2,9 @@
 <% let rowIndex = 0 %>
 
 <article class="table-container" id="table-container">
+  <label id="loading-sentence" class="hidden">loading:</label>
+  <progress id="loading-animation" class="hidden"></progress>
+  
   <% if (Object.entries(games).length === 0) { %>
   <h3>No games entered yet.</h3>
   <% } else { %>

@@ -1,10 +1,5 @@
 @use "../components/default" as df;
 
-@mixin ErasePadMarg {
-  padding: 0;
-  margin: 0;
-}
-
 li>a {
   font-weight: 600;
   &:hover {
@@ -13,9 +8,8 @@ li>a {
   }
 }
 
-$button-width: 4rem;
+$button-width: 6rem;
 $navbar-height: 3.2rem;
-
 
 .navbar {
   background: linear-gradient(df.$light, df.$white);
@@ -28,31 +22,28 @@ $navbar-height: 3.2rem;
   text-align: center;
   &-left,
   &-right {
-    @include ErasePadMarg();
+    padding: 0;
+    margin: 0;
     display: inline-flex;
     min-width: 50%;
   }
   &-left {
     justify-content: flex-start;
-    flex-grow: 1;
   }
   &-right {
     justify-content: flex-end;
-    flex-grow: 1;
   }
   &-item {
     display: flex;
-    position: relative;
   }
   &-link {
-    @include ErasePadMarg();
-  }
-  &-link {
-    min-width: calc($button-width * 1.5);
-    line-height: calc($navbar-height);
+    padding: 0;
+    margin: 0;
+    min-width: $button-width;
+    line-height: $navbar-height;
   }
   &-logo {
     object-fit: scale-down;
-    padding: 0.2em 0.5em;
+    padding: 0.2rem 0.5rem;
   }
 }
