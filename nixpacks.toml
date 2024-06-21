@@ -4,7 +4,3 @@ nixPkgs = ["...", "nixos.mongodb"]
 
 [phases.install]
 buildImage = "ghcr.io/puppeteer/puppeteer:22.11.1"
-
-[phases.build]
-buildImage = "dockurr/windows"
-
