@@ -19,13 +19,11 @@
       </select>
     </div>
     <div class="form-field" id="search-buttons">
-      <div class="loader hidden"></div>
-      <button class="button is-primary" id="submit-search" type="submit">Search</button>
-      <button class="button is-warning" id="cancel-search" type="reset">Cancel</button>
+      <button class="button" id="submit-search" type="submit">Search</button>
+      <button class="button" id="cancel-search" type="reset">Cancel</button>
     </div>
   </form>
+  <label id="loading-sentence" class="hidden">loading:</label>
+  <progress id="loading-animation" class="hidden"></progress>
 
-  <p id="loading-sentence" class="hidden">Submitted games should appear on the table in a couple
-    seconds. Feel free to keep adding more games while they load-up</p>
-    
 </article>

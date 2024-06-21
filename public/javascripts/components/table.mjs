@@ -18,12 +18,13 @@ class Table {
     await this.refreshForms();
   }
   async delete(event) {
+    event.target.setAttribute("disabled", true)
     const response = await deleteData(event.target);
     if (response.status >= 400) {
       alert(await response.text());
+      event.target.removeAttribute("disabled", true)
     } else {
       const text = await response.text()
-      console.log(text)
       await this.fill(text);
       this.updateFunction("deleted");
     }
