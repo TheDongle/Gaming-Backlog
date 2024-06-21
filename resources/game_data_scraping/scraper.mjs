@@ -27,7 +27,7 @@ async function scrapeSite(url) {
       "--disable-renderer-backgrounding",
     ],
     headless: "shell",
-    executablePath: env.PUPPETEER_EXECUTABLE_PATH || executablePath(),
+    executablePath: executablePath(),
   });
   const page = await browser.newPage();
   await page.goto(url);
