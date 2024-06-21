@@ -1,5 +1,8 @@
 [phases.setup]
-buildImage = "ghcr.io/railwayapp/nixpacks:latest"
+buildImage = "ghcr.io/puppeteer/puppeteer:22.11.1"
 
 [phases.install]
-buildImage = "ghcr.io/puppeteer/puppeteer:22.11.1"
+buildImage = "ghcr.io/railwayapp/nixpacks:latest"
+
+[phases.build]
+buildImage = "node:20-bullseye"
