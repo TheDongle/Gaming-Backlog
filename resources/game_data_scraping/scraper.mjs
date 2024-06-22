@@ -9,7 +9,6 @@ async function scrapeSite(url) {
     args: [
       "--no-sandbox",
       "--disable-setuid-sandbox",
-      "--enable-gpu",
       "--no-first-run",
       "--ignore-certificate-errors",
       "--ignore-certificate-errors-skip-list",
