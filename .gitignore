@@ -1,6 +1,6 @@
 node_modules
 puppeteer.config.cjs
 jsconfig.json
-.vscode
+*.vscode
 .cache
-.env
+*.env
