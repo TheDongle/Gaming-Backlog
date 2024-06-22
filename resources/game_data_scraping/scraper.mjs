@@ -28,7 +28,7 @@ async function scrapeSite(url) {
       "--disable-renderer-backgrounding",
     ],
     headless: "shell",
-    executablePath: executablePath(),
+    executablePath: env.NODE_ENV === "production" ? "/usr/bin/google-chrome" : executablePath(),
   });
   const page = await browser.newPage();
   await page.goto(url);
