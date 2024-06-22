@@ -15,7 +15,7 @@ async function scrapeSite(url) {
       "--disable-dev-shm-usage",
     ],
     headless: "shell",
-    executablePath: env.NODE_ENV === "production" ? "/usr/bin/google-chrome" : executablePath(),
+    executablePath: executablePath(),
   });
   const page = await browser.newPage();
   await page.goto(url);
